@@ -12,24 +12,24 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 md:h-24 items-center justify-between">
           {/* Logo and Navigation */}
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-12 md:gap-16">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/beroqk-logo.png"
                 alt="BEROQK"
-                width={120}
-                height={28}
-                className="h-7"
+                width={200}
+                height={56}
+                className="h-10 md:h-14"
                 style={{ width: "auto" }}
                 priority
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-10">
               <Link 
                 href="/chat" 
                 className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
