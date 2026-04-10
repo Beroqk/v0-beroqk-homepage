@@ -32,9 +32,9 @@ const footerLinks = [
 ]
 
 const socialLinks = [
-  { name: "X", href: "https://x.com", icon: XIcon },
-  { name: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
-  { name: "YouTube", href: "https://youtube.com", icon: YouTubeIcon },
+  { name: "X", href: "https://x.com/beroqk", icon: XIcon },
+  { name: "Instagram", href: "https://instagram.com/beroqk", icon: InstagramIcon },
+  { name: "YouTube", href: "https://youtube.com/@beroqk", icon: YouTubeIcon },
 ]
 
 export function Footer() {
@@ -61,14 +61,14 @@ export function Footer() {
           </nav>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
                 aria-label={link.name}
               >
                 <link.icon className="w-5 h-5" />
