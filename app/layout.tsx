@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Navbar } from '@/components/navbar'
 import './globals.css'
 
 const geist = Geist({ 
@@ -43,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={geist.variable} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
+        <Navbar />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

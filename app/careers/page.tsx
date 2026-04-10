@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react"
 
 export default function CareersPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-6">
+    <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 pt-36">
       <div className="text-center">
         <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
           Careers
