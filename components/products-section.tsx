@@ -27,11 +27,15 @@ export function ProductsSection() {
   return (
     <section className="py-24 md:py-32 px-6 border-t border-border/50">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border/50">
-          {products.map((product) => (
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {products.map((product, index) => (
             <div 
               key={product.title} 
-              className="px-6 py-12 md:py-0 md:px-8 lg:px-12 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0 group"
+              className={`px-6 py-12 md:py-0 md:px-8 lg:px-12 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0 group relative ${
+                index < products.length - 1 
+                  ? "border-b md:border-b-0 md:border-r border-white/15" 
+                  : ""
+              }`}
             >
               <h3 className="text-xl font-semibold tracking-tight mb-4">
                 {product.title}
