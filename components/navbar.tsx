@@ -60,12 +60,14 @@ export function Navbar() {
               >
                 News
               </Link>
-              <Link 
-                href="/shop" 
+              <a 
+                href="https://beroqk.store" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
               >
                 Shop
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -125,13 +127,15 @@ export function Navbar() {
               >
                 News
               </Link>
-              <Link 
-                href="/shop" 
+              <a 
+                href="https://beroqk.store" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Shop
-              </Link>
+              </a>
               <Button asChild className="text-sm font-medium uppercase w-fit">
                 <Link href="/chat">Try Beroqk</Link>
               </Button>
