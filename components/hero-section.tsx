@@ -42,8 +42,8 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         {/* Main Title */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter mb-12 text-balance">
-          Beroqk
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter mb-12 text-balance uppercase">
+          BEROQK
         </h1>
 
         {/* Chat Input */}
