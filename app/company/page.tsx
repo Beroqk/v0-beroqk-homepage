@@ -122,15 +122,20 @@ export default function CompanyPage() {
           </p>
 
           {/* Principles */}
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col">
             {principles.map((principle, index) => (
               <div key={index}>
-                <h3 className="text-xl font-semibold tracking-tight mb-3">
-                  {principle.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {principle.description}
-                </p>
+                <div className="py-8 first:pt-0 last:pb-0">
+                  <h3 className="text-xl font-semibold tracking-tight mb-3">
+                    {principle.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {principle.description}
+                  </p>
+                </div>
+                {index < principles.length - 1 && (
+                  <div className="w-full h-px bg-white/10 my-4" />
+                )}
               </div>
             ))}
           </div>
