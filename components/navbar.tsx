@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -12,37 +13,48 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="font-mono text-lg font-bold tracking-wider">
-            BEROQK
-          </Link>
+          {/* Logo and Navigation */}
+          <div className="flex items-center gap-10">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/beroqk-logo.png"
+                alt="BEROQK"
+                width={120}
+                height={28}
+                className="h-7"
+                style={{ width: "auto" }}
+                priority
+              />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link 
-              href="/chat" 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              CHAT
-            </Link>
-            <Link 
-              href="/api-info" 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              API
-            </Link>
-            <Link 
-              href="/company" 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              COMPANY
-            </Link>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              <Link 
+                href="/chat" 
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
+              >
+                Chat
+              </Link>
+              <Link 
+                href="/api-info" 
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
+              >
+                API
+              </Link>
+              <Link 
+                href="/company" 
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
+              >
+                Company
+              </Link>
+            </div>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="font-mono text-xs tracking-wider">
-              <Link href="/chat">TRY BEROQK</Link>
+            <Button asChild className="font-mono text-xs uppercase tracking-widest">
+              <Link href="/chat">Try Beroqk</Link>
             </Button>
           </div>
 
@@ -62,27 +74,27 @@ export function Navbar() {
             <div className="flex flex-col gap-4">
               <Link 
                 href="/chat" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                CHAT
+                Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                COMPANY
+                Company
               </Link>
-              <Button asChild className="font-mono text-xs tracking-wider w-fit">
-                <Link href="/chat">TRY BEROQK</Link>
+              <Button asChild className="font-mono text-xs uppercase tracking-widest w-fit">
+                <Link href="/chat">Try Beroqk</Link>
               </Button>
             </div>
           </div>
