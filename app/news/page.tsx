@@ -30,7 +30,7 @@ export default function NewsPage() {
       <div className="max-w-5xl mx-auto px-6 pt-40 md:pt-56 lg:pt-64 pb-32">
         {/* Header */}
         <header className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-tight mb-6">
             Latest News
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">

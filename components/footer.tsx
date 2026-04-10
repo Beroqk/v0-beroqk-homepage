@@ -43,7 +43,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Logo */}
-          <Link href="/" className="text-lg font-semibold tracking-tight">
+          <Link href="/" className="text-lg font-normal tracking-tight">
             BEROQK
           </Link>
 

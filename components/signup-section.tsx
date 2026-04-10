@@ -5,7 +5,7 @@ export function SignupSection() {
   return (
     <section className="py-24 md:py-32 px-6 border-t border-border/50">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4 text-balance">
+        <h2 className="text-2xl md:text-3xl font-normal tracking-tight mb-4 text-balance">
           Get started with Beroqk
         </h2>
         <p className="text-muted-foreground text-lg mb-8">

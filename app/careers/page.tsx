@@ -14,7 +14,7 @@ export default function CareersPage() {
 
       {/* Content */}
       <div className="text-center relative z-10">
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+        <h1 className="text-4xl md:text-5xl font-normal tracking-tight mb-4">
           Careers
         </h1>
         <p className="text-muted-foreground text-lg mb-8 max-w-md">

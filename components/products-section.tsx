@@ -37,7 +37,7 @@ export function ProductsSection() {
                   : ""
               }`}
             >
-              <h3 className="text-xl font-semibold tracking-tight mb-4">
+              <h3 className="text-xl font-normal tracking-tight mb-4">
                 {product.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-8 min-h-[80px]">

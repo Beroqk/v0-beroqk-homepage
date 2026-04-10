@@ -91,7 +91,7 @@ export default function CompanyPage() {
             Our Mission
           </p>
           <h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-8 text-balance bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-8 text-balance bg-clip-text text-transparent"
             style={{
               backgroundImage: "linear-gradient(to right, #9ca3af, #ffffff)",
             }}
@@ -126,7 +126,7 @@ export default function CompanyPage() {
             {principles.map((principle, index) => (
               <div key={index}>
                 <div className="py-8 first:pt-0 last:pb-0">
-                  <h3 className="text-xl font-semibold tracking-tight mb-3">
+                  <h3 className="text-xl font-normal tracking-tight mb-3">
                     {principle.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -152,7 +152,7 @@ export default function CompanyPage() {
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-6">
             Collaboration
           </p>
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-normal tracking-tight mb-6">
             Built for the future
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-6">

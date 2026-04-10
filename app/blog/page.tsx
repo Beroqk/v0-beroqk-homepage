@@ -5,7 +5,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 pt-40 md:pt-56 lg:pt-64">
       <div className="text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+        <h1 className="text-4xl md:text-5xl font-normal tracking-tight mb-4">
           Blog
         </h1>
         <p className="text-muted-foreground text-lg mb-8 max-w-md">

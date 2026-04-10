@@ -23,7 +23,7 @@ export function NewsSection() {
   return (
     <section className="py-24 md:py-32 px-6 border-t border-border/50">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-12">
+        <h2 className="text-xl md:text-2xl font-normal tracking-tight mb-12">
           Latest News
         </h2>
         
