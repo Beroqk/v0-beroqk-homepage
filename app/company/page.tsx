@@ -66,8 +66,21 @@ export default function CompanyPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-6 pt-48 pb-32">
+    <main className="min-h-screen bg-background relative overflow-hidden">
+      {/* Space horizon gradient - top right */}
+      <div 
+        className="absolute top-0 right-0 w-[800px] h-[800px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at 100% 0%, rgba(30, 58, 138, 0.15) 0%, rgba(11, 26, 58, 0.08) 40%, transparent 70%)",
+        }}
+      />
+      <div 
+        className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at 100% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%)",
+        }}
+      />
+      <div className="max-w-3xl mx-auto px-6 pt-48 pb-32 relative z-10">
         
         {/* Mission Section */}
         <section
