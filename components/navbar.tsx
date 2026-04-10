@@ -29,24 +29,42 @@ export function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-8">
               <Link 
                 href="/chat" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
               >
-                Chat
+                Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
               >
                 Company
+              </Link>
+              <Link 
+                href="/careers" 
+                className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+              >
+                Careers
+              </Link>
+              <Link 
+                href="/news" 
+                className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+              >
+                News
+              </Link>
+              <Link 
+                href="/shop" 
+                className="text-xs font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+              >
+                Shop
               </Link>
             </div>
           </div>
@@ -60,7 +78,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -70,30 +88,51 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50">
+          <div className="lg:hidden py-4 border-t border-border/50">
             <div className="flex flex-col gap-4">
               <Link 
                 href="/chat" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Chat
+                Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Company
               </Link>
-              <Button asChild className="text-sm font-medium w-fit">
+              <Link 
+                href="/careers" 
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Careers
+              </Link>
+              <Link 
+                href="/news" 
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                News
+              </Link>
+              <Link 
+                href="/shop" 
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Shop
+              </Link>
+              <Button asChild className="text-sm font-medium uppercase w-fit">
                 <Link href="/chat">Try Beroqk</Link>
               </Button>
             </div>
