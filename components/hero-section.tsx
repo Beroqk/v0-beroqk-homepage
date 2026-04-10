@@ -15,7 +15,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-40 lg:pt-48">
       {/* Glowing Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main glow orb */}

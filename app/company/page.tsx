@@ -80,7 +80,7 @@ export default function CompanyPage() {
           background: "radial-gradient(ellipse at 100% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%)",
         }}
       />
-      <div className="max-w-3xl mx-auto px-6 pt-48 pb-32 relative z-10">
+      <div className="max-w-3xl mx-auto px-6 pt-40 md:pt-56 lg:pt-64 pb-32 relative z-10">
         
         {/* Mission Section */}
         <section

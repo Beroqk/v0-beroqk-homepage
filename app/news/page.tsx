@@ -48,7 +48,7 @@ const newsItems = [
 export default function NewsPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-6 pt-48 pb-32">
+      <div className="max-w-3xl mx-auto px-6 pt-40 md:pt-56 lg:pt-64 pb-32">
         {/* Header */}
         <header className="mb-20">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
