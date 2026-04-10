@@ -12,17 +12,17 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-28 md:h-40 lg:h-48 items-center justify-between">
+        <div className="flex h-24 md:h-32 lg:h-36 items-center justify-between">
           {/* Logo and Navigation */}
-          <div className="flex items-center gap-16 md:gap-24">
+          <div className="flex items-center gap-12 md:gap-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/beroqk-logo.png"
                 alt="BEROQK"
-                width={480}
-                height={140}
-                className="h-16 md:h-28 lg:h-36"
+                width={400}
+                height={120}
+                className="h-12 md:h-24 lg:h-[120px]"
                 style={{ width: "auto" }}
                 priority
               />
