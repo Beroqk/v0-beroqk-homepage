@@ -54,7 +54,7 @@ export function HeroSection() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="What do you want to know?"
-              className="w-full h-14 md:h-16 px-6 pr-14 bg-secondary/50 border border-border/50 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all font-sans text-base md:text-lg backdrop-blur-sm"
+              className="w-full h-14 md:h-16 px-6 pr-14 bg-background/80 border border-white/20 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/50 focus:shadow-[0_0_10px_rgba(255,255,255,0.1)] transition-all duration-200 font-sans text-base md:text-lg backdrop-blur-sm"
             />
             <button
               type="submit"
