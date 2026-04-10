@@ -26,7 +26,7 @@ export function NewsSection() {
   return (
     <section className="py-24 md:py-32 px-6 border-t border-border/50">
       <div className="mx-auto max-w-5xl">
-        <h2 className="font-mono text-xl md:text-2xl font-medium tracking-wide mb-12">
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-12">
           Latest News
         </h2>
         
@@ -38,7 +38,7 @@ export function NewsSection() {
               className="block py-8 first:pt-0 last:pb-0 group"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                <span className="text-sm text-muted-foreground font-mono shrink-0 md:w-32">
+                <span className="text-sm text-muted-foreground shrink-0 md:w-32">
                   {item.date}
                 </span>
                 <div className="flex-1">

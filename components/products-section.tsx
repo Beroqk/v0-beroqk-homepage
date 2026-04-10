@@ -33,7 +33,7 @@ export function ProductsSection() {
               key={product.title} 
               className="px-6 py-12 md:py-0 md:px-8 lg:px-12 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0 group"
             >
-              <h3 className="font-mono text-xl font-medium tracking-wide mb-4">
+              <h3 className="text-xl font-semibold tracking-tight mb-4">
                 {product.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-8 min-h-[80px]">
@@ -42,7 +42,7 @@ export function ProductsSection() {
               <Button 
                 asChild 
                 variant="ghost" 
-                className="p-0 h-auto font-mono text-sm tracking-wider text-foreground hover:text-accent hover:bg-transparent group"
+                className="p-0 h-auto text-sm font-medium text-foreground hover:text-accent hover:bg-transparent group"
               >
                 <Link href={product.href} className="flex items-center gap-2">
                   {product.cta}

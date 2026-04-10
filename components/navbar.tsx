@@ -32,19 +32,19 @@ export function Navbar() {
             <div className="hidden md:flex items-center gap-10">
               <Link 
                 href="/chat" 
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200 hover:opacity-80"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 Company
               </Link>
@@ -53,7 +53,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="font-mono text-xs uppercase tracking-widest">
+            <Button asChild className="text-sm font-medium">
               <Link href="/chat">Try Beroqk</Link>
             </Button>
           </div>
@@ -74,26 +74,26 @@ export function Navbar() {
             <div className="flex flex-col gap-4">
               <Link 
                 href="/chat" 
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Company
               </Link>
-              <Button asChild className="font-mono text-xs uppercase tracking-widest w-fit">
+              <Button asChild className="text-sm font-medium w-fit">
                 <Link href="/chat">Try Beroqk</Link>
               </Button>
             </div>

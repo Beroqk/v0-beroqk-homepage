@@ -1,16 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Roboto_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const geist = Geist({ 
   subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const robotoMono = Roboto_Mono({ 
-  subsets: ['latin'],
-  variable: '--font-roboto-mono',
+  variable: '--font-geist',
 })
 
 export const metadata: Metadata = {
@@ -46,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
+    <html lang="en" className={geist.variable}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

@@ -42,7 +42,7 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         {/* Main Title */}
-        <h1 className="font-mono text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-12 text-balance">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter mb-12 text-balance">
           Beroqk
         </h1>
 
@@ -68,7 +68,7 @@ export function HeroSection() {
           <Button 
             type="submit"
             size="lg"
-            className="mt-6 font-mono tracking-wider px-8 h-12 text-sm hover:scale-105 transition-transform"
+            className="mt-6 px-8 h-12 text-sm font-medium hover:scale-105 transition-transform"
           >
             Start Conversation
           </Button>
