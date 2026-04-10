@@ -90,7 +90,12 @@ export default function CompanyPage() {
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-6">
             Our Mission
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-8 text-balance">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-8 text-balance bg-clip-text text-transparent"
+            style={{
+              backgroundImage: "linear-gradient(to right, #9ca3af, #ffffff)",
+            }}
+          >
             Build Efficient Intelligence
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
