@@ -98,11 +98,11 @@ export default function CompanyPage() {
           >
             Build Efficient Intelligence
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-8">
-            AI should be precise, scalable, and sustainable. Beroqk builds systems that reduce compute, cost, and environmental impact while improving how intelligence is applied.
-          </p>
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl italic">
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl italic mb-8">
             Artificial Intelligence today uses the power of a rocket ship to do the work of a train or a bus or even a bicycle. It consumes excessive energy and fresh water for simple human tasks, and that is not innovation. That is waste.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            AI should be precise, scalable, and sustainable. Beroqk builds systems that reduce compute, cost, and environmental impact while improving how intelligence is applied.
           </p>
         </section>
 
