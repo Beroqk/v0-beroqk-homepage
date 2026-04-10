@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useCallback } from "react"
 
-interface Particle {
+interface Star {
   x: number
   y: number
   baseX: number
@@ -11,34 +11,48 @@ interface Particle {
   vy: number
   size: number
   opacity: number
+  depth: number // For parallax effect (0-1, 1 = closest)
+  drift: { x: number; y: number } // Ambient drift direction
+  twinkleSpeed: number
+  twinkleOffset: number
 }
 
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const particlesRef = useRef<Particle[]>([])
+  const starsRef = useRef<Star[]>([])
   const mouseRef = useRef({ x: -1000, y: -1000 })
   const animationRef = useRef<number>()
+  const timeRef = useRef(0)
 
-  const initParticles = useCallback((width: number, height: number) => {
-    const particles: Particle[] = []
-    const density = 0.00008
+  const initStars = useCallback((width: number, height: number) => {
+    const stars: Star[] = []
+    const density = 0.00012
     const count = Math.floor(width * height * density)
 
     for (let i = 0; i < count; i++) {
       const x = Math.random() * width
       const y = Math.random() * height
-      particles.push({
+      const depth = Math.random()
+      
+      stars.push({
         x,
         y,
         baseX: x,
         baseY: y,
         vx: 0,
         vy: 0,
-        size: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.4 + 0.2,
+        size: depth * 1.8 + 0.3, // Bigger stars appear closer
+        opacity: depth * 0.5 + 0.1,
+        depth,
+        drift: {
+          x: (Math.random() - 0.5) * 0.15,
+          y: (Math.random() - 0.5) * 0.1,
+        },
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinkleOffset: Math.random() * Math.PI * 2,
       })
     }
-    return particles
+    return stars
   }, [])
 
   useEffect(() => {
@@ -54,7 +68,7 @@ export function ParticleField() {
       canvas.width = rect.width * dpr
       canvas.height = rect.height * dpr
       ctx.scale(dpr, dpr)
-      particlesRef.current = initParticles(rect.width, rect.height)
+      starsRef.current = initStars(rect.width, rect.height)
     }
 
     resizeCanvas()
@@ -79,61 +93,101 @@ export function ParticleField() {
       const rect = canvas.getBoundingClientRect()
       ctx.clearRect(0, 0, rect.width, rect.height)
 
-      const particles = particlesRef.current
+      const stars = starsRef.current
       const mouse = mouseRef.current
-      const interactionRadius = 120
-      const connectionDistance = 80
+      const interactionRadius = 150
+      const connectionDistance = 100
 
-      // Update and draw particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]
+      timeRef.current += 1
 
-        // Mouse interaction
-        const dx = mouse.x - p.x
-        const dy = mouse.y - p.y
+      // Update and draw stars
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i]
+
+        // Ambient drift (slow floating motion)
+        star.baseX += star.drift.x * 0.1
+        star.baseY += star.drift.y * 0.1
+
+        // Wrap around edges
+        if (star.baseX < -20) star.baseX = rect.width + 20
+        if (star.baseX > rect.width + 20) star.baseX = -20
+        if (star.baseY < -20) star.baseY = rect.height + 20
+        if (star.baseY > rect.height + 20) star.baseY = -20
+
+        // Mouse interaction with parallax (closer stars react more)
+        const dx = mouse.x - star.x
+        const dy = mouse.y - star.y
         const dist = Math.sqrt(dx * dx + dy * dy)
 
         if (dist < interactionRadius && dist > 0) {
           const force = (interactionRadius - dist) / interactionRadius
           const angle = Math.atan2(dy, dx)
-          p.vx -= Math.cos(angle) * force * 0.8
-          p.vy -= Math.sin(angle) * force * 0.8
+          const parallaxForce = force * star.depth * 1.2
+          star.vx -= Math.cos(angle) * parallaxForce
+          star.vy -= Math.sin(angle) * parallaxForce
         }
 
         // Return to base position
-        p.vx += (p.baseX - p.x) * 0.02
-        p.vy += (p.baseY - p.y) * 0.02
+        star.vx += (star.baseX - star.x) * 0.015
+        star.vy += (star.baseY - star.y) * 0.015
 
         // Apply friction
-        p.vx *= 0.92
-        p.vy *= 0.92
+        star.vx *= 0.94
+        star.vy *= 0.94
 
         // Update position
-        p.x += p.vx
-        p.y += p.vy
+        star.x += star.vx
+        star.y += star.vy
 
-        // Draw particle
-        const particleOpacity = dist < interactionRadius ? p.opacity + 0.3 : p.opacity
+        // Twinkle effect
+        const twinkle = Math.sin(timeRef.current * star.twinkleSpeed + star.twinkleOffset) * 0.3 + 0.7
+        const baseOpacity = star.opacity * twinkle
+
+        // Increase brightness near mouse
+        const proximityBoost = dist < interactionRadius ? (1 - dist / interactionRadius) * 0.4 : 0
+        const finalOpacity = Math.min(baseOpacity + proximityBoost, 0.9)
+
+        // Draw star glow (subtle blue for larger/closer stars)
+        if (star.depth > 0.6) {
+          const glowSize = star.size * 3
+          const gradient = ctx.createRadialGradient(
+            star.x, star.y, 0,
+            star.x, star.y, glowSize
+          )
+          gradient.addColorStop(0, `rgba(180, 200, 255, ${finalOpacity * 0.3})`)
+          gradient.addColorStop(0.5, `rgba(120, 150, 200, ${finalOpacity * 0.1})`)
+          gradient.addColorStop(1, "rgba(100, 130, 180, 0)")
+          ctx.beginPath()
+          ctx.arc(star.x, star.y, glowSize, 0, Math.PI * 2)
+          ctx.fillStyle = gradient
+          ctx.fill()
+        }
+
+        // Draw star core
         ctx.beginPath()
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${particleOpacity})`
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255, 255, 255, ${finalOpacity})`
         ctx.fill()
 
-        // Draw connections
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j]
-          const cdx = p.x - p2.x
-          const cdy = p.y - p2.y
-          const cdist = Math.sqrt(cdx * cdx + cdy * cdy)
+        // Draw sparse connections (only between nearby, prominent stars)
+        if (star.depth > 0.4) {
+          for (let j = i + 1; j < stars.length; j++) {
+            const star2 = stars[j]
+            if (star2.depth < 0.4) continue
 
-          if (cdist < connectionDistance) {
-            const lineOpacity = (1 - cdist / connectionDistance) * 0.15
-            ctx.beginPath()
-            ctx.moveTo(p.x, p.y)
-            ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
+            const cdx = star.x - star2.x
+            const cdy = star.y - star2.y
+            const cdist = Math.sqrt(cdx * cdx + cdy * cdy)
+
+            if (cdist < connectionDistance) {
+              const lineOpacity = (1 - cdist / connectionDistance) * 0.08 * Math.min(star.depth, star2.depth)
+              ctx.beginPath()
+              ctx.moveTo(star.x, star.y)
+              ctx.lineTo(star2.x, star2.y)
+              ctx.strokeStyle = `rgba(200, 220, 255, ${lineOpacity})`
+              ctx.lineWidth = 0.4
+              ctx.stroke()
+            }
           }
         }
       }
@@ -151,10 +205,10 @@ export function ParticleField() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [initParticles])
+  }, [initStars])
 
   return (
-    <div className="w-full h-64 md:h-80 relative">
+    <div className="w-full h-72 md:h-96 relative overflow-hidden">
       <canvas
         ref={canvasRef}
         className="w-full h-full"
