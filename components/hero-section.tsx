@@ -68,7 +68,7 @@ export function HeroSection() {
           <Button 
             type="submit"
             size="lg"
-            className="mt-6 px-8 h-12 text-sm font-medium hover:scale-105 transition-transform"
+            className="mt-6 px-8 h-12 text-sm font-medium rounded-[10px] hover:brightness-110 hover:opacity-95 transition-all duration-200 ease-out"
           >
             Start Conversation
           </Button>
