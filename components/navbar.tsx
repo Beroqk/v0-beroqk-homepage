@@ -71,21 +71,26 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button and Mobile Menu */}
+          <div className="flex items-center gap-4">
+            <Button asChild size="sm" className="lg:hidden text-xs font-medium px-4 h-10">
+              <Link href="/chat">Try Beroqk</Link>
+            </Button>
+            <button
+              className="lg:hidden p-3 text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+
+          {/* Desktop CTA Button */}
           <div className="hidden lg:block">
             <Button asChild size="lg" className="text-sm font-medium px-6 h-12">
               <Link href="/chat">Try Beroqk</Link>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-3 text-muted-foreground hover:text-foreground transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
 
         {/* Mobile Navigation */}
@@ -136,9 +141,6 @@ export function Navbar() {
               >
                 Shop
               </a>
-              <Button asChild size="lg" className="text-base font-medium uppercase w-fit mt-2">
-                <Link href="/chat">Try Beroqk</Link>
-              </Button>
             </div>
           </div>
         )}
