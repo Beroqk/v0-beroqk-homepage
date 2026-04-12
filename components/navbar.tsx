@@ -22,7 +22,7 @@ export function Navbar() {
                 alt="BEROQK"
                 width={500}
                 height={160}
-                className="h-20 sm:h-24 md:h-28 lg:h-40"
+                className="h-24 sm:h-28 md:h-32 lg:h-40"
                 style={{ width: "auto" }}
                 priority
               />
