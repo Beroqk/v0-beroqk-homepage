@@ -73,9 +73,12 @@ export function Navbar() {
 
           {/* CTA Button and Mobile Menu */}
           <div className="flex items-center gap-4">
-            <Button asChild size="sm" className="lg:hidden text-xs font-medium px-4 h-10">
-              <Link href="/chat">Try Beroqk</Link>
-            </Button>
+            <Link
+              href="/chat"
+              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200 backdrop-blur-sm"
+            >
+              Try Beroqk
+            </Link>
             <button
               className="lg:hidden p-3 text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -87,9 +90,12 @@ export function Navbar() {
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:block">
-            <Button asChild size="lg" className="text-sm font-medium px-6 h-12">
-              <Link href="/chat">Try Beroqk</Link>
-            </Button>
+            <Link
+              href="/chat"
+              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200 backdrop-blur-sm"
+            >
+              Try Beroqk
+            </Link>
           </div>
         </div>
 

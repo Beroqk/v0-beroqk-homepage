@@ -65,13 +65,12 @@ export function HeroSection() {
             </button>
           </div>
           
-          <Button 
+          <button
             type="submit"
-            size="lg"
-            className="mt-6 px-8 h-12 text-sm font-medium rounded-[10px] hover:brightness-110 hover:opacity-95 transition-all duration-200 ease-out"
+            className="mt-6 px-8 h-12 text-sm font-medium rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] transition-all duration-200 backdrop-blur-sm"
           >
             Start Conversation
-          </Button>
+          </button>
         </form>
       </div>
     </section>
