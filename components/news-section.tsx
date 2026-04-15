@@ -14,7 +14,7 @@ const news = [
   },
   {
     title: "Introducing ROQK",
-    description: "Your intelligent assistant, designed for speed, privacy, and efficiency. Coming soon.",
+    description: "Your intelligent assistant, designed for speed, privacy, and efficiency. ROQK coming soon.",
     href: "/chat",
   },
 ]

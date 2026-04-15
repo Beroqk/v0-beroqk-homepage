@@ -18,7 +18,7 @@ const newsItems = [
   {
     date: "March 28, 2026",
     title: "Introducing ROQK",
-    description: "Meet your intelligent assistant, designed for speed, privacy, and efficiency. Coming soon.",
+    description: "Meet your intelligent assistant, designed for speed, privacy, and efficiency. ROQK coming soon.",
     category: "product",
     slug: "/news/roqk",
   },
