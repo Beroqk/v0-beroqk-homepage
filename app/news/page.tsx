@@ -17,10 +17,10 @@ const newsItems = [
   },
   {
     date: "March 28, 2026",
-    title: "Introducing Beroqk Chat",
-    description: "Meet your intelligent assistant, designed for speed, privacy, and efficiency. Beroqk Chat is now available.",
+    title: "Introducing ROQK",
+    description: "Meet your intelligent assistant, designed for speed, privacy, and efficiency. ROQK is now available.",
     category: "product",
-    slug: "/news/beroqk-chat",
+    slug: "/news/roqk",
   },
 ]
 

@@ -13,7 +13,7 @@ const news = [
     href: "/company",
   },
   {
-    title: "Introducing Beroqk Chat",
+    title: "Introducing ROQK",
     description: "Your intelligent assistant, designed for speed, privacy, and efficiency.",
     href: "/chat",
   },
