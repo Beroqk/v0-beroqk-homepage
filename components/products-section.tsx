@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react"
 const products = [
   {
     title: "ROQK",
-    description: "Roqk is your intelligent assistant, designed for speed, privacy, and efficiency.",
+    description: "ROQK is your intelligent assistant, designed for speed, privacy, and efficiency.",
     cta: "Use Now",
     href: "/chat",
   },
