@@ -6,7 +6,7 @@ export default function ChatPage() {
     <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 pt-40 md:pt-56 lg:pt-64">
       <div className="text-center">
         <h1 className="text-4xl md:text-5xl font-normal tracking-tight mb-4">
-          ROQK
+          Beroqk Chat
         </h1>
         <p className="text-muted-foreground text-lg mb-8 max-w-md">
           Your intelligent assistant, designed for speed, privacy, and efficiency.

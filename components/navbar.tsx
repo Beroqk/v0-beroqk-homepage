@@ -34,7 +34,7 @@ export function Navbar() {
                 href="/chat" 
                 className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
               >
-                ROQK
+                Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
@@ -108,7 +108,7 @@ export function Navbar() {
                 className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                ROQK
+                Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
