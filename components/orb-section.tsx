@@ -14,6 +14,7 @@ function InteractiveOrb() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>(0)
   const orbitAngleRef = useRef(0)
+  const globeRotationRef = useRef(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -38,51 +39,71 @@ function InteractiveOrb() {
       const height = rect.height
       const centerX = width / 2
       const centerY = height / 2
-      const orbRadius = Math.min(width, height) * 0.35
+      const globeRadius = Math.min(width, height) * 0.35
 
       ctx.clearRect(0, 0, width, height)
 
-      // Outer glow
-      const outerGlow = ctx.createRadialGradient(
-        centerX, centerY, orbRadius * 0.5,
-        centerX, centerY, orbRadius * 1.8
-      )
-      outerGlow.addColorStop(0, "rgba(30, 64, 175, 0.15)")
-      outerGlow.addColorStop(0.5, "rgba(30, 58, 138, 0.08)")
-      outerGlow.addColorStop(1, "transparent")
-      ctx.fillStyle = outerGlow
-      ctx.fillRect(0, 0, width, height)
+      // Globe rotation
+      globeRotationRef.current += 0.003
 
-      // Main orb gradient
-      const orbGradient = ctx.createRadialGradient(
-        centerX - orbRadius * 0.3, centerY - orbRadius * 0.3, 0,
-        centerX, centerY, orbRadius
-      )
-      orbGradient.addColorStop(0, "rgba(40, 40, 50, 1)")
-      orbGradient.addColorStop(0.4, "rgba(20, 25, 35, 1)")
-      orbGradient.addColorStop(0.8, "rgba(10, 15, 25, 1)")
-      orbGradient.addColorStop(1, "rgba(5, 10, 20, 1)")
+      // Draw latitude lines (horizontal circles)
+      const latitudes = 7
+      for (let i = 1; i < latitudes; i++) {
+        const lat = (i / latitudes) * Math.PI - Math.PI / 2
+        const y = centerY + Math.sin(lat) * globeRadius
+        const radiusAtLat = Math.cos(lat) * globeRadius
 
+        ctx.beginPath()
+        ctx.ellipse(centerX, y, radiusAtLat, radiusAtLat * 0.3, 0, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 - Math.abs(lat) * 0.05})`
+        ctx.lineWidth = 0.5
+        ctx.stroke()
+      }
+
+      // Draw longitude lines (vertical arcs)
+      const longitudes = 12
+      for (let i = 0; i < longitudes; i++) {
+        const lng = (i / longitudes) * Math.PI + globeRotationRef.current
+        const x = Math.cos(lng)
+        const z = Math.sin(lng)
+
+        // Only draw visible half
+        if (z > -0.3) {
+          ctx.beginPath()
+          for (let j = 0; j <= 50; j++) {
+            const lat = (j / 50) * Math.PI - Math.PI / 2
+            const py = centerY + Math.sin(lat) * globeRadius
+            const radiusAtLat = Math.cos(lat) * globeRadius
+            const px = centerX + x * radiusAtLat
+
+            if (j === 0) {
+              ctx.moveTo(px, py)
+            } else {
+              ctx.lineTo(px, py)
+            }
+          }
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.12 + z * 0.08})`
+          ctx.lineWidth = 0.5
+          ctx.stroke()
+        }
+      }
+
+      // Globe outline
       ctx.beginPath()
-      ctx.arc(centerX, centerY, orbRadius, 0, Math.PI * 2)
-      ctx.fillStyle = orbGradient
-      ctx.fill()
+      ctx.arc(centerX, centerY, globeRadius, 0, Math.PI * 2)
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.25)"
+      ctx.lineWidth = 1
+      ctx.stroke()
 
-      // Inner subtle glow
-      const innerGlow = ctx.createRadialGradient(
-        centerX - orbRadius * 0.2, centerY - orbRadius * 0.3, 0,
-        centerX, centerY, orbRadius * 0.8
-      )
-      innerGlow.addColorStop(0, "rgba(59, 130, 246, 0.1)")
-      innerGlow.addColorStop(0.5, "rgba(30, 64, 175, 0.05)")
-      innerGlow.addColorStop(1, "transparent")
-      ctx.fillStyle = innerGlow
+      // Equator line (slightly brighter)
       ctx.beginPath()
-      ctx.arc(centerX, centerY, orbRadius, 0, Math.PI * 2)
-      ctx.fill()
+      ctx.ellipse(centerX, centerY, globeRadius, globeRadius * 0.3, 0, 0, Math.PI * 2)
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.2)"
+      ctx.lineWidth = 0.8
+      ctx.stroke()
 
       // Orbit ring
-      const orbitRadius = orbRadius * 1.4
+      const orbitRadius = globeRadius * 1.4
       ctx.beginPath()
       ctx.arc(centerX, centerY, orbitRadius, 0, Math.PI * 2)
       ctx.strokeStyle = "rgba(255, 255, 255, 0.1)"
@@ -97,7 +118,7 @@ function InteractiveOrb() {
       // Dot glow
       const dotGlow = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, 12)
       dotGlow.addColorStop(0, "rgba(255, 255, 255, 0.8)")
-      dotGlow.addColorStop(0.5, "rgba(147, 197, 253, 0.3)")
+      dotGlow.addColorStop(0.5, "rgba(255, 255, 255, 0.2)")
       dotGlow.addColorStop(1, "transparent")
       ctx.fillStyle = dotGlow
       ctx.beginPath()
