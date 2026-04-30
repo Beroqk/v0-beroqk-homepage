@@ -52,11 +52,6 @@ export default function NewsPage() {
               key={index}
               className="group p-6 border border-border/30 rounded-xl hover:border-border/60 transition-all duration-200"
             >
-              {/* Date */}
-              <time className="block text-xs text-muted-foreground/60 mb-4">
-                {item.date}
-              </time>
-              
               {/* Title */}
               <Link href={item.slug}>
                 <h2 className="text-lg font-medium tracking-tight mb-3 group-hover:opacity-70 transition-opacity duration-200">
