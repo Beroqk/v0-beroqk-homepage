@@ -3,7 +3,7 @@ import Link from "next/link"
 const newsItems = [
   {
     date: "April 15, 2026",
-    title: "B-STING: Privacy Before Access",
+    title: "B-STING: Privacy Before Access - Coming Soon",
     description: "Introducing B-STING — an active privacy layer that protects before access. Your data stays protected, always.",
     category: "product",
     slug: "/b-sting",

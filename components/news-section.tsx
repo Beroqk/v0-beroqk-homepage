@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react"
 
 const news = [
   {
-    title: "B-STING: Privacy Before Access",
+    title: "B-STING: Privacy Before Access - Coming Soon",
     description: "An active privacy layer that protects before access. Your data stays protected.",
     href: "/b-sting",
   },
