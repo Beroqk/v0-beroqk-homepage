@@ -60,12 +60,6 @@ export function Navbar() {
               >
                 News
               </Link>
-              <Link 
-                href="/b-sting" 
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
-              >
-                B-STING
-              </Link>
               <a 
                 href="https://beroqk.store" 
                 target="_blank"
@@ -143,13 +137,6 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 News
-              </Link>
-              <Link 
-                href="/b-sting" 
-                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                B-STING
               </Link>
               <a 
                 href="https://beroqk.store" 

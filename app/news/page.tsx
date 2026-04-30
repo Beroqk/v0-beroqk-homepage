@@ -2,6 +2,13 @@ import Link from "next/link"
 
 const newsItems = [
   {
+    date: "April 15, 2026",
+    title: "B-STING: Privacy Before Access",
+    description: "Introducing B-STING — an active privacy layer that protects before access. Your data stays protected, always.",
+    category: "product",
+    slug: "/b-sting",
+  },
+  {
     date: "April 10, 2026",
     title: "Beroqk API — Coming Soon",
     description: "Integrate efficient AI into your applications with the Beroqk API. Built for developers and designed for scale.",
