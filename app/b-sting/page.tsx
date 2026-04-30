@@ -2,97 +2,49 @@
 
 import { useState, useEffect, useRef } from "react"
 
-// Hexagon Component
-function Hex({ 
-  className = "", 
-  size = 60,
-  opacity = 0.15,
-  delay = 0,
-  isHighlighted = false 
-}: { 
-  className?: string
-  size?: number
-  opacity?: number
-  delay?: number
-  isHighlighted?: boolean
-}) {
-  return (
-    <svg 
-      width={size} 
-      height={size * 1.15} 
-      viewBox="0 0 100 115" 
-      className={`transition-all duration-500 ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <polygon
-        points="50,0 100,28.75 100,86.25 50,115 0,86.25 0,28.75"
-        fill="none"
-        stroke="white"
-        strokeWidth="1"
-        className={`transition-all duration-500`}
-        style={{ 
-          opacity: isHighlighted ? 0.5 : opacity,
-          transitionDelay: `${delay}ms`
-        }}
-      />
-    </svg>
-  )
-}
-
-// Honeycomb Network Component
-function HoneycombNetwork() {
+// Shield Network Component - Simple concentric rings
+function ShieldNetwork() {
   const [isHovered, setIsHovered] = useState(false)
   const [isActive, setIsActive] = useState(false)
 
-  const hexSize = 50
-
   return (
     <div
-      className="relative w-full max-w-sm mx-auto cursor-pointer flex items-center justify-center py-8"
+      className="relative w-full max-w-xs mx-auto aspect-square cursor-pointer flex items-center justify-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsActive(!isActive)}
     >
-      <div className="relative" style={{ width: hexSize * 4, height: hexSize * 4 }}>
-        {/* Center hex */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Hex size={hexSize} opacity={0.25} isHighlighted={isHovered || isActive} />
-        </div>
-        
-        {/* Top hex */}
-        <div className="absolute left-1/2 -translate-x-1/2" style={{ top: -hexSize * 0.4 }}>
-          <Hex size={hexSize} opacity={0.1} delay={50} isHighlighted={isHovered} />
-        </div>
-        
-        {/* Top right hex */}
-        <div className="absolute" style={{ left: `calc(50% + ${hexSize * 0.65}px)`, top: hexSize * 0.15 }}>
-          <Hex size={hexSize} opacity={0.08} delay={100} isHighlighted={isHovered} />
-        </div>
-        
-        {/* Bottom right hex */}
-        <div className="absolute" style={{ left: `calc(50% + ${hexSize * 0.65}px)`, top: hexSize * 1.05 }}>
-          <Hex size={hexSize} opacity={0.08} delay={150} isHighlighted={isHovered} />
-        </div>
-        
-        {/* Bottom hex */}
-        <div className="absolute left-1/2 -translate-x-1/2" style={{ top: hexSize * 1.6 }}>
-          <Hex size={hexSize} opacity={0.1} delay={200} isHighlighted={isHovered} />
-        </div>
-        
-        {/* Bottom left hex */}
-        <div className="absolute" style={{ left: `calc(50% - ${hexSize * 1.65}px)`, top: hexSize * 1.05 }}>
-          <Hex size={hexSize} opacity={0.08} delay={250} isHighlighted={isHovered} />
-        </div>
-        
-        {/* Top left hex */}
-        <div className="absolute" style={{ left: `calc(50% - ${hexSize * 1.65}px)`, top: hexSize * 0.15 }}>
-          <Hex size={hexSize} opacity={0.08} delay={300} isHighlighted={isHovered} />
-        </div>
-      </div>
+      {/* Outer ring */}
+      <div 
+        className={`absolute w-full h-full rounded-full border transition-all duration-700 ${
+          isHovered ? "border-white/30 scale-100" : "border-white/10 scale-95"
+        } ${isActive ? "border-white/40" : ""}`}
+      />
+      
+      {/* Middle ring */}
+      <div 
+        className={`absolute w-3/4 h-3/4 rounded-full border transition-all duration-500 delay-75 ${
+          isHovered ? "border-white/25 scale-100" : "border-white/8 scale-90"
+        } ${isActive ? "border-white/35" : ""}`}
+      />
+      
+      {/* Inner ring */}
+      <div 
+        className={`absolute w-1/2 h-1/2 rounded-full border transition-all duration-300 delay-150 ${
+          isHovered ? "border-white/20 scale-100" : "border-white/5 scale-85"
+        } ${isActive ? "border-white/30" : ""}`}
+      />
+      
+      {/* Center dot */}
+      <div 
+        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+          isHovered ? "bg-white/60 scale-125" : "bg-white/20 scale-100"
+        } ${isActive ? "bg-white/80 shadow-[0_0_20px_rgba(255,255,255,0.3)]" : ""}`}
+      />
       
       {/* Status text */}
       <div 
-        className={`absolute -bottom-4 left-1/2 -translate-x-1/2 text-xs tracking-widest transition-all duration-500 ${
+        className={`absolute -bottom-12 left-1/2 -translate-x-1/2 text-xs tracking-widest transition-all duration-500 ${
           isActive ? "text-white/60 opacity-100" : "text-white/0 opacity-0"
         }`}
       >
@@ -187,7 +139,7 @@ export default function BStingPage() {
           <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-16 text-center">
             Protection Network
           </p>
-          <HoneycombNetwork />
+          <ShieldNetwork />
         </section>
 
         {/* System States Section */}
