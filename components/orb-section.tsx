@@ -2,83 +2,15 @@
 
 import { useEffect, useRef, useState } from "react"
 
-const routingOptions = [
-  {
-    label: "Route this question",
-    result: {
-      model: "Small Model",
-      reason: "Simple reasoning request",
-      savings: "78% compute reduction",
-      responseTime: "0.8s",
-    },
-  },
-  {
-    label: "Why small models?",
-    result: {
-      model: "Micro Model",
-      reason: "Factual recall query",
-      savings: "91% compute reduction",
-      responseTime: "0.3s",
-    },
-  },
-  {
-    label: "Estimate savings",
-    result: {
-      model: "Medium Model",
-      reason: "Analytical calculation",
-      savings: "52% compute reduction",
-      responseTime: "1.2s",
-    },
-  },
-  {
-    label: "How Beroqk thinks",
-    result: {
-      model: "Large Model",
-      reason: "Complex explanation needed",
-      savings: "24% compute reduction",
-      responseTime: "2.1s",
-    },
-  },
-  {
-    label: "Privacy layer",
-    result: {
-      model: "Local Model",
-      reason: "Sensitive data detected",
-      savings: "100% external compute",
-      responseTime: "0.5s",
-    },
-  },
-  {
-    label: "Model selected",
-    result: {
-      model: "Optimal Route",
-      reason: "Best match for context",
-      savings: "67% compute reduction",
-      responseTime: "0.9s",
-    },
-  },
-]
-
 interface InteractiveOrbProps {
-  isPulsing: boolean
+  isHovered: boolean
 }
 
-function InteractiveOrb({ isPulsing }: InteractiveOrbProps) {
+function InteractiveOrb({ isHovered }: InteractiveOrbProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>(0)
   const orbitAngleRef = useRef(0)
-  const pulseRef = useRef(0)
-  const baseSpeedRef = useRef(0.005)
-
-  useEffect(() => {
-    if (isPulsing) {
-      pulseRef.current = 1
-      baseSpeedRef.current = 0.02
-      setTimeout(() => {
-        baseSpeedRef.current = 0.005
-      }, 500)
-    }
-  }, [isPulsing])
+  const glowIntensityRef = useRef(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -107,20 +39,18 @@ function InteractiveOrb({ isPulsing }: InteractiveOrbProps) {
 
       ctx.clearRect(0, 0, width, height)
 
-      // Pulse decay
-      if (pulseRef.current > 0) {
-        pulseRef.current *= 0.95
-      }
-
-      const pulseIntensity = pulseRef.current
+      // Smooth glow transition
+      const targetGlow = isHovered ? 1 : 0
+      glowIntensityRef.current += (targetGlow - glowIntensityRef.current) * 0.08
+      const glow = glowIntensityRef.current
 
       // Outer glow
       const outerGlow = ctx.createRadialGradient(
         centerX, centerY, orbRadius * 0.5,
         centerX, centerY, orbRadius * 1.8
       )
-      outerGlow.addColorStop(0, `rgba(30, 64, 175, ${0.15 + pulseIntensity * 0.2})`)
-      outerGlow.addColorStop(0.5, `rgba(30, 58, 138, ${0.08 + pulseIntensity * 0.1})`)
+      outerGlow.addColorStop(0, `rgba(30, 64, 175, ${0.12 + glow * 0.15})`)
+      outerGlow.addColorStop(0.5, `rgba(30, 58, 138, ${0.06 + glow * 0.08})`)
       outerGlow.addColorStop(1, "transparent")
       ctx.fillStyle = outerGlow
       ctx.fillRect(0, 0, width, height)
@@ -130,23 +60,23 @@ function InteractiveOrb({ isPulsing }: InteractiveOrbProps) {
         centerX - orbRadius * 0.3, centerY - orbRadius * 0.3, 0,
         centerX, centerY, orbRadius
       )
-      orbGradient.addColorStop(0, "rgba(40, 40, 50, 1)")
-      orbGradient.addColorStop(0.4, "rgba(20, 25, 35, 1)")
-      orbGradient.addColorStop(0.8, "rgba(10, 15, 25, 1)")
-      orbGradient.addColorStop(1, "rgba(5, 10, 20, 1)")
+      orbGradient.addColorStop(0, `rgba(${45 + glow * 15}, ${45 + glow * 15}, ${55 + glow * 15}, 1)`)
+      orbGradient.addColorStop(0.4, `rgba(${22 + glow * 8}, ${27 + glow * 8}, ${37 + glow * 8}, 1)`)
+      orbGradient.addColorStop(0.8, `rgba(${12 + glow * 5}, ${17 + glow * 5}, ${27 + glow * 5}, 1)`)
+      orbGradient.addColorStop(1, `rgba(${7 + glow * 3}, ${12 + glow * 3}, ${22 + glow * 3}, 1)`)
 
       ctx.beginPath()
       ctx.arc(centerX, centerY, orbRadius, 0, Math.PI * 2)
       ctx.fillStyle = orbGradient
       ctx.fill()
 
-      // Inner subtle glow (intensifies on pulse)
+      // Inner subtle glow
       const innerGlow = ctx.createRadialGradient(
         centerX - orbRadius * 0.2, centerY - orbRadius * 0.3, 0,
         centerX, centerY, orbRadius * 0.8
       )
-      innerGlow.addColorStop(0, `rgba(59, 130, 246, ${0.1 + pulseIntensity * 0.3})`)
-      innerGlow.addColorStop(0.5, `rgba(30, 64, 175, ${0.05 + pulseIntensity * 0.15})`)
+      innerGlow.addColorStop(0, `rgba(59, 130, 246, ${0.08 + glow * 0.2})`)
+      innerGlow.addColorStop(0.5, `rgba(30, 64, 175, ${0.04 + glow * 0.1})`)
       innerGlow.addColorStop(1, "transparent")
       ctx.fillStyle = innerGlow
       ctx.beginPath()
@@ -157,29 +87,30 @@ function InteractiveOrb({ isPulsing }: InteractiveOrbProps) {
       const orbitRadius = orbRadius * 1.4
       ctx.beginPath()
       ctx.arc(centerX, centerY, orbitRadius, 0, Math.PI * 2)
-      ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 + pulseIntensity * 0.15})`
+      ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + glow * 0.1})`
       ctx.lineWidth = 1
       ctx.stroke()
 
-      // Orbiting dot
-      orbitAngleRef.current += baseSpeedRef.current
+      // Orbiting dot - slightly faster on hover
+      const speed = 0.004 + glow * 0.003
+      orbitAngleRef.current += speed
       const dotX = centerX + Math.cos(orbitAngleRef.current) * orbitRadius
       const dotY = centerY + Math.sin(orbitAngleRef.current) * orbitRadius
 
       // Dot glow
-      const dotGlow = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, 12)
-      dotGlow.addColorStop(0, `rgba(255, 255, 255, ${0.8 + pulseIntensity * 0.2})`)
-      dotGlow.addColorStop(0.5, `rgba(147, 197, 253, ${0.3 + pulseIntensity * 0.2})`)
+      const dotGlow = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, 10 + glow * 4)
+      dotGlow.addColorStop(0, `rgba(255, 255, 255, ${0.7 + glow * 0.25})`)
+      dotGlow.addColorStop(0.5, `rgba(147, 197, 253, ${0.25 + glow * 0.15})`)
       dotGlow.addColorStop(1, "transparent")
       ctx.fillStyle = dotGlow
       ctx.beginPath()
-      ctx.arc(dotX, dotY, 12 + pulseIntensity * 4, 0, Math.PI * 2)
+      ctx.arc(dotX, dotY, 10 + glow * 4, 0, Math.PI * 2)
       ctx.fill()
 
       // Dot core
       ctx.beginPath()
-      ctx.arc(dotX, dotY, 3 + pulseIntensity * 2, 0, Math.PI * 2)
-      ctx.fillStyle = "rgba(255, 255, 255, 0.9)"
+      ctx.arc(dotX, dotY, 2.5 + glow * 1, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.85 + glow * 0.15})`
       ctx.fill()
 
       animationRef.current = requestAnimationFrame(draw)
@@ -191,7 +122,7 @@ function InteractiveOrb({ isPulsing }: InteractiveOrbProps) {
       window.removeEventListener("resize", resize)
       cancelAnimationFrame(animationRef.current)
     }
-  }, [])
+  }, [isHovered])
 
   return (
     <canvas
@@ -203,123 +134,93 @@ function InteractiveOrb({ isPulsing }: InteractiveOrbProps) {
 }
 
 export function OrbSection() {
-  const [selectedOption, setSelectedOption] = useState<number | null>(null)
-  const [isPulsing, setIsPulsing] = useState(false)
-  const [pulseKey, setPulseKey] = useState(0)
-
-  const handleOptionClick = (index: number) => {
-    setSelectedOption(index)
-    setIsPulsing(true)
-    setPulseKey((prev) => prev + 1)
-    setTimeout(() => setIsPulsing(false), 100)
-  }
-
-  const currentResult = selectedOption !== null ? routingOptions[selectedOption].result : null
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section className="py-16 md:py-24 px-6">
+    <section className="py-24 md:py-40 px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Orb */}
-          <div className="relative aspect-square max-w-md mx-auto lg:mx-0 w-full">
-            <InteractiveOrb key={pulseKey} isPulsing={isPulsing} />
+          <div 
+            className="relative aspect-square max-w-lg mx-auto lg:mx-0 w-full cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <InteractiveOrb isHovered={isHovered} />
           </div>
 
           {/* Right: Content */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             {/* Label */}
             <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
               Explore
             </span>
 
             {/* Headline */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight">
               Understand Intelligence
             </h2>
 
             {/* Description */}
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
-              Every request is routed through the most efficient model for the job. Explore how Beroqk reduces compute before an answer is generated.
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+              Every request is routed through the most efficient model for the job.
             </p>
 
-            {/* Routing Pills */}
-            <div className="flex flex-wrap gap-3 mt-2">
-              {routingOptions.map((option, index) => (
-                <button
-                  key={option.label}
-                  onClick={() => handleOptionClick(index)}
-                  className={`px-4 py-2 text-sm border rounded-full transition-all duration-200 backdrop-blur-sm ${
-                    selectedOption === index
-                      ? "border-white/40 text-foreground bg-white/5"
-                      : "border-white/10 text-muted-foreground hover:border-white/30 hover:text-foreground bg-background/50"
-                  }`}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Result Panel */}
+            {/* Status Card */}
             <div
-              className={`mt-4 p-6 border border-white/10 rounded-xl bg-background/50 backdrop-blur-sm transition-all duration-300 ${
-                currentResult ? "opacity-100" : "opacity-40"
+              className={`mt-4 p-8 border rounded-xl transition-all duration-500 ${
+                isHovered 
+                  ? "border-white/20 bg-white/[0.03]" 
+                  : "border-white/10 bg-transparent"
               }`}
             >
-              {currentResult ? (
-                <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-6">
+                {/* Status Header */}
+                <div className="flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                    isHovered ? "bg-white" : "bg-white/40"
+                  }`} />
+                  <span className={`text-xs font-medium uppercase tracking-widest transition-all duration-500 ${
+                    isHovered ? "text-foreground" : "text-muted-foreground"
+                  }`}>
+                    {isHovered ? "Routing Active" : "Routing Standby"}
+                  </span>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-3 gap-8">
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Model Route
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
+                      Model
                     </span>
-                    <p className="text-foreground font-normal mt-1">{currentResult.model}</p>
+                    <p className={`font-normal transition-all duration-500 ${
+                      isHovered ? "text-foreground" : "text-muted-foreground/60"
+                    }`}>
+                      {isHovered ? "Micro Model" : "—"}
+                    </p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Reason
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
+                      Saved
                     </span>
-                    <p className="text-foreground font-normal mt-1">{currentResult.reason}</p>
+                    <p className={`font-normal transition-all duration-500 ${
+                      isHovered ? "text-foreground" : "text-muted-foreground/60"
+                    }`}>
+                      {isHovered ? "91% compute" : "—"}
+                    </p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Estimated Savings
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
+                      Response
                     </span>
-                    <p className="text-foreground font-normal mt-1">{currentResult.savings}</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Response Time
-                    </span>
-                    <p className="text-foreground font-normal mt-1">{currentResult.responseTime}</p>
+                    <p className={`font-normal transition-all duration-500 ${
+                      isHovered ? "text-foreground" : "text-muted-foreground/60"
+                    }`}>
+                      {isHovered ? "0.3s" : "—"}
+                    </p>
                   </div>
                 </div>
-              ) : (
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Model Route
-                    </span>
-                    <p className="text-muted-foreground/50 font-normal mt-1">—</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Reason
-                    </span>
-                    <p className="text-muted-foreground/50 font-normal mt-1">—</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Estimated Savings
-                    </span>
-                    <p className="text-muted-foreground/50 font-normal mt-1">—</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                      Response Time
-                    </span>
-                    <p className="text-muted-foreground/50 font-normal mt-1">—</p>
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
