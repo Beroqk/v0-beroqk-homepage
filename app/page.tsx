@@ -4,6 +4,7 @@ import { OrbSection } from "@/components/orb-section"
 import { ProductsSection } from "@/components/products-section"
 import { SignupSection } from "@/components/signup-section"
 import { NewsSection } from "@/components/news-section"
+import { BStingSection } from "@/components/bsting-section"
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ProductsSection />
       <SignupSection />
       <NewsSection />
+      <BStingSection />
       <Footer />
     </main>
   )
