@@ -2,18 +2,11 @@ import Link from "next/link"
 
 const newsItems = [
   {
-    date: "April 5, 2026",
-    title: "Our Mission: Efficient Intelligence",
-    description: "AI should be precise, scalable, and sustainable. Learn how Beroqk is building systems that reduce compute, cost, and environmental impact.",
-    category: "company",
-    slug: "/news/mission",
-  },
-  {
-    date: "March 28, 2026",
-    title: "Introducing ROQK",
-    description: "Meet your intelligent assistant, designed for speed, privacy, and efficiency. ROQK coming soon.",
+    date: "April 15, 2026",
+    title: "B-STING: Privacy Before Access - Coming Soon",
+    description: "Introducing B-STING — an active privacy layer that protects before access. Your data stays protected, always.",
     category: "product",
-    slug: "/chat",
+    slug: "/b-sting",
   },
   {
     date: "April 10, 2026",
@@ -23,11 +16,18 @@ const newsItems = [
     slug: "/news/beroqk-api",
   },
   {
-    date: "April 15, 2026",
-    title: "B-STING: Privacy Before Access - Coming Soon",
-    description: "Introducing B-STING — an active privacy layer that protects before access. Your data stays protected, always.",
+    date: "April 5, 2026",
+    title: "Our Mission: Efficient Intelligence",
+    description: "AI should be precise, scalable, and sustainable. Learn how Beroqk is building systems that reduce compute, cost, and environmental impact.",
+    category: "company",
+    slug: "/news/mission",
+  },
+  {
+    date: "March 28, 2026",
+    title: "Introducing Beroqk Chat",
+    description: "Meet your intelligent assistant, designed for speed, privacy, and efficiency. Beroqk Chat is now available.",
     category: "product",
-    slug: "/b-sting",
+    slug: "/news/beroqk-chat",
   },
 ]
 
