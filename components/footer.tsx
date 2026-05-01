@@ -28,7 +28,7 @@ const footerLinks = [
   { name: "Chat", href: "/chat" },
   { name: "API", href: "/api-info" },
   { name: "Company", href: "/company" },
-  { name: "Blog", href: "/blog" },
+  { name: "News", href: "/news" },
 ]
 
 const socialLinks = [
