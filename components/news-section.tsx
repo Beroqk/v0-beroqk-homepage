@@ -3,9 +3,14 @@ import { ArrowRight } from "lucide-react"
 
 const news = [
   {
-    title: "B-STING: Privacy Before Access - Coming Soon",
-    description: "An active privacy layer that protects before access. Your data stays protected.",
-    href: "/b-sting",
+    title: "Our Mission: Efficient Intelligence",
+    description: "Building AI that reduces compute, cost, and environmental impact.",
+    href: "/company",
+  },
+  {
+    title: "Introducing Beroqk Chat",
+    description: "Your intelligent assistant, designed for speed, privacy, and efficiency.",
+    href: "/chat",
   },
   {
     title: "Beroqk API — Coming Soon",
@@ -13,9 +18,9 @@ const news = [
     href: "/api-info",
   },
   {
-    title: "Our Mission: Efficient Intelligence",
-    description: "Building AI that reduces compute, cost, and environmental impact.",
-    href: "/company",
+    title: "B-STING: Privacy Before Access - Coming Soon",
+    description: "An active privacy layer that protects before access. Your data stays protected.",
+    href: "/b-sting",
   },
 ]
 
