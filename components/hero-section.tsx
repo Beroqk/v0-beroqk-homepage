@@ -133,27 +133,36 @@ export function HeroSection() {
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(ellipse 80% 60% at 50% 40%, rgba(40, 90, 255, 0.25) 0%, rgba(20, 50, 150, 0.15) 25%, rgba(10, 25, 80, 0.1) 45%, transparent 70%),
-              radial-gradient(ellipse 100% 80% at 50% 50%, rgba(15, 35, 100, 0.2) 0%, rgba(5, 15, 50, 0.15) 40%, transparent 70%),
-              linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,1) 100%)
+              radial-gradient(ellipse 50% 40% at 50% 42%, rgba(120, 160, 255, 0.35) 0%, rgba(60, 100, 255, 0.2) 15%, rgba(30, 60, 180, 0.12) 30%, transparent 55%),
+              radial-gradient(ellipse 80% 60% at 50% 45%, rgba(20, 50, 150, 0.15) 0%, rgba(10, 25, 80, 0.08) 40%, transparent 65%),
+              linear-gradient(to bottom, rgba(0,0,0,0.97) 0%, rgba(0,0,0,1) 100%)
             `
+          }}
+        />
+        
+        {/* Bright core center */}
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full animate-pulse"
+          style={{
+            background: `radial-gradient(circle, rgba(150, 180, 255, 0.25) 0%, rgba(80, 120, 255, 0.15) 30%, transparent 60%)`,
+            animationDuration: '3s',
           }}
         />
         
         {/* Pulsing core glow */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full animate-pulse"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full animate-pulse"
           style={{
-            background: `radial-gradient(circle, rgba(50, 100, 255, 0.12) 0%, rgba(30, 70, 200, 0.06) 40%, transparent 70%)`,
+            background: `radial-gradient(circle, rgba(70, 110, 255, 0.12) 0%, rgba(40, 80, 200, 0.05) 40%, transparent 65%)`,
             animationDuration: '4s',
           }}
         />
         
         {/* Secondary breathing glow */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full animate-pulse"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full animate-pulse"
           style={{
-            background: `radial-gradient(circle, rgba(40, 80, 200, 0.08) 0%, transparent 60%)`,
+            background: `radial-gradient(circle, rgba(40, 80, 200, 0.06) 0%, transparent 55%)`,
             animationDuration: '6s',
             animationDelay: '1s',
           }}
