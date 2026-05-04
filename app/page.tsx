@@ -4,7 +4,6 @@ import { OrbSection } from "@/components/orb-section"
 import { ProductsSection } from "@/components/products-section"
 import { SignupSection } from "@/components/signup-section"
 import { NewsSection } from "@/components/news-section"
-import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
@@ -15,7 +14,6 @@ export default function HomePage() {
       <ProductsSection />
       <SignupSection />
       <NewsSection />
-      <Footer />
     </main>
   )
 }
