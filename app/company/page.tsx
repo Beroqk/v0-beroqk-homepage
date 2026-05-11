@@ -20,19 +20,20 @@ const principles = [
 
 const newsItems = [
   {
-    title: "Introducing Beroqk API",
-    date: "March 2026",
-    href: "/blog",
+    title: "Our Mission: Efficient Intelligence",
+    href: "/company",
   },
   {
-    title: "Our Approach to Efficient AI",
-    date: "February 2026",
-    href: "/blog",
+    title: "Introducing Beroqk Chat",
+    href: "/chat",
   },
   {
-    title: "Beroqk is Now Available",
-    date: "January 2026",
-    href: "/blog",
+    title: "Beroqk API — Coming Soon",
+    href: "/api-info",
+  },
+  {
+    title: "B-STING: Privacy Before Access - Coming Soon",
+    href: "/b-sting",
   },
 ]
 
@@ -182,13 +183,13 @@ export default function CompanyPage() {
               <Link 
                 key={index} 
                 href={item.href}
-                className="group flex flex-col md:flex-row md:items-center md:justify-between gap-2 py-2 hover:opacity-70 transition-opacity"
+                className="group flex items-center justify-between gap-4 py-2 hover:opacity-70 transition-opacity"
               >
                 <h3 className="text-lg font-medium tracking-tight group-hover:text-foreground transition-colors">
                   {item.title}
                 </h3>
-                <span className="text-sm text-muted-foreground">
-                  {item.date}
+                <span className="text-xs uppercase tracking-wide text-muted-foreground">
+                  Read
                 </span>
               </Link>
             ))}
