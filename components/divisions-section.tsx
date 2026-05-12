@@ -357,27 +357,27 @@ function DivisionCard({ division, index }: { division: typeof divisions[0]; inde
       {/* Content overlay */}
       <div className="relative z-10 p-6 md:p-8 h-full flex flex-col min-h-[280px]">
         {/* Division number */}
-        <span className="text-xs text-muted-foreground/40 font-mono tracking-widest mb-4">
+        <span className="text-[10px] text-white/30 font-mono tracking-[0.2em] mb-4">
           {division.number}
         </span>
 
         {/* Title */}
-        <h3 className="text-sm md:text-base font-medium tracking-wide text-foreground/90 mb-3">
+        <h3 className="text-sm md:text-base font-medium tracking-[0.08em] text-white/90 mb-3">
           {division.title}
         </h3>
 
         {/* Description */}
-        <p className="text-xs md:text-sm text-muted-foreground/60 leading-relaxed flex-grow">
+        <p className="text-sm text-white/45 leading-relaxed flex-grow">
           {division.description}
         </p>
 
         {/* CTA */}
         <div className={`
-          flex items-center gap-2 mt-6 text-xs text-muted-foreground/40
+          flex items-center gap-2 mt-6 text-[11px] text-white/35
           transition-all duration-300
-          ${isHovered ? "text-muted-foreground/70 translate-x-1" : ""}
+          ${isHovered ? "text-white/60 translate-x-1" : ""}
         `}>
-          <span className="uppercase tracking-wider">Explore</span>
+          <span className="uppercase tracking-[0.15em]">Explore</span>
           <ArrowRight size={12} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
         </div>
       </div>
@@ -403,11 +403,14 @@ export function DivisionsSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section header */}
-        <div className="mb-16 md:mb-20">
-          <p className="text-xs text-muted-foreground/50 uppercase tracking-[0.3em] mb-4">
+        <div className="mb-20 md:mb-24">
+          <p className="text-[11px] text-white/40 uppercase tracking-[0.3em] mb-6">
             Divisions
           </p>
-          <h2 className="text-2xl md:text-3xl font-light tracking-tight text-foreground/90">
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95"
+            style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
+          >
             Our Systems
           </h2>
         </div>

@@ -32,31 +32,31 @@ export function Navbar() {
             <div className="hidden lg:flex items-center gap-10">
               <Link 
                 href="/chat" 
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
                 Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
                 Company
               </Link>
               <Link 
                 href="/careers" 
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
                 Careers
               </Link>
               <Link 
                 href="/news" 
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
                 News
               </Link>
@@ -64,7 +64,7 @@ export function Navbar() {
                 href="https://beroqk.store" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
                 Shop
               </a>

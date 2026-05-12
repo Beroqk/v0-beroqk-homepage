@@ -186,7 +186,10 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         {/* Main Title */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter mb-16 text-balance uppercase text-white">
+        <h1 
+          className="text-7xl md:text-[96px] lg:text-[128px] font-extralight uppercase text-white mb-20"
+          style={{ letterSpacing: '-0.05em', lineHeight: 1 }}
+        >
           BEROQK
         </h1>
 
@@ -230,7 +233,7 @@ export function HeroSection() {
         </form>
 
         {/* Routing Status Line */}
-        <p className="mt-10 text-xs text-white/25 tracking-widest uppercase">
+        <p className="mt-12 text-[11px] text-white/30 tracking-[0.25em] uppercase">
           Auto Routing Enabled • Optimizing for efficiency
         </p>
       </div>

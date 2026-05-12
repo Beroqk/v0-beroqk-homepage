@@ -240,19 +240,22 @@ export function OrbSection() {
       <div className="mx-auto max-w-6xl relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Content */}
-          <div className="flex flex-col gap-8 order-2 lg:order-1">
+          <div className="flex flex-col gap-10 order-2 lg:order-1">
             {/* Label */}
-            <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40">
               Explore
             </span>
 
             {/* Headline */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight">
+            <h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95"
+              style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
+            >
               Understand Intelligence
             </h2>
 
             {/* Description */}
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+            <p className="text-white/50 text-lg md:text-xl leading-relaxed max-w-md">
               Every request is routed through the most efficient model for the job.
             </p>
 
@@ -270,8 +273,8 @@ export function OrbSection() {
                   <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
                     isHovered ? "bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.6)]" : "bg-white/40"
                   }`} />
-                  <span className={`text-xs font-medium uppercase tracking-widest transition-all duration-500 ${
-                    isHovered ? "text-foreground" : "text-muted-foreground"
+                  <span className={`text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 ${
+                    isHovered ? "text-white" : "text-white/50"
                   }`}>
                     {isHovered ? "Routing Active" : "Routing Standby"}
                   </span>
@@ -280,7 +283,7 @@ export function OrbSection() {
                 {/* Stats Grid */}
                 <div className="grid grid-cols-3 gap-8">
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground/60 block mb-2">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
                       Model
                     </span>
                     <p className={`font-normal transition-all duration-500 ${
@@ -290,21 +293,21 @@ export function OrbSection() {
                     </p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground/60 block mb-2">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
                       Saved
                     </span>
                     <p className={`font-normal transition-all duration-500 ${
-                      isHovered ? "text-foreground" : "text-muted-foreground/40"
+                      isHovered ? "text-white" : "text-white/30"
                     }`}>
                       {isHovered ? "91% compute" : "—"}
                     </p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground/60 block mb-2">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
                       Response
                     </span>
                     <p className={`font-normal transition-all duration-500 ${
-                      isHovered ? "text-foreground" : "text-muted-foreground/40"
+                      isHovered ? "text-white" : "text-white/30"
                     }`}>
                       {isHovered ? "0.3s" : "—"}
                     </p>
@@ -323,12 +326,12 @@ export function OrbSection() {
             <WireframeGlobe isHovered={isHovered} />
             
             {/* Floating telemetry labels */}
-            <div className={`absolute top-8 right-8 text-[10px] uppercase tracking-widest transition-all duration-500 ${
-              isHovered ? "text-blue-400/80" : "text-white/30"
+            <div className={`absolute top-8 right-8 text-[10px] uppercase tracking-[0.25em] transition-all duration-500 ${
+              isHovered ? "text-blue-400/80" : "text-white/25"
             }`}>
               Global Routing Active
             </div>
-            <div className={`absolute bottom-12 left-8 text-[10px] uppercase tracking-widest transition-all duration-700 ${
+            <div className={`absolute bottom-12 left-8 text-[10px] uppercase tracking-[0.25em] transition-all duration-700 ${
               isHovered ? "text-white/60" : "text-white/20"
             }`}>
               Optimizing Requests

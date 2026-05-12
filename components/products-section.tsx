@@ -25,7 +25,7 @@ const products = [
 
 export function ProductsSection() {
   return (
-    <section className="py-24 md:py-32 px-6 border-t border-border/50">
+    <section className="py-32 md:py-40 px-6 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3">
           {products.map((product, index) => (
@@ -33,14 +33,14 @@ export function ProductsSection() {
               key={product.title} 
               className={`px-6 py-12 md:py-0 md:px-8 lg:px-12 first:pt-0 last:pb-0 md:first:pl-0 md:last:pr-0 group relative ${
                 index < products.length - 1 
-                  ? "border-b md:border-b-0 md:border-r border-white/15" 
+                  ? "border-b md:border-b-0 md:border-r border-white/10" 
                   : ""
               }`}
             >
-              <h3 className="text-xl font-normal tracking-tight mb-4">
+              <h3 className="text-2xl font-light tracking-tight text-white/90 mb-5">
                 {product.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8 min-h-[80px]">
+              <p className="text-white/50 text-[17px] leading-relaxed mb-10 min-h-[80px]">
                 {product.description}
               </p>
               <Button 
