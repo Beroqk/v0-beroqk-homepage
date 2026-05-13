@@ -1,9 +1,5 @@
 import { HeroSection } from "@/components/hero-section"
 import { DivisionsSection } from "@/components/divisions-section"
-import { MissionSection } from "@/components/mission-section"
-import { OrbSection } from "@/components/orb-section"
-import { ProductsSection } from "@/components/products-section"
-import { SignupSection } from "@/components/signup-section"
 import { NewsSection } from "@/components/news-section"
 
 export default function HomePage() {
@@ -11,10 +7,6 @@ export default function HomePage() {
     <main className="min-h-screen bg-background">
       <HeroSection />
       <DivisionsSection />
-      <MissionSection />
-      <OrbSection />
-      <ProductsSection />
-      <SignupSection />
       <NewsSection />
     </main>
   )
