@@ -31,16 +31,16 @@ export function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-10">
               <Link 
-                href="/api-info" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
-              >
-                Platform
-              </Link>
-              <Link 
                 href="/chat" 
                 className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
               >
-                Infrastructure
+                Beroqk Chat
+              </Link>
+              <Link 
+                href="/api-info" 
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+              >
+                API
               </Link>
               <Link 
                 href="/company" 
@@ -60,6 +60,14 @@ export function Navbar() {
               >
                 News
               </Link>
+              <a 
+                href="https://beroqk.store" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+              >
+                Shop
+              </a>
             </div>
           </div>
 
@@ -96,18 +104,18 @@ export function Navbar() {
           <div className="lg:hidden py-6 border-t border-border/50">
             <div className="flex flex-col gap-5">
               <Link 
-                href="/api-info" 
-                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Platform
-              </Link>
-              <Link 
                 href="/chat" 
                 className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Infrastructure
+                Beroqk Chat
+              </Link>
+              <Link 
+                href="/api-info" 
+                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                API
               </Link>
               <Link 
                 href="/company" 
@@ -130,6 +138,15 @@ export function Navbar() {
               >
                 News
               </Link>
+              <a 
+                href="https://beroqk.store" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Shop
+              </a>
             </div>
           </div>
         )}

@@ -6,38 +6,38 @@ import { ArrowRight } from "lucide-react"
 const divisions = [
   {
     number: "01",
-    title: "ROUTING LAYER",
-    description: "Intelligent request distribution across model clusters. Adaptive load balancing for optimal inference paths.",
+    title: "AI ROUTING",
+    description: "Intelligent model selection and request optimization for maximum efficiency.",
     visual: "routing",
   },
   {
     number: "02",
-    title: "PRIVACY ENGINE",
-    description: "Pre-execution data sanitization. Sensitive information is intercepted and protected before model access.",
+    title: "PRIVACY SYSTEMS",
+    description: "Active protection layers that secure data before access.",
     visual: "privacy",
   },
   {
     number: "03",
-    title: "INFERENCE INFRASTRUCTURE",
-    description: "Distributed compute orchestration. Enterprise-grade systems architecture built for global scale.",
+    title: "API INFRASTRUCTURE",
+    description: "Enterprise-grade systems architecture built for scale.",
     visual: "api",
   },
   {
     number: "04",
-    title: "MULTIMODAL SYSTEMS",
-    description: "Unified processing pipelines across text, vision, and audio. Cross-modal routing optimization.",
+    title: "MULTIMODAL INTELLIGENCE",
+    description: "Unified processing across text, vision, and audio modalities.",
     visual: "multimodal",
   },
   {
     number: "05",
-    title: "MEMORY ARCHITECTURE",
-    description: "Persistent context graphs and long-term knowledge retention. Stateful inference at scale.",
+    title: "MEMORY SYSTEMS",
+    description: "Persistent context and knowledge graph architecture.",
     visual: "memory",
   },
   {
     number: "06",
-    title: "AUTONOMOUS EXECUTION",
-    description: "Self-directed task orchestration. Agent systems for complex multi-step operations.",
+    title: "AUTONOMOUS AGENTS",
+    description: "Self-directed AI systems for complex task execution.",
     visual: "agents",
   },
 ]
@@ -405,13 +405,13 @@ export function DivisionsSection() {
         {/* Section header */}
         <div className="mb-20 md:mb-24">
           <p className="text-[11px] text-white/40 uppercase tracking-[0.3em] mb-6">
-            Systems Architecture
+            Divisions
           </p>
           <h2 
             className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95"
             style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
           >
-            Core Infrastructure
+            Our Systems
           </h2>
         </div>
 
