@@ -29,8 +29,8 @@ export function NewsSection() {
     <section className="py-32 md:py-40 px-6 border-t border-white/10">
       <div className="mx-auto max-w-6xl">
         <h2 
-          className="text-3xl md:text-4xl font-light text-white/95 mb-16"
-          style={{ letterSpacing: '-0.02em' }}
+          className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95 mb-20"
+          style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
         >
           Latest News
         </h2>
