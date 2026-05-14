@@ -28,6 +28,11 @@ export function NewsSection() {
   return (
     <section className="py-32 md:py-40 px-6 border-t border-white/10">
       <div className="mx-auto max-w-6xl">
+        {/* Label */}
+        <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40 block mb-6">
+          News
+        </span>
+        
         <h2 
           className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95 mb-20"
           style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
