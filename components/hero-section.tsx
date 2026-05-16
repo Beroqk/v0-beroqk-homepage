@@ -205,7 +205,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/api-info"
-                className="text-sm text-white/40 hover:text-white/70 transition-colors duration-200 tracking-wide"
+                className="inline-flex items-center h-12 text-sm text-white/40 hover:text-white/70 transition-colors duration-200 tracking-wide"
               >
                 View API
               </Link>
