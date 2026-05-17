@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowRight, Menu, Circle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
-// Chat Mockup Component
-function ChatMockup() {
+// Simple Ask Beroqk Component
+function AskBeroqk() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -19,7 +19,7 @@ function ChatMockup() {
         className="transition-transform duration-[2000ms] ease-in-out"
         style={{ transform: isHovered ? "translateY(-4px)" : "translateY(0)" }}
       >
-        {/* Chat container */}
+        {/* Container */}
         <div
           className={`
             rounded-2xl border border-white/[0.08] 
@@ -29,84 +29,30 @@ function ChatMockup() {
             ${isHovered ? "border-white/[0.12] shadow-[0_12px_80px_rgba(0,0,0,0.5)]" : ""}
           `}
         >
-          {/* Top bar */}
-          <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">
-            <div className="flex items-center gap-3">
-              <Menu size={16} className="text-white/40" />
-              <div>
-                <p className="text-[13px] font-medium text-white/80 tracking-wide">
-                  Beroqk AI
-                </p>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/70" />
-                  <span className="text-[10px] text-white/30 tracking-wide">
-                    Online
-                  </span>
-                </div>
-              </div>
+          {/* Header */}
+          <div className="px-6 pt-8 pb-4 text-center">
+            <div className="w-12 h-12 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center mx-auto mb-4">
+              <span className="text-sm font-medium text-white/60">B</span>
             </div>
-            <div className="flex items-center gap-3">
-              <Circle size={14} className="text-white/20" />
-              <Circle size={14} className="text-white/20" />
-            </div>
+            <h3 className="text-lg font-light text-white/80 tracking-wide">
+              Ask Beroqk
+            </h3>
+            <p className="text-[13px] text-white/35 mt-2">
+              Intelligent assistance, instantly.
+            </p>
           </div>
 
-          {/* Chat messages */}
-          <div className="px-5 py-6 space-y-5 min-h-[320px]">
-            {/* Assistant message */}
-            <div className="flex gap-3">
-              <div className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-[9px] font-medium text-white/50">B</span>
-              </div>
-              <div className="bg-white/[0.04] border border-white/[0.06] rounded-xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                <p className="text-[13px] text-white/70 leading-relaxed">
-                  Hello. I&apos;m Beroqk.
-                </p>
-                <p className="text-[13px] text-white/70 leading-relaxed mt-1">
-                  How can I help?
-                </p>
-              </div>
-            </div>
-
-            {/* User message */}
-            <div className="flex justify-end">
-              <div className="bg-white/[0.08] border border-white/[0.08] rounded-xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                <p className="text-[13px] text-white/80 leading-relaxed">
-                  Explain quantum computing simply.
-                </p>
-              </div>
-            </div>
-
-            {/* Assistant response */}
-            <div className="flex gap-3">
-              <div className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-[9px] font-medium text-white/50">B</span>
-              </div>
-              <div className="bg-white/[0.04] border border-white/[0.06] rounded-xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                <p className="text-[13px] text-white/70 leading-relaxed">
-                  Quantum computers use qubits, which can exist in multiple
-                  states at once — allowing certain calculations dramatically
-                  faster than classical systems.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Input bar */}
-          <div className="px-4 pb-4">
-            <div className="flex items-center gap-3 px-4 py-3 rounded-xl border border-white/[0.06] bg-white/[0.02]">
-              <span className="text-[13px] text-white/25 flex-grow">
+          {/* Input */}
+          <div className="px-5 pb-6 pt-2">
+            <Link 
+              href="/chat"
+              className="flex items-center gap-3 px-5 py-4 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200 cursor-pointer"
+            >
+              <span className="text-[14px] text-white/30 flex-grow">
                 Ask anything...
               </span>
-              <ArrowRight size={16} className="text-white/25" />
-            </div>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="px-5 pb-4">
-            <p className="text-[10px] text-white/20 text-center tracking-wide">
-              Beroqk can make mistakes. Verify important information.
-            </p>
+              <ArrowRight size={16} className="text-white/30" />
+            </Link>
           </div>
         </div>
       </div>
@@ -162,9 +108,9 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-32 pb-20 lg:pt-0 lg:pb-0">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
-          {/* Left Side — Chat Mockup (45%) */}
+          {/* Left Side — Ask Beroqk (45%) */}
           <div className="w-full lg:w-[45%] order-2 lg:order-1">
-            <ChatMockup />
+            <AskBeroqk />
           </div>
 
           {/* Right Side — Messaging (55%) */}
