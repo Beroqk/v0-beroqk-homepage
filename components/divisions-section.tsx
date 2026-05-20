@@ -4,7 +4,7 @@ import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
-// AI Routing Card - Minimal
+// AI Routing Card - Ultra Minimal
 function RoutingCard() {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -24,25 +24,17 @@ function RoutingCard() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Simple visual - concentric rings */}
+        {/* Ultra simple visual - single circle with dot */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative">
-            {/* Outer ring */}
-            <div className={`w-48 h-48 md:w-64 md:h-64 rounded-full border transition-all duration-700 ${
-              isHovered ? "border-white/15 scale-105" : "border-white/[0.06]"
-            }`} />
-            {/* Middle ring */}
-            <div className={`absolute inset-8 rounded-full border transition-all duration-500 delay-75 ${
-              isHovered ? "border-white/12" : "border-white/[0.05]"
-            }`} />
-            {/* Inner ring */}
-            <div className={`absolute inset-16 rounded-full border transition-all duration-300 delay-150 ${
-              isHovered ? "border-white/10" : "border-white/[0.04]"
+            {/* Single ring */}
+            <div className={`w-32 h-32 md:w-40 md:h-40 rounded-full border transition-all duration-500 ${
+              isHovered ? "border-white/20" : "border-white/[0.08]"
             }`} />
             {/* Center dot */}
             <div className={`absolute inset-0 flex items-center justify-center`}>
-              <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                isHovered ? "bg-white/40 shadow-[0_0_20px_rgba(255,255,255,0.2)]" : "bg-white/15"
+              <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                isHovered ? "bg-white/50" : "bg-white/20"
               }`} />
             </div>
           </div>
@@ -51,28 +43,28 @@ function RoutingCard() {
         {/* Content */}
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
-          <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/35">
+          <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-white/45">
             Routing Intelligence
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
-            <h3 className="text-2xl md:text-3xl font-light text-white/90 mb-4" style={{ letterSpacing: "-0.02em" }}>
+            <h3 className="text-3xl md:text-4xl font-light text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
               Optimal model, every time.
             </h3>
 
-            <p className="text-[15px] text-white/40 leading-relaxed mb-8 max-w-sm">
+            <p className="text-base md:text-lg text-white/50 leading-relaxed mb-10 max-w-md">
               Automatically routes requests to the most efficient AI for the task.
             </p>
 
             {/* CTA */}
             <div className={`
-              inline-flex items-center gap-2 text-[13px] text-white/40
+              inline-flex items-center gap-2.5 text-[15px] text-white/50
               transition-all duration-300
-              ${isHovered ? "text-white/70" : ""}
+              ${isHovered ? "text-white/80" : ""}
             `}>
               <span>Learn more</span>
-              <ArrowRight size={14} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
+              <ArrowRight size={16} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
             </div>
           </div>
         </div>
@@ -81,7 +73,7 @@ function RoutingCard() {
   )
 }
 
-// B-STING Privacy Card - Minimal
+// B-STING Privacy Card - Ultra Minimal
 function PrivacyCard() {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -101,96 +93,44 @@ function PrivacyCard() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Simple visual - hexagon grid */}
+        {/* Ultra simple visual - single hexagon */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative">
-            {/* Simple 7-hexagon honeycomb */}
-            <svg width="180" height="200" viewBox="0 0 180 200" className="md:w-[220px] md:h-[240px]">
-              {/* Center hex */}
-              <polygon
-                points="90,60 120,77 120,111 90,128 60,111 60,77"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 ${isHovered ? "opacity-25" : "opacity-[0.08]"}`}
-              />
-              {/* Top hex */}
-              <polygon
-                points="90,12 120,29 120,63 90,80 60,63 60,29"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 delay-[50ms] ${isHovered ? "opacity-20" : "opacity-[0.06]"}`}
-              />
-              {/* Top right hex */}
-              <polygon
-                points="135,36 165,53 165,87 135,104 105,87 105,53"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 delay-[100ms] ${isHovered ? "opacity-15" : "opacity-[0.05]"}`}
-              />
-              {/* Bottom right hex */}
-              <polygon
-                points="135,84 165,101 165,135 135,152 105,135 105,101"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 delay-[150ms] ${isHovered ? "opacity-15" : "opacity-[0.05]"}`}
-              />
-              {/* Bottom hex */}
-              <polygon
-                points="90,108 120,125 120,159 90,176 60,159 60,125"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 delay-[200ms] ${isHovered ? "opacity-20" : "opacity-[0.06]"}`}
-              />
-              {/* Bottom left hex */}
-              <polygon
-                points="45,84 75,101 75,135 45,152 15,135 15,101"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 delay-[250ms] ${isHovered ? "opacity-15" : "opacity-[0.05]"}`}
-              />
-              {/* Top left hex */}
-              <polygon
-                points="45,36 75,53 75,87 45,104 15,87 15,53"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                className={`transition-all duration-500 delay-[300ms] ${isHovered ? "opacity-15" : "opacity-[0.05]"}`}
-              />
-            </svg>
-          </div>
+          <svg width="120" height="140" viewBox="0 0 100 115" className="md:w-[140px] md:h-[160px]">
+            <polygon
+              points="50,5 95,30 95,85 50,110 5,85 5,30"
+              fill="none"
+              stroke="white"
+              strokeWidth="1"
+              className={`transition-all duration-500 ${isHovered ? "opacity-20" : "opacity-[0.08]"}`}
+            />
+          </svg>
         </div>
 
         {/* Content */}
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
-          <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/35">
+          <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-white/45">
             Privacy
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
-            <h3 className="text-2xl md:text-3xl font-light text-white/90 mb-4" style={{ letterSpacing: "-0.02em" }}>
+            <h3 className="text-3xl md:text-4xl font-light text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
               Protection before access.
             </h3>
 
-            <p className="text-[15px] text-white/40 leading-relaxed mb-8 max-w-sm">
+            <p className="text-base md:text-lg text-white/50 leading-relaxed mb-10 max-w-md">
               Sensitive data is secured before it ever reaches an AI model.
             </p>
 
             {/* CTA */}
             <div className={`
-              inline-flex items-center gap-2 text-[13px] text-white/40
+              inline-flex items-center gap-2.5 text-[15px] text-white/50
               transition-all duration-300
-              ${isHovered ? "text-white/70" : ""}
+              ${isHovered ? "text-white/80" : ""}
             `}>
               <span>Learn more</span>
-              <ArrowRight size={14} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
+              <ArrowRight size={16} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
             </div>
           </div>
         </div>
@@ -205,7 +145,7 @@ export function DivisionsSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section header */}
         <div className="text-center mb-20 md:mb-24">
-          <p className="text-[11px] text-white/35 uppercase tracking-[0.3em] mb-6">
+          <p className="text-[13px] text-white/40 uppercase tracking-[0.25em] mb-6">
             Core Systems
           </p>
           <h2 
