@@ -270,7 +270,16 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-32 pb-20 lg:pt-0 lg:pb-0">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          {/* Left Side — Messaging (50%) */}
+          {/* Left Side — Chat Demo (50%) */}
+          <div 
+            className={`w-full lg:w-1/2 transition-all duration-1000 delay-200 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <ChatDemo />
+          </div>
+
+          {/* Right Side — Messaging (50%) */}
           <div 
             className={`w-full lg:w-1/2 text-center lg:text-left transition-all duration-1000 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -281,13 +290,12 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
             >
-              Efficient AI for{" "}
-              <span className="text-white/50">modern work.</span>
+              The most efficient way to use AI.
             </h1>
 
             {/* Subtext */}
             <p className="text-lg md:text-xl text-white/45 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
-              Route every task to the smartest, fastest, and most cost-effective AI — automatically.
+              Route every task to the smartest, fastest, and most cost-effective AI automatically.
             </p>
 
             {/* CTAs */}
@@ -309,15 +317,6 @@ export function HeroSection() {
                 Explore API
               </Link>
             </div>
-          </div>
-
-          {/* Right Side — Chat Demo (50%) */}
-          <div 
-            className={`w-full lg:w-1/2 transition-all duration-1000 delay-200 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <ChatDemo />
           </div>
         </div>
       </div>
