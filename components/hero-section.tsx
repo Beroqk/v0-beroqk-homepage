@@ -287,10 +287,11 @@ export function HeroSection() {
           >
             {/* Headline */}
             <h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-8"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
             >
-              The most efficient way to use AI.
+              <span className="text-white">THE MOST EFFICIENT</span>{" "}
+              <span className="text-white/50">WAY TO USE AI.</span>
             </h1>
 
             {/* Subtext */}
