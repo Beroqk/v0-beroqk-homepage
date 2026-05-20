@@ -1,30 +1,31 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 
 // Ultra-minimal routing diagram
-function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
+function RoutingDiagram({ isHovered, onActiveRouteChange }: { isHovered: boolean; onActiveRouteChange: (index: number) => void }) {
   const [activeRoute, setActiveRoute] = useState(0)
 
-  const routes = [
-    { name: "Claude", label: "Deep reasoning model" },
-    { name: "ChatGPT", label: "Balanced model" },
-    { name: "Grok", label: "Fast model" },
-  ]
+  const routes = ["Claude", "ChatGPT", "Grok"]
 
   // Cycle through routes on hover
   useEffect(() => {
     if (!isHovered) {
       setActiveRoute(0)
+      onActiveRouteChange(0)
       return
     }
     
     const interval = setInterval(() => {
-      setActiveRoute((prev) => (prev + 1) % routes.length)
+      setActiveRoute((prev) => {
+        const next = (prev + 1) % routes.length
+        onActiveRouteChange(next)
+        return next
+      })
     }, 2000)
     
     return () => clearInterval(interval)
-  }, [isHovered, routes.length])
+  }, [isHovered, routes.length, onActiveRouteChange])
 
   return (
     <div className="w-full h-full flex items-center justify-center">
@@ -36,25 +37,18 @@ function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
 
         {/* Simple lines to labels */}
         <div className="flex flex-col gap-8">
-          {routes.map((route, index) => {
+          {routes.map((name, index) => {
             const isActive = index === activeRoute && isHovered
             return (
-              <div key={route.name} className="flex items-center gap-6">
+              <div key={name} className="flex items-center gap-6">
                 <div className={`w-16 h-px transition-all duration-500 ${
                   isActive ? "bg-white/50" : "bg-white/10"
                 }`} />
-                <div className="flex flex-col gap-1">
-                  <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
-                    isActive ? "text-white" : "text-white/20"
-                  }`}>
-                    {route.name}
-                  </span>
-                  <span className={`text-[11px] tracking-wide transition-all duration-500 ${
-                    isActive ? "text-white/50 opacity-100" : "opacity-0"
-                  }`}>
-                    {route.label}
-                  </span>
-                </div>
+                <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
+                  isActive ? "text-white" : "text-white/20"
+                }`}>
+                  {name}
+                </span>
               </div>
             )
           })}
@@ -66,6 +60,17 @@ function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
 
 export function OrbSection() {
   const [isHovered, setIsHovered] = useState(false)
+  const [activeRouteIndex, setActiveRouteIndex] = useState(0)
+
+  const routeLabels = [
+    { model: "Claude", label: "Deep reasoning model" },
+    { model: "ChatGPT", label: "Balanced model" },
+    { model: "Grok", label: "Fast model" },
+  ]
+
+  const handleActiveRouteChange = useCallback((index: number) => {
+    setActiveRouteIndex(index)
+  }, [])
 
   return (
     <section className="py-24 md:py-40 px-6 relative overflow-hidden">
@@ -121,17 +126,17 @@ export function OrbSection() {
                     <p className={`font-normal transition-all duration-500 ${
                       isHovered ? "text-white" : "text-white/30"
                     }`}>
-                      {isHovered ? "Micro Model" : "—"}
+                      {isHovered ? routeLabels[activeRouteIndex].model : "—"}
                     </p>
                   </div>
                   <div>
                     <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
-                      Saved
+                      Type
                     </span>
                     <p className={`font-normal transition-all duration-500 ${
                       isHovered ? "text-white" : "text-white/30"
                     }`}>
-                      {isHovered ? "91% compute" : "—"}
+                      {isHovered ? routeLabels[activeRouteIndex].label : "—"}
                     </p>
                   </div>
                   <div>
@@ -141,7 +146,7 @@ export function OrbSection() {
                     <p className={`font-normal transition-all duration-500 ${
                       isHovered ? "text-white" : "text-white/30"
                     }`}>
-                      {isHovered ? "0.3s" : "—"}
+                      {isHovered ? (activeRouteIndex === 2 ? "0.1s" : activeRouteIndex === 1 ? "0.3s" : "0.8s") : "—"}
                     </p>
                   </div>
                 </div>
@@ -163,7 +168,7 @@ export function OrbSection() {
                 : "border-white/[0.08] bg-white/[0.01]"
               }
             `}>
-              <RoutingDiagram isHovered={isHovered} />
+              <RoutingDiagram isHovered={isHovered} onActiveRouteChange={handleActiveRouteChange} />
             </div>
           </div>
         </div>
