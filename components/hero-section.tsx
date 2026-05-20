@@ -90,16 +90,9 @@ function ChatDemo() {
             }
           `}
         >
-          {/* Top: Subtle Beroqk mark */}
-          <div className="pt-8 pb-4 text-center">
-            <span className="text-[11px] font-medium text-white/25 tracking-[0.2em] uppercase">
-              Beroqk
-            </span>
-          </div>
-
           {/* Center: Ask Beroqk prompt */}
-          <div className="px-8 pb-6 text-center">
-            <h3 className="text-2xl font-light text-white/80 tracking-wide">
+          <div className="px-8 pt-10 pb-6 text-center">
+            <h3 className="text-3xl md:text-4xl font-light text-white/80 tracking-wide">
               Ask Beroqk
             </h3>
           </div>
@@ -131,9 +124,9 @@ function ChatDemo() {
           </div>
 
           {/* Routing indicator */}
-          <div className="px-6 pb-8 flex items-center justify-center gap-2">
+          <div className="px-6 pb-8 flex items-center justify-center gap-2.5">
             <div className={`w-1.5 h-1.5 rounded-full bg-white/30 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
-            <span className="text-[11px] text-white/20 tracking-wide">
+            <span className="text-[13px] text-white/30 tracking-wide">
               Automatically routes to the optimal AI.
             </span>
           </div>
