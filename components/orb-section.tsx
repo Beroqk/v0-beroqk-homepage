@@ -251,7 +251,7 @@ export function OrbSection() {
               className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95"
               style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
             >
-              Efficient Intelligence
+              Routing Intelligence
             </h2>
 
             {/* Description */}
