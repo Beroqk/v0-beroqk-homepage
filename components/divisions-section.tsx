@@ -52,7 +52,7 @@ function RoutingCard() {
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
           <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/35">
-            AI Routing
+            Routing Intelligence
           </span>
 
           {/* Bottom content */}
