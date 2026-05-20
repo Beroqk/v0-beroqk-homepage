@@ -2,24 +2,24 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { ArrowRight, Send } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
-// Rotating placeholders for the chat input
+// Rotating placeholders for the input
 const placeholders = [
+  "Plan my week",
+  "Compare Claude vs GPT pricing",
   "Summarize this contract",
-  "Write launch copy",
-  "Compare AI model pricing",
-  "Build a marketing strategy",
-  "Analyze quarterly results",
+  "Build a launch strategy",
 ]
 
-// Premium Chat Demo Component
+// Apple-inspired minimal AI input interface
 function ChatDemo() {
   const [isHovered, setIsHovered] = useState(false)
   const [placeholderIndex, setPlaceholderIndex] = useState(0)
   const [displayText, setDisplayText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
   const [showCursor, setShowCursor] = useState(true)
+  const [showPulse, setShowPulse] = useState(true)
 
   // Rotate placeholders with typing effect
   useEffect(() => {
@@ -29,19 +29,19 @@ function ChatDemo() {
       if (displayText.length < currentPlaceholder.length) {
         const timeout = setTimeout(() => {
           setDisplayText(currentPlaceholder.slice(0, displayText.length + 1))
-        }, 60)
+        }, 50)
         return () => clearTimeout(timeout)
       } else {
         const timeout = setTimeout(() => {
           setIsTyping(false)
-        }, 2000)
+        }, 2500)
         return () => clearTimeout(timeout)
       }
     } else {
       if (displayText.length > 0) {
         const timeout = setTimeout(() => {
           setDisplayText(displayText.slice(0, -1))
-        }, 30)
+        }, 25)
         return () => clearTimeout(timeout)
       } else {
         setPlaceholderIndex((prev) => (prev + 1) % placeholders.length)
@@ -58,109 +58,96 @@ function ChatDemo() {
     return () => clearInterval(interval)
   }, [])
 
+  // Pulse animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowPulse((prev) => !prev)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div
-      className="relative w-full max-w-xl mx-auto lg:mx-0"
+      className="relative w-full max-w-lg mx-auto lg:mx-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Floating animation wrapper */}
       <div
         className="transition-transform duration-700 ease-out"
-        style={{ transform: isHovered ? "translateY(-6px)" : "translateY(0)" }}
+        style={{ transform: isHovered ? "translateY(-2px)" : "translateY(0)" }}
       >
-        {/* Chat container */}
+        {/* Glass panel container */}
         <div
           className={`
-            rounded-2xl border border-white/[0.08] 
-            bg-gradient-to-b from-white/[0.04] to-white/[0.02] backdrop-blur-xl
-            shadow-[0_8px_60px_rgba(0,0,0,0.5)]
+            rounded-3xl border 
+            bg-black/60 backdrop-blur-2xl
+            shadow-[0_4px_40px_rgba(0,0,0,0.4)]
             overflow-hidden transition-all duration-500
-            ${isHovered ? "border-white/[0.15] shadow-[0_20px_80px_rgba(0,0,0,0.6)]" : ""}
+            ${isHovered 
+              ? "border-white/[0.12] shadow-[0_8px_60px_rgba(0,0,0,0.5)]" 
+              : "border-white/[0.06]"
+            }
           `}
         >
-          {/* Top bar */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.06]">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/[0.1] flex items-center justify-center">
-                <span className="text-xs font-semibold text-white/70">B</span>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-white/90 tracking-wide">
-                  Beroqk
-                </p>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span className="text-[10px] text-white/40 tracking-wide">
-                    Ready
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-            </div>
+          {/* Top: Subtle Beroqk mark */}
+          <div className="pt-8 pb-4 text-center">
+            <span className="text-[11px] font-medium text-white/25 tracking-[0.2em] uppercase">
+              Beroqk
+            </span>
           </div>
 
-          {/* Chat area */}
-          <div className="px-6 py-8 min-h-[280px] flex flex-col justify-end gap-4">
-            {/* Assistant welcome message */}
-            <div className="flex gap-3">
-              <div className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center flex-shrink-0">
-                <span className="text-[10px] font-semibold text-white/60">B</span>
-              </div>
-              <div className="bg-white/[0.04] border border-white/[0.06] rounded-2xl rounded-tl-md px-5 py-4 max-w-[90%]">
-                <p className="text-[15px] text-white/75 leading-relaxed">
-                  Hello. I&apos;m Beroqk — your AI assistant optimized for efficiency.
-                </p>
-                <p className="text-[15px] text-white/75 leading-relaxed mt-2">
-                  What would you like to accomplish?
-                </p>
-              </div>
-            </div>
+          {/* Center: Ask Beroqk prompt */}
+          <div className="px-8 pb-6 text-center">
+            <h3 className="text-2xl font-light text-white/80 tracking-wide">
+              Ask Beroqk
+            </h3>
           </div>
 
-          {/* Input bar */}
-          <div className="px-5 pb-5">
+          {/* Input field */}
+          <div className="px-6 pb-6">
             <Link
               href="/chat"
               className={`
-                flex items-center gap-3 px-5 py-4 rounded-xl 
-                border border-white/[0.08] bg-white/[0.03]
-                hover:bg-white/[0.05] hover:border-white/[0.15]
+                flex items-center gap-4 px-6 py-5 rounded-2xl 
+                border bg-white/[0.02]
                 transition-all duration-300 cursor-pointer group
-                ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : ""}
+                ${isHovered 
+                  ? "border-white/[0.12] bg-white/[0.04]" 
+                  : "border-white/[0.06]"
+                }
+                hover:border-white/[0.15] hover:bg-white/[0.05]
               `}
             >
-              <span className="text-[15px] text-white/40 flex-grow font-light">
+              <span className="text-[16px] text-white/35 flex-grow font-light tracking-wide">
                 {displayText}
-                <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-white/60 transition-opacity`}>|</span>
+                <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-white/50 transition-opacity duration-100`}>|</span>
               </span>
-              <div className="w-8 h-8 rounded-lg bg-white/[0.08] flex items-center justify-center group-hover:bg-white/[0.12] transition-colors">
-                <Send size={14} className="text-white/50 group-hover:text-white/70 transition-colors" />
-              </div>
+              <ArrowRight 
+                size={18} 
+                className="text-white/25 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300" 
+              />
             </Link>
           </div>
 
-          {/* Disclaimer */}
-          <div className="px-6 pb-4">
-            <p className="text-[10px] text-white/20 text-center tracking-wide">
-              Routed to the most efficient model automatically.
-            </p>
+          {/* Routing indicator */}
+          <div className="px-6 pb-8 flex items-center justify-center gap-2">
+            <div className={`w-1.5 h-1.5 rounded-full bg-white/30 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
+            <span className="text-[11px] text-white/20 tracking-wide">
+              Automatically routes to the optimal AI.
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Glow effect */}
+      {/* Ultra subtle glow */}
       <div
-        className={`absolute -inset-12 -z-10 rounded-3xl transition-opacity duration-700 ${
-          isHovered ? "opacity-100" : "opacity-40"
+        className={`absolute -inset-16 -z-10 rounded-[40px] transition-opacity duration-700 ${
+          isHovered ? "opacity-100" : "opacity-30"
         }`}
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 60%)",
+            "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 55%)",
         }}
       />
     </div>
