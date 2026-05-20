@@ -1,119 +1,139 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
-interface MinimalGlobeProps {
-  isHovered: boolean
-}
+// Apple-style minimal routing diagram
+function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
+  const [activeRoute, setActiveRoute] = useState(0)
+  const [pulsePosition, setPulsePosition] = useState(0)
 
-// Minimal white wireframe globe
-function MinimalGlobe({ isHovered }: MinimalGlobeProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>(0)
-  const rotationRef = useRef(0)
+  const routes = [
+    { name: "Claude", selected: true },
+    { name: "ChatGPT", selected: false },
+    { name: "Grok", selected: false },
+  ]
 
+  // Cycle through routes
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    if (!isHovered) {
+      setActiveRoute(0)
+      return
+    }
+    
+    const interval = setInterval(() => {
+      setActiveRoute((prev) => (prev + 1) % routes.length)
+    }, 2500)
+    
+    return () => clearInterval(interval)
+  }, [isHovered, routes.length])
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    const resize = () => {
-      const rect = canvas.getBoundingClientRect()
-      canvas.width = rect.width * window.devicePixelRatio
-      canvas.height = rect.height * window.devicePixelRatio
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
+  // Animate pulse along active route
+  useEffect(() => {
+    if (!isHovered) {
+      setPulsePosition(0)
+      return
     }
 
-    resize()
-    window.addEventListener("resize", resize)
-
-    const draw = () => {
-      const rect = canvas.getBoundingClientRect()
-      const width = rect.width
-      const height = rect.height
-      const centerX = width / 2
-      const centerY = height / 2
-      const globeRadius = Math.min(width, height) * 0.38
-
-      ctx.clearRect(0, 0, width, height)
-
-      // Rotation speed
-      rotationRef.current += isHovered ? 0.004 : 0.002
-
-      const baseOpacity = isHovered ? 0.25 : 0.12
-      const lineOpacity = isHovered ? 0.15 : 0.08
-
-      // Globe outline
-      ctx.beginPath()
-      ctx.arc(centerX, centerY, globeRadius, 0, Math.PI * 2)
-      ctx.strokeStyle = `rgba(255, 255, 255, ${baseOpacity})`
-      ctx.lineWidth = 1
-      ctx.stroke()
-
-      // Latitude lines (5 lines)
-      const latitudes = 5
-      for (let i = 1; i < latitudes; i++) {
-        const lat = (i / latitudes) * Math.PI - Math.PI / 2
-        const y = centerY + Math.sin(lat) * globeRadius
-        const radiusAtLat = Math.cos(lat) * globeRadius
-
-        ctx.beginPath()
-        ctx.ellipse(centerX, y, radiusAtLat, radiusAtLat * 0.2, 0, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`
-        ctx.lineWidth = 0.5
-        ctx.stroke()
-      }
-
-      // Longitude lines (8 lines)
-      const longitudes = 8
-      for (let i = 0; i < longitudes; i++) {
-        const lng = (i / longitudes) * Math.PI + rotationRef.current
-        const x = Math.cos(lng)
-        const z = Math.sin(lng)
-
-        if (z > -0.3) {
-          ctx.beginPath()
-          for (let j = 0; j <= 40; j++) {
-            const lat = (j / 40) * Math.PI - Math.PI / 2
-            const py = centerY + Math.sin(lat) * globeRadius
-            const radiusAtLat = Math.cos(lat) * globeRadius
-            const px = centerX + x * radiusAtLat
-
-            if (j === 0) ctx.moveTo(px, py)
-            else ctx.lineTo(px, py)
-          }
-          ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity + z * 0.03})`
-          ctx.lineWidth = 0.5
-          ctx.stroke()
-        }
-      }
-
-      // Equator (slightly brighter)
-      ctx.beginPath()
-      ctx.ellipse(centerX, centerY, globeRadius, globeRadius * 0.2, 0, 0, Math.PI * 2)
-      ctx.strokeStyle = `rgba(255, 255, 255, ${baseOpacity})`
-      ctx.lineWidth = 0.7
-      ctx.stroke()
-
-      animationRef.current = requestAnimationFrame(draw)
+    const animate = () => {
+      setPulsePosition((prev) => {
+        if (prev >= 1) return 0
+        return prev + 0.02
+      })
     }
 
-    draw()
-
-    return () => {
-      window.removeEventListener("resize", resize)
-      cancelAnimationFrame(animationRef.current)
-    }
-  }, [isHovered])
+    const interval = setInterval(animate, 30)
+    return () => clearInterval(interval)
+  }, [isHovered, activeRoute])
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full"
-      style={{ display: "block" }}
-    />
+    <div className="w-full h-full flex items-center justify-center p-8">
+      <div className="relative w-full max-w-sm">
+        {/* Input dot on left */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2">
+          <div className={`w-3 h-3 rounded-full transition-all duration-500 ${
+            isHovered 
+              ? "bg-white shadow-[0_0_12px_rgba(255,255,255,0.5)]" 
+              : "bg-white/30"
+          }`} />
+        </div>
+
+        {/* Routes */}
+        <div className="flex flex-col gap-6 pl-8">
+          {routes.map((route, index) => {
+            const isActive = index === activeRoute && isHovered
+            
+            return (
+              <div key={route.name} className="flex items-center gap-4">
+                {/* Line */}
+                <div className="relative w-24 h-px">
+                  {/* Base line */}
+                  <div className={`absolute inset-0 transition-all duration-500 ${
+                    isActive ? "bg-white/40" : "bg-white/10"
+                  }`} />
+                  
+                  {/* Pulse traveling along line */}
+                  {isActive && (
+                    <div 
+                      className="absolute top-1/2 -translate-y-1/2 w-6 h-px bg-gradient-to-r from-transparent via-white to-transparent"
+                      style={{ 
+                        left: `${pulsePosition * 100}%`,
+                        opacity: pulsePosition > 0 && pulsePosition < 0.9 ? 1 : 0,
+                      }}
+                    />
+                  )}
+                </div>
+
+                {/* Provider label */}
+                <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
+                  isActive 
+                    ? "text-white" 
+                    : "text-white/25"
+                }`}>
+                  {route.name}
+                </span>
+
+                {/* Active indicator */}
+                {isActive && (
+                  <div className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Connecting lines from input to routes */}
+        <svg 
+          className="absolute left-0 top-0 w-12 h-full pointer-events-none"
+          viewBox="0 0 48 120"
+          preserveAspectRatio="none"
+        >
+          {/* Top branch */}
+          <path
+            d={`M 4 60 Q 24 60 32 24`}
+            fill="none"
+            stroke={activeRoute === 0 && isHovered ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.1)"}
+            strokeWidth="1"
+            className="transition-all duration-500"
+          />
+          {/* Middle (straight) */}
+          <path
+            d={`M 4 60 L 32 60`}
+            fill="none"
+            stroke={activeRoute === 1 && isHovered ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.1)"}
+            strokeWidth="1"
+            className="transition-all duration-500"
+          />
+          {/* Bottom branch */}
+          <path
+            d={`M 4 60 Q 24 60 32 96`}
+            fill="none"
+            stroke={activeRoute === 2 && isHovered ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.1)"}
+            strokeWidth="1"
+            className="transition-all duration-500"
+          />
+        </svg>
+      </div>
+    </div>
   )
 }
 
@@ -202,13 +222,22 @@ export function OrbSection() {
             </div>
           </div>
 
-          {/* Right: Minimal Wireframe Globe */}
+          {/* Right: Minimal Routing Diagram */}
           <div 
-            className="relative aspect-square max-w-lg mx-auto lg:mx-0 w-full cursor-pointer order-1 lg:order-2"
+            className="relative aspect-square max-w-md mx-auto lg:mx-0 w-full cursor-pointer order-1 lg:order-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <MinimalGlobe isHovered={isHovered} />
+            {/* Premium container */}
+            <div className={`
+              w-full h-full rounded-3xl border transition-all duration-500
+              ${isHovered 
+                ? "border-white/15 bg-white/[0.03] shadow-[0_8px_60px_rgba(255,255,255,0.03)]" 
+                : "border-white/[0.08] bg-white/[0.01]"
+              }
+            `}>
+              <RoutingDiagram isHovered={isHovered} />
+            </div>
           </div>
         </div>
       </div>
