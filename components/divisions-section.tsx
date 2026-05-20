@@ -4,7 +4,7 @@ import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
-// AI Routing Card - Ultra Minimal
+// AI Routing Card - Text Only
 function RoutingCard() {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -24,22 +24,6 @@ function RoutingCard() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Ultra simple visual - single circle with dot */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative">
-            {/* Single ring */}
-            <div className={`w-32 h-32 md:w-40 md:h-40 rounded-full border transition-all duration-500 ${
-              isHovered ? "border-white/20" : "border-white/[0.08]"
-            }`} />
-            {/* Center dot */}
-            <div className={`absolute inset-0 flex items-center justify-center`}>
-              <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                isHovered ? "bg-white/50" : "bg-white/20"
-              }`} />
-            </div>
-          </div>
-        </div>
-
         {/* Content */}
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
@@ -73,7 +57,7 @@ function RoutingCard() {
   )
 }
 
-// B-STING Privacy Card - Ultra Minimal
+// B-STING Privacy Card - Text Only
 function PrivacyCard() {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -93,19 +77,6 @@ function PrivacyCard() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Ultra simple visual - single hexagon */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <svg width="120" height="140" viewBox="0 0 100 115" className="md:w-[140px] md:h-[160px]">
-            <polygon
-              points="50,5 95,30 95,85 50,110 5,85 5,30"
-              fill="none"
-              stroke="white"
-              strokeWidth="1"
-              className={`transition-all duration-500 ${isHovered ? "opacity-20" : "opacity-[0.08]"}`}
-            />
-          </svg>
-        </div>
-
         {/* Content */}
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
