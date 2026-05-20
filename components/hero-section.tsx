@@ -1,104 +1,266 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Send } from "lucide-react"
 
-// Simple Ask Beroqk Component
-function AskBeroqk() {
+// Rotating placeholders for the chat input
+const placeholders = [
+  "Summarize this contract",
+  "Write launch copy",
+  "Compare AI model pricing",
+  "Build a marketing strategy",
+  "Analyze quarterly results",
+]
+
+// Premium Chat Demo Component
+function ChatDemo() {
   const [isHovered, setIsHovered] = useState(false)
+  const [placeholderIndex, setPlaceholderIndex] = useState(0)
+  const [displayText, setDisplayText] = useState("")
+  const [isTyping, setIsTyping] = useState(true)
+  const [showCursor, setShowCursor] = useState(true)
+
+  // Rotate placeholders with typing effect
+  useEffect(() => {
+    const currentPlaceholder = placeholders[placeholderIndex]
+    
+    if (isTyping) {
+      if (displayText.length < currentPlaceholder.length) {
+        const timeout = setTimeout(() => {
+          setDisplayText(currentPlaceholder.slice(0, displayText.length + 1))
+        }, 60)
+        return () => clearTimeout(timeout)
+      } else {
+        const timeout = setTimeout(() => {
+          setIsTyping(false)
+        }, 2000)
+        return () => clearTimeout(timeout)
+      }
+    } else {
+      if (displayText.length > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1))
+        }, 30)
+        return () => clearTimeout(timeout)
+      } else {
+        setPlaceholderIndex((prev) => (prev + 1) % placeholders.length)
+        setIsTyping(true)
+      }
+    }
+  }, [displayText, isTyping, placeholderIndex])
+
+  // Blinking cursor
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowCursor((prev) => !prev)
+    }, 530)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div
-      className="relative w-full max-w-md mx-auto lg:mx-0"
+      className="relative w-full max-w-xl mx-auto lg:mx-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Floating animation wrapper */}
       <div
-        className="transition-transform duration-[2000ms] ease-in-out"
-        style={{ transform: isHovered ? "translateY(-4px)" : "translateY(0)" }}
+        className="transition-transform duration-700 ease-out"
+        style={{ transform: isHovered ? "translateY(-6px)" : "translateY(0)" }}
       >
-        {/* Container */}
+        {/* Chat container */}
         <div
           className={`
             rounded-2xl border border-white/[0.08] 
-            bg-white/[0.03] backdrop-blur-xl
-            shadow-[0_8px_60px_rgba(0,0,0,0.4)]
+            bg-gradient-to-b from-white/[0.04] to-white/[0.02] backdrop-blur-xl
+            shadow-[0_8px_60px_rgba(0,0,0,0.5)]
             overflow-hidden transition-all duration-500
-            ${isHovered ? "border-white/[0.12] shadow-[0_12px_80px_rgba(0,0,0,0.5)]" : ""}
+            ${isHovered ? "border-white/[0.15] shadow-[0_20px_80px_rgba(0,0,0,0.6)]" : ""}
           `}
         >
-          {/* Header */}
-          <div className="px-6 pt-8 pb-4 text-center">
-            <div className="w-12 h-12 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center mx-auto mb-4">
-              <span className="text-sm font-medium text-white/60">B</span>
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.06]">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/[0.1] flex items-center justify-center">
+                <span className="text-xs font-semibold text-white/70">B</span>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-white/90 tracking-wide">
+                  Beroqk
+                </p>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="text-[10px] text-white/40 tracking-wide">
+                    Ready
+                  </span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-lg font-light text-white/80 tracking-wide">
-              Ask Beroqk
-            </h3>
-            <p className="text-[13px] text-white/35 mt-2">
-              Intelligent assistance, instantly.
-            </p>
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+            </div>
           </div>
 
-          {/* Input */}
-          <div className="px-5 pb-6 pt-2">
-            <Link 
+          {/* Chat area */}
+          <div className="px-6 py-8 min-h-[280px] flex flex-col justify-end gap-4">
+            {/* Assistant welcome message */}
+            <div className="flex gap-3">
+              <div className="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center flex-shrink-0">
+                <span className="text-[10px] font-semibold text-white/60">B</span>
+              </div>
+              <div className="bg-white/[0.04] border border-white/[0.06] rounded-2xl rounded-tl-md px-5 py-4 max-w-[90%]">
+                <p className="text-[15px] text-white/75 leading-relaxed">
+                  Hello. I&apos;m Beroqk — your AI assistant optimized for efficiency.
+                </p>
+                <p className="text-[15px] text-white/75 leading-relaxed mt-2">
+                  What would you like to accomplish?
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Input bar */}
+          <div className="px-5 pb-5">
+            <Link
               href="/chat"
-              className="flex items-center gap-3 px-5 py-4 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200 cursor-pointer"
+              className={`
+                flex items-center gap-3 px-5 py-4 rounded-xl 
+                border border-white/[0.08] bg-white/[0.03]
+                hover:bg-white/[0.05] hover:border-white/[0.15]
+                transition-all duration-300 cursor-pointer group
+                ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : ""}
+              `}
             >
-              <span className="text-[14px] text-white/30 flex-grow">
-                Ask anything...
+              <span className="text-[15px] text-white/40 flex-grow font-light">
+                {displayText}
+                <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-white/60 transition-opacity`}>|</span>
               </span>
-              <ArrowRight size={16} className="text-white/30" />
+              <div className="w-8 h-8 rounded-lg bg-white/[0.08] flex items-center justify-center group-hover:bg-white/[0.12] transition-colors">
+                <Send size={14} className="text-white/50 group-hover:text-white/70 transition-colors" />
+              </div>
             </Link>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="px-6 pb-4">
+            <p className="text-[10px] text-white/20 text-center tracking-wide">
+              Routed to the most efficient model automatically.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Subtle glow behind card */}
+      {/* Glow effect */}
       <div
-        className={`absolute -inset-8 -z-10 rounded-3xl transition-opacity duration-700 ${
-          isHovered ? "opacity-100" : "opacity-50"
+        className={`absolute -inset-12 -z-10 rounded-3xl transition-opacity duration-700 ${
+          isHovered ? "opacity-100" : "opacity-40"
         }`}
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%)",
+            "radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 60%)",
         }}
       />
     </div>
   )
 }
 
+// Subtle floating particles background
+function AmbientBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    const resize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    resize()
+    window.addEventListener("resize", resize)
+
+    // Create particles
+    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number }[] = []
+    for (let i = 0; i < 30; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+        size: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.12 + 0.03,
+      })
+    }
+
+    let animationId: number
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      particles.forEach((p) => {
+        p.x += p.vx
+        p.y += p.vy
+
+        // Wrap around edges
+        if (p.x < 0) p.x = canvas.width
+        if (p.x > canvas.width) p.x = 0
+        if (p.y < 0) p.y = canvas.height
+        if (p.y > canvas.height) p.y = 0
+
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`
+        ctx.fill()
+      })
+
+      animationId = requestAnimationFrame(animate)
+    }
+
+    animate()
+
+    return () => {
+      window.removeEventListener("resize", resize)
+      cancelAnimationFrame(animationId)
+    }
+  }, [])
+
+  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
+}
+
 export function HeroSection() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0">
-        {/* Pure matte black with subtle depth */}
+      <div className="absolute inset-0 bg-black">
+        {/* Subtle radial gradient */}
         <div
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 60%),
-              linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%)
+              radial-gradient(ellipse 80% 60% at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
+              radial-gradient(ellipse 60% 50% at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 50%)
             `,
           }}
         />
 
-        {/* Ultra-subtle dot grid on right side */}
-        <div
-          className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 0.5px, transparent 0.5px)`,
-            backgroundSize: "32px 32px",
-          }}
-        />
+        {/* Ambient particles */}
+        {mounted && <AmbientBackground />}
 
         {/* Faint noise texture */}
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
           }}
@@ -107,55 +269,55 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-32 pb-20 lg:pt-0 lg:pb-0">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
-          {/* Left Side — Ask Beroqk (45%) */}
-          <div className="w-full lg:w-[45%] order-2 lg:order-1">
-            <AskBeroqk />
-          </div>
-
-          {/* Right Side — Messaging (55%) */}
-          <div className="w-full lg:w-[55%] order-1 lg:order-2 text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          {/* Left Side — Messaging (50%) */}
+          <div 
+            className={`w-full lg:w-1/2 text-center lg:text-left transition-all duration-1000 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
             {/* Headline */}
-            <h1 className="mb-8">
-              <span
-                className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight uppercase text-white"
-                style={{ letterSpacing: "-0.04em", lineHeight: 0.95 }}
-              >
-                Intelligence
-              </span>
-              <span
-                className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight uppercase text-white/50 mt-2"
-                style={{ letterSpacing: "-0.04em", lineHeight: 0.95 }}
-              >
-                that works.
-              </span>
+            <h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8"
+              style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
+            >
+              Efficient AI for{" "}
+              <span className="text-white/50">modern work.</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-lg md:text-xl text-white/40 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-12">
-              Efficient intelligence for work, research, and real-time
-              assistance.
+            <p className="text-lg md:text-xl text-white/45 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
+              Route every task to the smartest, fastest, and most cost-effective AI — automatically.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-5">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
               <Link
                 href="/chat"
-                className="group inline-flex items-center gap-2 px-8 h-12 text-sm font-medium rounded-xl bg-white text-black hover:bg-white/90 transition-all duration-200"
+                className="group inline-flex items-center gap-2.5 px-8 h-13 py-3.5 text-[15px] font-medium rounded-xl bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)] transition-all duration-300"
               >
-                Try Beroqk Chat
+                Start Chatting
                 <ArrowRight
                   size={16}
-                  className="group-hover:translate-x-0.5 transition-transform duration-200"
+                  className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
               <Link
                 href="/api-info"
-                className="inline-flex items-center h-12 text-sm text-white/40 hover:text-white/70 transition-colors duration-200 tracking-wide"
+                className="inline-flex items-center gap-2 h-13 px-6 py-3.5 text-[15px] text-white/50 hover:text-white/80 border border-white/[0.08] hover:border-white/[0.15] rounded-xl transition-all duration-300 hover:bg-white/[0.03]"
               >
-                View API
+                Explore API
               </Link>
             </div>
+          </div>
+
+          {/* Right Side — Chat Demo (50%) */}
+          <div 
+            className={`w-full lg:w-1/2 transition-all duration-1000 delay-200 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <ChatDemo />
           </div>
         </div>
       </div>
