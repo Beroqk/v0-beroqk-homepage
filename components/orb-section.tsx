@@ -44,7 +44,7 @@ function RoutingDiagram({ isHovered, onActiveRouteChange }: { isHovered: boolean
                 <div className={`w-16 h-px transition-all duration-500 ${
                   isActive ? "bg-white/50" : "bg-white/10"
                 }`} />
-                <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
+                <span className={`text-base font-light tracking-wide transition-all duration-500 ${
                   isActive ? "text-white" : "text-white/20"
                 }`}>
                   {name}
@@ -79,7 +79,7 @@ export function OrbSection() {
           {/* Left: Content */}
           <div className="flex flex-col gap-10 order-2 lg:order-1">
             {/* Label */}
-            <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40">
+            <span className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-white/45">
               Explore
             </span>
 
@@ -92,7 +92,7 @@ export function OrbSection() {
             </h2>
 
             {/* Description */}
-            <p className="text-white/50 text-lg md:text-xl leading-relaxed max-w-md">
+            <p className="text-white/55 text-xl md:text-2xl leading-relaxed max-w-md">
               Every request is routed through the most efficient model for the job.
             </p>
 
@@ -107,10 +107,10 @@ export function OrbSection() {
               <div className="flex flex-col gap-6">
                 {/* Status Header */}
                 <div className="flex items-center gap-3">
-                  <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                  <div className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
                     isHovered ? "bg-white" : "bg-white/40"
                   }`} />
-                  <span className={`text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 ${
+                  <span className={`text-sm md:text-base font-medium uppercase tracking-[0.2em] transition-all duration-500 ${
                     isHovered ? "text-white" : "text-white/50"
                   }`}>
                     {isHovered ? "Routing Active" : "Routing Standby"}
@@ -120,30 +120,30 @@ export function OrbSection() {
                 {/* Stats Grid */}
                 <div className="grid grid-cols-3 gap-8">
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
+                    <span className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-white/40 block mb-2">
                       Model
                     </span>
-                    <p className={`font-normal transition-all duration-500 ${
+                    <p className={`text-base md:text-lg font-normal transition-all duration-500 ${
                       isHovered ? "text-white" : "text-white/30"
                     }`}>
                       {isHovered ? routeLabels[activeRouteIndex].model : "—"}
                     </p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
+                    <span className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-white/40 block mb-2">
                       Type
                     </span>
-                    <p className={`font-normal transition-all duration-500 ${
+                    <p className={`text-base md:text-lg font-normal transition-all duration-500 ${
                       isHovered ? "text-white" : "text-white/30"
                     }`}>
                       {isHovered ? routeLabels[activeRouteIndex].label : "—"}
                     </p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 block mb-2">
+                    <span className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-white/40 block mb-2">
                       Response
                     </span>
-                    <p className={`font-normal transition-all duration-500 ${
+                    <p className={`text-base md:text-lg font-normal transition-all duration-500 ${
                       isHovered ? "text-white" : "text-white/30"
                     }`}>
                       {isHovered ? (activeRouteIndex === 2 ? "0.1s" : activeRouteIndex === 1 ? "0.3s" : "0.8s") : "—"}

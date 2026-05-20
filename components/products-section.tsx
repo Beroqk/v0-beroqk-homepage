@@ -37,16 +37,16 @@ export function ProductsSection() {
                   : ""
               }`}
             >
-              <h3 className="text-2xl font-light tracking-tight text-white/90 mb-5">
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white/90 mb-5">
                 {product.title}
               </h3>
-              <p className="text-white/50 text-[17px] leading-relaxed mb-10 min-h-[80px]">
+              <p className="text-white/55 text-lg md:text-xl leading-relaxed mb-10 min-h-[80px]">
                 {product.description}
               </p>
               <Button 
                 asChild 
                 variant="ghost" 
-                className="p-0 h-auto text-sm font-medium text-foreground hover:text-accent hover:bg-transparent group"
+                className="p-0 h-auto text-base font-medium text-foreground hover:text-accent hover:bg-transparent group"
               >
                 <Link href={product.href} className="flex items-center gap-2">
                   {product.cta}

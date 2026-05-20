@@ -92,7 +92,7 @@ function ChatDemo() {
         >
           {/* Center: Ask Beroqk prompt */}
           <div className="px-8 pt-10 pb-6 text-center">
-            <h3 className="text-3xl md:text-4xl font-light text-white/80 tracking-wide">
+            <h3 className="text-4xl md:text-5xl font-light text-white/80 tracking-wide">
               Ask Beroqk
             </h3>
           </div>
@@ -112,21 +112,21 @@ function ChatDemo() {
                 hover:border-white/[0.15] hover:bg-white/[0.05]
               `}
             >
-              <span className="text-[16px] text-white/35 flex-grow font-light tracking-wide">
+              <span className="text-lg md:text-xl text-white/40 flex-grow font-light tracking-wide">
                 {displayText}
                 <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-white/50 transition-opacity duration-100`}>|</span>
               </span>
               <ArrowRight 
-                size={18} 
-                className="text-white/25 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300" 
+                size={20} 
+                className="text-white/30 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300" 
               />
             </Link>
           </div>
 
           {/* Routing indicator */}
           <div className="px-6 pb-8 flex items-center justify-center gap-2.5">
-            <div className={`w-1.5 h-1.5 rounded-full bg-white/30 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
-            <span className="text-[13px] text-white/30 tracking-wide">
+            <div className={`w-2 h-2 rounded-full bg-white/30 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
+            <span className="text-base text-white/40 tracking-wide">
               Automatically routes to the optimal AI.
             </span>
           </div>
@@ -210,7 +210,7 @@ export function HeroSection() {
             </h1>
 
             {/* Subtext */}
-            <p className="text-lg md:text-xl text-white/45 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
+            <p className="text-xl md:text-2xl text-white/50 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
               Route every task to the smartest, fastest, and most cost-effective AI automatically.
             </p>
 
@@ -218,17 +218,17 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
               <Link
                 href="/chat"
-                className="group inline-flex items-center gap-2.5 px-8 h-13 py-3.5 text-[15px] font-medium rounded-xl bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)] transition-all duration-300"
+                className="group inline-flex items-center gap-2.5 px-10 h-14 py-4 text-base font-medium rounded-xl bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)] transition-all duration-300"
               >
                 Start Chatting
                 <ArrowRight
-                  size={16}
+                  size={18}
                   className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
               <Link
                 href="/api-info"
-                className="inline-flex items-center gap-2 h-13 px-6 py-3.5 text-[15px] text-white/50 hover:text-white/80 border border-white/[0.08] hover:border-white/[0.15] rounded-xl transition-all duration-300 hover:bg-white/[0.03]"
+                className="inline-flex items-center gap-2 h-14 px-8 py-4 text-base text-white/50 hover:text-white/80 border border-white/[0.08] hover:border-white/[0.15] rounded-xl transition-all duration-300 hover:bg-white/[0.03]"
               >
                 Explore API
               </Link>

@@ -29,7 +29,7 @@ export function NewsSection() {
     <section className="py-32 md:py-40 px-6 border-t border-white/10">
       <div className="mx-auto max-w-6xl">
         {/* Label */}
-        <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40 block mb-6">
+        <span className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-white/45 block mb-6">
           News
         </span>
         
@@ -47,11 +47,11 @@ export function NewsSection() {
               href={item.href}
               className="group block p-6 rounded-xl border border-white/10 hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <h3 className="text-lg font-normal text-white/90 mb-3 group-hover:text-white transition-colors flex items-center gap-2">
+              <h3 className="text-xl font-normal text-white/90 mb-4 group-hover:text-white transition-colors flex items-center gap-2">
                 {item.title}
-                <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
               </h3>
-              <p className="text-sm text-white/45 leading-relaxed">
+              <p className="text-base text-white/50 leading-relaxed">
                 {item.description}
               </p>
             </Link>
