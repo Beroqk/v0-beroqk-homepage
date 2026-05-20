@@ -290,8 +290,8 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-8"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
             >
-              <span className="text-white">THE MOST EFFICIENT</span>{" "}
-              <span className="text-white/50">WAY TO USE AI.</span>
+              <span className="text-white">EFFICIENT</span>{" "}
+              <span className="text-white/50">INTELLIGENCE.</span>
             </h1>
 
             {/* Subtext */}
