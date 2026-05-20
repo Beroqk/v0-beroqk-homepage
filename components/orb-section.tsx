@@ -2,18 +2,13 @@
 
 import { useEffect, useState } from "react"
 
-// Apple-style minimal routing diagram
+// Ultra-minimal routing diagram
 function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
   const [activeRoute, setActiveRoute] = useState(0)
-  const [pulsePosition, setPulsePosition] = useState(0)
 
-  const routes = [
-    { name: "Claude", selected: true },
-    { name: "ChatGPT", selected: false },
-    { name: "Grok", selected: false },
-  ]
+  const routes = ["Claude", "ChatGPT", "Grok"]
 
-  // Cycle through routes
+  // Cycle through routes on hover
   useEffect(() => {
     if (!isHovered) {
       setActiveRoute(0)
@@ -22,116 +17,37 @@ function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
     
     const interval = setInterval(() => {
       setActiveRoute((prev) => (prev + 1) % routes.length)
-    }, 2500)
+    }, 2000)
     
     return () => clearInterval(interval)
   }, [isHovered, routes.length])
 
-  // Animate pulse along active route
-  useEffect(() => {
-    if (!isHovered) {
-      setPulsePosition(0)
-      return
-    }
-
-    const animate = () => {
-      setPulsePosition((prev) => {
-        if (prev >= 1) return 0
-        return prev + 0.02
-      })
-    }
-
-    const interval = setInterval(animate, 30)
-    return () => clearInterval(interval)
-  }, [isHovered, activeRoute])
-
   return (
-    <div className="w-full h-full flex items-center justify-center p-8">
-      <div className="relative w-full max-w-sm">
-        {/* Input dot on left */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2">
-          <div className={`w-3 h-3 rounded-full transition-all duration-500 ${
-            isHovered 
-              ? "bg-white shadow-[0_0_12px_rgba(255,255,255,0.5)]" 
-              : "bg-white/30"
-          }`} />
-        </div>
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="flex items-center gap-16">
+        {/* Input dot */}
+        <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
+          isHovered ? "bg-white" : "bg-white/20"
+        }`} />
 
-        {/* Routes */}
-        <div className="flex flex-col gap-6 pl-8">
-          {routes.map((route, index) => {
+        {/* Simple lines to labels */}
+        <div className="flex flex-col gap-8">
+          {routes.map((name, index) => {
             const isActive = index === activeRoute && isHovered
-            
             return (
-              <div key={route.name} className="flex items-center gap-4">
-                {/* Line */}
-                <div className="relative w-24 h-px">
-                  {/* Base line */}
-                  <div className={`absolute inset-0 transition-all duration-500 ${
-                    isActive ? "bg-white/40" : "bg-white/10"
-                  }`} />
-                  
-                  {/* Pulse traveling along line */}
-                  {isActive && (
-                    <div 
-                      className="absolute top-1/2 -translate-y-1/2 w-6 h-px bg-gradient-to-r from-transparent via-white to-transparent"
-                      style={{ 
-                        left: `${pulsePosition * 100}%`,
-                        opacity: pulsePosition > 0 && pulsePosition < 0.9 ? 1 : 0,
-                      }}
-                    />
-                  )}
-                </div>
-
-                {/* Provider label */}
+              <div key={name} className="flex items-center gap-6">
+                <div className={`w-16 h-px transition-all duration-500 ${
+                  isActive ? "bg-white/50" : "bg-white/10"
+                }`} />
                 <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
-                  isActive 
-                    ? "text-white" 
-                    : "text-white/25"
+                  isActive ? "text-white" : "text-white/20"
                 }`}>
-                  {route.name}
+                  {name}
                 </span>
-
-                {/* Active indicator */}
-                {isActive && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                )}
               </div>
             )
           })}
         </div>
-
-        {/* Connecting lines from input to routes */}
-        <svg 
-          className="absolute left-0 top-0 w-12 h-full pointer-events-none"
-          viewBox="0 0 48 120"
-          preserveAspectRatio="none"
-        >
-          {/* Top branch */}
-          <path
-            d={`M 4 60 Q 24 60 32 24`}
-            fill="none"
-            stroke={activeRoute === 0 && isHovered ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.1)"}
-            strokeWidth="1"
-            className="transition-all duration-500"
-          />
-          {/* Middle (straight) */}
-          <path
-            d={`M 4 60 L 32 60`}
-            fill="none"
-            stroke={activeRoute === 1 && isHovered ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.1)"}
-            strokeWidth="1"
-            className="transition-all duration-500"
-          />
-          {/* Bottom branch */}
-          <path
-            d={`M 4 60 Q 24 60 32 96`}
-            fill="none"
-            stroke={activeRoute === 2 && isHovered ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.1)"}
-            strokeWidth="1"
-            className="transition-all duration-500"
-          />
-        </svg>
       </div>
     </div>
   )
