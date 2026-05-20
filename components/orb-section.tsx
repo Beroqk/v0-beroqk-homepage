@@ -6,7 +6,11 @@ import { useEffect, useState } from "react"
 function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
   const [activeRoute, setActiveRoute] = useState(0)
 
-  const routes = ["Claude", "ChatGPT", "Grok"]
+  const routes = [
+    { name: "Claude", label: "Deep reasoning model" },
+    { name: "ChatGPT", label: "Balanced model" },
+    { name: "Grok", label: "Fast model" },
+  ]
 
   // Cycle through routes on hover
   useEffect(() => {
@@ -32,18 +36,25 @@ function RoutingDiagram({ isHovered }: { isHovered: boolean }) {
 
         {/* Simple lines to labels */}
         <div className="flex flex-col gap-8">
-          {routes.map((name, index) => {
+          {routes.map((route, index) => {
             const isActive = index === activeRoute && isHovered
             return (
-              <div key={name} className="flex items-center gap-6">
+              <div key={route.name} className="flex items-center gap-6">
                 <div className={`w-16 h-px transition-all duration-500 ${
                   isActive ? "bg-white/50" : "bg-white/10"
                 }`} />
-                <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
-                  isActive ? "text-white" : "text-white/20"
-                }`}>
-                  {name}
-                </span>
+                <div className="flex flex-col gap-1">
+                  <span className={`text-sm font-light tracking-wide transition-all duration-500 ${
+                    isActive ? "text-white" : "text-white/20"
+                  }`}>
+                    {route.name}
+                  </span>
+                  <span className={`text-[11px] tracking-wide transition-all duration-500 ${
+                    isActive ? "text-white/50 opacity-100" : "opacity-0"
+                  }`}>
+                    {route.label}
+                  </span>
+                </div>
               </div>
             )
           })}
