@@ -26,15 +26,15 @@ const news = [
 
 export function NewsSection() {
   return (
-    <section className="py-32 md:py-40 px-6 border-t border-foreground/10 bg-background transition-colors duration-500">
+    <section className="py-32 md:py-40 px-6 border-t border-white/10">
       <div className="mx-auto max-w-6xl">
         {/* Label */}
-        <span className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-foreground/45 block mb-6">
+        <span className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-white/45 block mb-6">
           News
         </span>
         
         <h2 
-          className="text-4xl md:text-5xl lg:text-6xl font-light text-foreground/95 mb-20"
+          className="text-4xl md:text-5xl lg:text-6xl font-light text-white/95 mb-20"
           style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
         >
           Latest News
@@ -45,13 +45,13 @@ export function NewsSection() {
             <Link 
               key={index} 
               href={item.href}
-              className="group block p-6 rounded-xl border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] transition-all duration-300"
+              className="group block p-6 rounded-xl border border-white/10 hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <h3 className="text-xl font-normal text-foreground/90 mb-4 group-hover:text-foreground transition-colors flex items-center gap-2">
+              <h3 className="text-xl font-normal text-white/90 mb-4 group-hover:text-white transition-colors flex items-center gap-2">
                 {item.title}
                 <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
               </h3>
-              <p className="text-base text-foreground/50 leading-relaxed">
+              <p className="text-base text-white/50 leading-relaxed">
                 {item.description}
               </p>
             </Link>

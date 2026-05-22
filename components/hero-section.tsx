@@ -77,23 +77,22 @@ function ChatDemo() {
         className="transition-transform duration-700 ease-out"
         style={{ transform: isHovered ? "translateY(-2px)" : "translateY(0)" }}
       >
-        {/* Glass panel container - theme aware */}
+        {/* Glass panel container */}
         <div
           className={`
-            rounded-3xl border backdrop-blur-2xl
-            shadow-[0_8px_60px_rgba(0,0,0,0.08)]
-            dark:shadow-[0_8px_60px_rgba(0,0,0,0.4)]
+            rounded-3xl border 
+            bg-black/60 backdrop-blur-2xl
+            shadow-[0_4px_40px_rgba(0,0,0,0.4)]
             overflow-hidden transition-all duration-500
-            bg-white/90 dark:bg-[#0d1220]/80
             ${isHovered 
-              ? "border-black/[0.08] dark:border-white/[0.15] shadow-[0_12px_80px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_80px_rgba(0,0,0,0.5)]" 
-              : "border-black/[0.04] dark:border-white/[0.08]"
+              ? "border-white/[0.12] shadow-[0_8px_60px_rgba(0,0,0,0.5)]" 
+              : "border-white/[0.06]"
             }
           `}
         >
           {/* Center: Ask Beroqk prompt */}
           <div className="px-8 pt-10 pb-6 text-center">
-            <h3 className="text-4xl md:text-5xl font-light tracking-wide text-foreground/85">
+            <h3 className="text-4xl md:text-5xl font-light text-white/80 tracking-wide">
               Ask Beroqk
             </h3>
           </div>
@@ -104,50 +103,51 @@ function ChatDemo() {
               href="/chat"
               className={`
                 flex items-center gap-4 px-6 py-5 rounded-2xl 
-                border transition-all duration-300 cursor-pointer group
-                bg-black/[0.02] dark:bg-white/[0.03]
+                border bg-white/[0.02]
+                transition-all duration-300 cursor-pointer group
                 ${isHovered 
-                  ? "border-black/[0.1] dark:border-white/[0.15] bg-black/[0.04] dark:bg-white/[0.05]" 
-                  : "border-black/[0.06] dark:border-white/[0.08]"
+                  ? "border-white/[0.12] bg-white/[0.04]" 
+                  : "border-white/[0.06]"
                 }
-                hover:border-black/[0.12] dark:hover:border-white/[0.18] 
-                hover:bg-black/[0.05] dark:hover:bg-white/[0.06]
+                hover:border-white/[0.15] hover:bg-white/[0.05]
               `}
             >
-              <span className="text-lg md:text-xl flex-grow font-light tracking-wide text-foreground/45">
+              <span className="text-lg md:text-xl text-white/40 flex-grow font-light tracking-wide">
                 {displayText}
-                <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-foreground/60 transition-opacity duration-100`}>|</span>
+                <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-white/50 transition-opacity duration-100`}>|</span>
               </span>
               <ArrowRight 
                 size={20} 
-                className="text-foreground/35 group-hover:text-foreground/60 group-hover:translate-x-0.5 transition-all duration-300" 
+                className="text-white/30 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300" 
               />
             </Link>
           </div>
 
           {/* Routing indicator */}
           <div className="px-6 pb-8 flex items-center justify-center gap-2.5">
-            <div className={`w-2 h-2 rounded-full bg-foreground/35 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
-            <span className="text-base tracking-wide text-foreground/45">
+            <div className={`w-2 h-2 rounded-full bg-white/30 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
+            <span className="text-base text-white/40 tracking-wide">
               Automatically routes to the optimal AI.
             </span>
           </div>
         </div>
       </div>
 
-      {/* Ultra subtle glow - theme aware */}
+      {/* Ultra subtle glow */}
       <div
         className={`absolute -inset-16 -z-10 rounded-[40px] transition-opacity duration-700 ${
           isHovered ? "opacity-100" : "opacity-30"
         }`}
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(128,128,128,0.03) 0%, transparent 55%)",
+            "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 55%)",
         }}
       />
     </div>
   )
 }
+
+// Subtle floating particles background - removed
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -158,22 +158,24 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background - theme aware */}
-      <div className="absolute inset-0 bg-background transition-colors duration-500">
+      {/* Background */}
+      <div className="absolute inset-0 bg-black">
         {/* Subtle radial gradient */}
         <div
-          className="absolute inset-0 dark:opacity-100 opacity-60"
+          className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(ellipse 80% 60% at 30% 50%, rgba(128,128,128,0.04) 0%, transparent 50%),
-              radial-gradient(ellipse 60% 50% at 70% 60%, rgba(128,128,128,0.03) 0%, transparent 50%)
+              radial-gradient(ellipse 80% 60% at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
+              radial-gradient(ellipse 60% 50% at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 50%)
             `,
           }}
         />
 
+        {/* Ambient particles - removed */}
+
         {/* Faint noise texture */}
         <div
-          className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
           }}
@@ -203,20 +205,20 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-8"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
             >
-              <span className="text-foreground">EFFICIENT</span>{" "}
-              <span className="text-foreground/50">INTELLIGENCE.</span>
+              <span className="text-white">EFFICIENT</span>{" "}
+              <span className="text-white/50">INTELLIGENCE.</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-xl md:text-2xl text-foreground/55 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
+            <p className="text-xl md:text-2xl text-white/50 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
               Route every task to the smartest, fastest, and most cost-effective AI automatically.
             </p>
 
-            {/* CTAs - theme aware */}
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
               <Link
                 href="/chat"
-                className="group inline-flex items-center gap-2.5 px-10 h-14 py-4 text-base font-medium rounded-xl bg-foreground text-background hover:opacity-90 hover:shadow-lg transition-all duration-300"
+                className="group inline-flex items-center gap-2.5 px-10 h-14 py-4 text-base font-medium rounded-xl bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)] transition-all duration-300"
               >
                 Start Chatting
                 <ArrowRight
@@ -226,7 +228,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/api-info"
-                className="inline-flex items-center gap-2 h-14 px-8 py-4 text-base text-foreground/55 hover:text-foreground/85 border border-foreground/[0.1] hover:border-foreground/[0.2] rounded-xl transition-all duration-300 hover:bg-foreground/[0.03]"
+                className="inline-flex items-center gap-2 h-14 px-8 py-4 text-base text-white/50 hover:text-white/80 border border-white/[0.08] hover:border-white/[0.15] rounded-xl transition-all duration-300 hover:bg-white/[0.03]"
               >
                 Explore API
               </Link>
