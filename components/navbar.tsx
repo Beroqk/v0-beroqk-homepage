@@ -10,7 +10,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/10">
       <nav className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="flex h-48 sm:h-52 md:h-48 lg:h-48 items-center justify-between">
           {/* Logo and Navigation */}
@@ -75,7 +75,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/chat"
-              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200 backdrop-blur-sm"
+              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-black border border-white/20 text-white hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200"
             >
               Try Beroqk
             </Link>
@@ -92,7 +92,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/chat"
-              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200 backdrop-blur-sm"
+              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-black border border-white/20 text-white hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200"
             >
               Try Beroqk
             </Link>
@@ -101,7 +101,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-border/50">
+          <div className="lg:hidden py-6 border-t border-white/10">
             <div className="flex flex-col gap-5">
               <Link 
                 href="/chat" 
