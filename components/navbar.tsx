@@ -2,23 +2,31 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useTheme } from "next-themes"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === "dark"
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <nav className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="flex h-48 sm:h-52 md:h-48 lg:h-48 items-center justify-between">
           {/* Logo and Navigation */}
           <div className="flex items-center gap-4 sm:gap-8 md:gap-24 lg:gap-32">
-            {/* Logo */}
+            {/* Logo - switches based on theme */}
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
-                src="/images/beroqk-logo.png"
+                src={isDark ? "/images/beroqk-logo.png" : "/images/beroqk-logo-black.png"}
                 alt="BEROQK"
                 width={500}
                 height={160}
@@ -32,31 +40,31 @@ export function Navbar() {
             <div className="hidden lg:flex items-center gap-10">
               <Link 
                 href="/chat" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 Company
               </Link>
               <Link 
                 href="/careers" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 Careers
               </Link>
               <Link 
                 href="/news" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 News
               </Link>
@@ -64,7 +72,7 @@ export function Navbar() {
                 href="https://beroqk.store" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 Shop
               </a>
@@ -75,7 +83,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/chat"
-              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-black border border-white/20 text-white hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200"
+              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-background border border-border text-foreground hover:border-foreground/30 transition-all duration-200"
             >
               Try Beroqk
             </Link>
@@ -92,7 +100,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/chat"
-              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-black border border-white/20 text-white hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200"
+              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-background border border-border text-foreground hover:border-foreground/30 transition-all duration-200"
             >
               Try Beroqk
             </Link>
@@ -101,7 +109,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-white/10">
+          <div className="lg:hidden py-6 border-t border-border">
             <div className="flex flex-col gap-5">
               <Link 
                 href="/chat" 

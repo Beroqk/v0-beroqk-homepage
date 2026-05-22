@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { useTheme } from "next-themes"
 
 // Rotating placeholders for the input
 const placeholders = [
@@ -20,6 +21,14 @@ function ChatDemo() {
   const [isTyping, setIsTyping] = useState(true)
   const [showCursor, setShowCursor] = useState(true)
   const [showPulse, setShowPulse] = useState(true)
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === "dark"
 
   // Rotate placeholders with typing effect
   useEffect(() => {
@@ -80,19 +89,17 @@ function ChatDemo() {
         {/* Glass panel container */}
         <div
           className={`
-            rounded-3xl border 
-            bg-black/60 backdrop-blur-2xl
-            shadow-[0_4px_40px_rgba(0,0,0,0.4)]
+            rounded-3xl border backdrop-blur-2xl
             overflow-hidden transition-all duration-500
-            ${isHovered 
-              ? "border-white/[0.12] shadow-[0_8px_60px_rgba(0,0,0,0.5)]" 
-              : "border-white/[0.06]"
+            ${isDark 
+              ? `bg-black/60 shadow-[0_4px_40px_rgba(0,0,0,0.4)] ${isHovered ? "border-white/[0.12] shadow-[0_8px_60px_rgba(0,0,0,0.5)]" : "border-white/[0.06]"}`
+              : `bg-white/80 shadow-[0_4px_40px_rgba(0,0,0,0.08)] ${isHovered ? "border-black/[0.1] shadow-[0_8px_60px_rgba(0,0,0,0.12)]" : "border-black/[0.05]"}`
             }
           `}
         >
           {/* Center: Ask Beroqk prompt */}
           <div className="px-8 pt-10 pb-6 text-center">
-            <h3 className="text-4xl md:text-5xl font-light text-white/80 tracking-wide">
+            <h3 className={`text-4xl md:text-5xl font-light tracking-wide ${isDark ? "text-white/80" : "text-black/80"}`}>
               Ask Beroqk
             </h3>
           </div>
@@ -103,30 +110,28 @@ function ChatDemo() {
               href="/chat"
               className={`
                 flex items-center gap-4 px-6 py-5 rounded-2xl 
-                border bg-white/[0.02]
-                transition-all duration-300 cursor-pointer group
-                ${isHovered 
-                  ? "border-white/[0.12] bg-white/[0.04]" 
-                  : "border-white/[0.06]"
+                border transition-all duration-300 cursor-pointer group
+                ${isDark 
+                  ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : "border-white/[0.06]"} hover:border-white/[0.15] hover:bg-white/[0.05]`
+                  : `bg-black/[0.02] ${isHovered ? "border-black/[0.1] bg-black/[0.04]" : "border-black/[0.05]"} hover:border-black/[0.12] hover:bg-black/[0.05]`
                 }
-                hover:border-white/[0.15] hover:bg-white/[0.05]
               `}
             >
-              <span className="text-lg md:text-xl text-white/40 flex-grow font-light tracking-wide">
+              <span className={`text-lg md:text-xl flex-grow font-light tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
                 {displayText}
-                <span className={`${showCursor ? "opacity-100" : "opacity-0"} text-white/50 transition-opacity duration-100`}>|</span>
+                <span className={`${showCursor ? "opacity-100" : "opacity-0"} ${isDark ? "text-white/50" : "text-black/50"} transition-opacity duration-100`}>|</span>
               </span>
               <ArrowRight 
                 size={20} 
-                className="text-white/30 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300" 
+                className={`${isDark ? "text-white/30 group-hover:text-white/50" : "text-black/30 group-hover:text-black/50"} group-hover:translate-x-0.5 transition-all duration-300`}
               />
             </Link>
           </div>
 
           {/* Routing indicator */}
           <div className="px-6 pb-8 flex items-center justify-center gap-2.5">
-            <div className={`w-2 h-2 rounded-full bg-white/30 transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"}`} />
-            <span className="text-base text-white/40 tracking-wide">
+            <div className={`w-2 h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
+            <span className={`text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
               Automatically routes to the optimal AI.
             </span>
           </div>
@@ -139,39 +144,40 @@ function ChatDemo() {
           isHovered ? "opacity-100" : "opacity-30"
         }`}
         style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 55%)",
+          background: isDark 
+            ? "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 55%)"
+            : "radial-gradient(ellipse at center, rgba(0,0,0,0.03) 0%, transparent 55%)",
         }}
       />
     </div>
   )
 }
 
-// Subtle floating particles background - removed
-
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  const isDark = mounted && resolvedTheme === "dark"
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-black">
+      <div className={`absolute inset-0 ${isDark ? "bg-black" : "bg-[#fafafa]"}`}>
         {/* Subtle radial gradient */}
         <div
           className="absolute inset-0"
           style={{
-            background: `
-              radial-gradient(ellipse 80% 60% at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
-              radial-gradient(ellipse 60% 50% at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 50%)
-            `,
+            background: isDark 
+              ? `radial-gradient(ellipse 80% 60% at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
+                 radial-gradient(ellipse 60% 50% at 70% 60%, rgba(255,255,255,0.015) 0%, transparent 50%)`
+              : `radial-gradient(ellipse 80% 60% at 30% 50%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                 radial-gradient(ellipse 60% 50% at 70% 60%, rgba(0,0,0,0.015) 0%, transparent 50%)`,
           }}
         />
-
-        {/* Ambient particles - removed */}
 
         {/* Faint noise texture */}
         <div
@@ -205,12 +211,12 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-8"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
             >
-              <span className="text-white">EFFICIENT</span>{" "}
-              <span className="text-white/50">INTELLIGENCE.</span>
+              <span className={isDark ? "text-white" : "text-black"}>EFFICIENT</span>{" "}
+              <span className={isDark ? "text-white/50" : "text-black/50"}>INTELLIGENCE.</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-xl md:text-2xl text-white/50 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12">
+            <p className={`text-xl md:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12 ${isDark ? "text-white/50" : "text-black/50"}`}>
               Route every task to the smartest, fastest, and most cost-effective AI automatically.
             </p>
 
@@ -218,7 +224,11 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
               <Link
                 href="/chat"
-                className="group inline-flex items-center gap-2.5 px-10 h-14 py-4 text-base font-medium rounded-xl bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)] transition-all duration-300"
+                className={`group inline-flex items-center gap-2.5 px-10 h-14 py-4 text-base font-medium rounded-xl transition-all duration-300
+                  ${isDark 
+                    ? "bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)]"
+                    : "bg-black text-white hover:bg-black/90 hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+                  }`}
               >
                 Start Chatting
                 <ArrowRight
@@ -228,7 +238,11 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/api-info"
-                className="inline-flex items-center gap-2 h-14 px-8 py-4 text-base text-white/50 hover:text-white/80 border border-white/[0.08] hover:border-white/[0.15] rounded-xl transition-all duration-300 hover:bg-white/[0.03]"
+                className={`inline-flex items-center gap-2 h-14 px-8 py-4 text-base border rounded-xl transition-all duration-300
+                  ${isDark 
+                    ? "text-white/50 hover:text-white/80 border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.03]"
+                    : "text-black/50 hover:text-black/80 border-black/[0.08] hover:border-black/[0.15] hover:bg-black/[0.03]"
+                  }`}
               >
                 Explore API
               </Link>

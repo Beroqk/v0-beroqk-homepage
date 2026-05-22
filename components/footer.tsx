@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -39,11 +42,11 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 py-12 px-6">
+    <footer className="border-t border-border bg-background py-12 px-6">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Logo */}
-          <Link href="/" className="text-lg font-normal tracking-tight">
+          <Link href="/" className="text-lg font-normal tracking-tight text-foreground">
             BEROQK
           </Link>
 
@@ -77,9 +80,13 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border/50">
-          <p className="text-sm text-muted-foreground text-center md:text-left">
+        {/* Bottom row with theme toggle and copyright */}
+        <div className="mt-12 pt-8 border-t border-border flex items-center justify-between">
+          {/* Theme Toggle - xAI style positioned on left */}
+          <ThemeToggle />
+          
+          {/* Copyright */}
+          <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Beroqk. All rights reserved.
           </p>
         </div>
