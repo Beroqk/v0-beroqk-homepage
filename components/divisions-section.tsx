@@ -13,12 +13,12 @@ function RoutingCard() {
       <div
         className={`
           relative overflow-hidden rounded-3xl border
-          bg-white/[0.02]
+          bg-foreground/[0.02] dark:bg-foreground/[0.02]
           transition-all duration-500 ease-out cursor-pointer
           h-[420px] md:h-[480px]
           ${isHovered 
-            ? "border-white/[0.12] -translate-y-1" 
-            : "border-white/[0.06]"
+            ? "border-foreground/[0.12] -translate-y-1 shadow-lg" 
+            : "border-foreground/[0.06]"
           }
         `}
         onMouseEnter={() => setIsHovered(true)}
@@ -27,25 +27,25 @@ function RoutingCard() {
         {/* Content */}
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
-          <span className="text-sm md:text-base font-medium uppercase tracking-[0.15em] text-white/50">
+          <span className="text-sm md:text-base font-medium uppercase tracking-[0.15em] text-foreground/50">
             Routing Intelligence
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-5" style={{ letterSpacing: "-0.02em" }}>
               Optimal model, every time.
             </h3>
 
-            <p className="text-lg md:text-xl text-white/55 leading-relaxed mb-10 max-w-md">
+            <p className="text-lg md:text-xl text-foreground/55 leading-relaxed mb-10 max-w-md">
               Automatically routes requests to the most efficient AI for the task.
             </p>
 
             {/* CTA */}
             <div className={`
-              inline-flex items-center gap-2.5 text-base md:text-lg text-white/50
+              inline-flex items-center gap-2.5 text-base md:text-lg text-foreground/50
               transition-all duration-300
-              ${isHovered ? "text-white/80" : ""}
+              ${isHovered ? "text-foreground/80" : ""}
             `}>
               <span>Learn more</span>
               <ArrowRight size={18} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
@@ -66,12 +66,12 @@ function PrivacyCard() {
       <div
         className={`
           relative overflow-hidden rounded-3xl border
-          bg-white/[0.02]
+          bg-foreground/[0.02] dark:bg-foreground/[0.02]
           transition-all duration-500 ease-out cursor-pointer
           h-[420px] md:h-[480px]
           ${isHovered 
-            ? "border-white/[0.12] -translate-y-1" 
-            : "border-white/[0.06]"
+            ? "border-foreground/[0.12] -translate-y-1 shadow-lg" 
+            : "border-foreground/[0.06]"
           }
         `}
         onMouseEnter={() => setIsHovered(true)}
@@ -80,25 +80,25 @@ function PrivacyCard() {
         {/* Content */}
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
-          <span className="text-sm md:text-base font-medium uppercase tracking-[0.15em] text-white/50">
+          <span className="text-sm md:text-base font-medium uppercase tracking-[0.15em] text-foreground/50">
             Privacy
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-5" style={{ letterSpacing: "-0.02em" }}>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-5" style={{ letterSpacing: "-0.02em" }}>
               Protection before access.
             </h3>
 
-            <p className="text-lg md:text-xl text-white/55 leading-relaxed mb-10 max-w-md">
+            <p className="text-lg md:text-xl text-foreground/55 leading-relaxed mb-10 max-w-md">
               Sensitive data is secured before it ever reaches an AI model.
             </p>
 
             {/* CTA */}
             <div className={`
-              inline-flex items-center gap-2.5 text-base md:text-lg text-white/50
+              inline-flex items-center gap-2.5 text-base md:text-lg text-foreground/50
               transition-all duration-300
-              ${isHovered ? "text-white/80" : ""}
+              ${isHovered ? "text-foreground/80" : ""}
             `}>
               <span>Learn more</span>
               <ArrowRight size={18} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
@@ -112,15 +112,15 @@ function PrivacyCard() {
 
 export function DivisionsSection() {
   return (
-    <section className="relative py-32 md:py-40">
+    <section className="relative py-32 md:py-40 bg-background transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section header */}
         <div className="text-center mb-20 md:mb-24">
-          <p className="text-sm md:text-base text-white/45 uppercase tracking-[0.25em] mb-6">
+          <p className="text-sm md:text-base text-foreground/45 uppercase tracking-[0.25em] mb-6">
             Core Systems
           </p>
           <h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-white/90"
+            className="text-4xl md:text-5xl lg:text-6xl font-light text-foreground/90"
             style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
           >
             Built for Efficiency.

@@ -32,31 +32,31 @@ export function Navbar() {
             <div className="hidden lg:flex items-center gap-10">
               <Link 
                 href="/chat" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-foreground/55 hover:text-foreground transition-all duration-200"
               >
                 Beroqk Chat
               </Link>
               <Link 
                 href="/api-info" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-foreground/55 hover:text-foreground transition-all duration-200"
               >
                 API
               </Link>
               <Link 
                 href="/company" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-foreground/55 hover:text-foreground transition-all duration-200"
               >
                 Company
               </Link>
               <Link 
                 href="/careers" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-foreground/55 hover:text-foreground transition-all duration-200"
               >
                 Careers
               </Link>
               <Link 
                 href="/news" 
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-foreground/55 hover:text-foreground transition-all duration-200"
               >
                 News
               </Link>
@@ -64,7 +64,7 @@ export function Navbar() {
                 href="https://beroqk.store" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60 hover:text-white transition-all duration-200"
+                className="text-[13px] font-medium uppercase tracking-[0.12em] text-foreground/55 hover:text-foreground transition-all duration-200"
               >
                 Shop
               </a>
@@ -75,7 +75,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/chat"
-              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200 backdrop-blur-sm"
+              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-background/80 border border-foreground/15 text-foreground hover:border-foreground/30 hover:shadow-lg transition-all duration-200 backdrop-blur-sm"
             >
               Try Beroqk
             </Link>
@@ -92,7 +92,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/chat"
-              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-background/80 border border-white/20 text-foreground hover:border-white/50 hover:shadow-[0_0_10px_rgba(255,255,255,0.08)] transition-all duration-200 backdrop-blur-sm"
+              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-background/80 border border-foreground/15 text-foreground hover:border-foreground/30 hover:shadow-lg transition-all duration-200 backdrop-blur-sm"
             >
               Try Beroqk
             </Link>
