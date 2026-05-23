@@ -166,7 +166,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
-      <div className={`absolute inset-0 ${isDark ? "bg-black" : "bg-[#fafafa]"}`}>
+      <div className={`absolute inset-0 ${isDark ? "bg-black" : "bg-white"}`}>
         {/* Subtle radial gradient */}
         <div
           className="absolute inset-0"
