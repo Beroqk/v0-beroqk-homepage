@@ -104,8 +104,8 @@ export default function CompanyPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-8 text-balance bg-clip-text text-transparent"
             style={{
               backgroundImage: isDark 
-                ? "linear-gradient(to right, #9ca3af, #ffffff)"
-                : "linear-gradient(to right, #6b7280, #000000)",
+                ? "linear-gradient(to right, #ffffff, #9ca3af)"
+                : "linear-gradient(to right, #000000, #6b7280)",
             }}
           >
             Build Efficient Intelligence
