@@ -1,12 +1,14 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useTheme } from "next-themes"
 
 export function WireframeGlobe({ className = "" }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouseRef = useRef({ x: 0, y: 0, active: false })
   const targetRotationRef = useRef({ x: 0, y: 0 })
   const currentRotationRef = useRef({ x: 0, y: 0 })
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -17,6 +19,10 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
 
     let animationId: number
     let autoRotation = 0
+
+    // Determine color based on theme
+    const isDark = resolvedTheme === "dark"
+    const lineColor = isDark ? "255, 255, 255" : "0, 0, 0"
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -81,7 +87,7 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
       // Draw outer circle with subtle glow
       ctx.beginPath()
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2)
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)"
+      ctx.strokeStyle = `rgba(${lineColor}, 0.15)`
       ctx.lineWidth = 1
       ctx.stroke()
 
@@ -127,7 +133,7 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
         if (r > 0) {
           ctx.beginPath()
           ctx.ellipse(centerX, centerY - yOffset, r, r * Math.abs(Math.cos(tiltX)) * 0.15 + Math.abs(Math.sin(tiltX)) * r * 0.3, 0, 0, Math.PI * 2)
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + (1 - Math.abs(lat) / (Math.PI / 2)) * 0.07})`
+          ctx.strokeStyle = `rgba(${lineColor}, ${0.08 + (1 - Math.abs(lat) / (Math.PI / 2)) * 0.07})`
           ctx.lineWidth = 0.5
           ctx.stroke()
         }
@@ -160,7 +166,7 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
           } else {
             ctx.lineTo(x, y)
           }
-          ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`
+          ctx.strokeStyle = `rgba(${lineColor}, ${alpha})`
         }
         ctx.lineWidth = 0.5
         ctx.stroke()
@@ -191,7 +197,7 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
               if (intensity > 0.3) {
                 ctx.beginPath()
                 ctx.arc(point.x, point.y, dotRadius + 4, 0, Math.PI * 2)
-                ctx.fillStyle = `rgba(255, 255, 255, ${intensity * 0.15})`
+                ctx.fillStyle = `rgba(${lineColor}, ${intensity * 0.15})`
                 ctx.fill()
               }
             }
@@ -199,7 +205,7 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
           
           ctx.beginPath()
           ctx.arc(point.x, point.y, dotRadius, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`
+          ctx.fillStyle = `rgba(${lineColor}, ${alpha})`
           ctx.fill()
         }
       }
@@ -218,7 +224,7 @@ export function WireframeGlobe({ className = "" }: { className?: string }) {
       canvas.removeEventListener("mouseleave", handleMouseLeave)
       cancelAnimationFrame(animationId)
     }
-  }, [])
+  }, [resolvedTheme])
 
   return (
     <canvas
