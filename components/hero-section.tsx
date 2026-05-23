@@ -238,10 +238,10 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/api-info"
-                className={`inline-flex items-center gap-2 h-14 px-8 py-4 text-base border rounded-xl transition-all duration-300
+                className={`inline-flex items-center gap-2 h-14 px-8 py-4 text-base rounded-xl transition-all duration-300
                   ${isDark 
-                    ? "text-white/50 hover:text-white/80 border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.03]"
-                    : "text-black/50 hover:text-black/80 border-black/[0.08] hover:border-black/[0.15] hover:bg-black/[0.03]"
+                    ? "bg-white/50 text-black hover:bg-white/60"
+                    : "bg-black/50 text-white hover:bg-black/60"
                   }`}
               >
                 Explore API
