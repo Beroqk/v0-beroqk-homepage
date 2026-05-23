@@ -240,8 +240,8 @@ export function HeroSection() {
                 href="/api-info"
                 className={`inline-flex items-center gap-2 h-14 px-8 py-4 text-base rounded-xl transition-all duration-300
                   ${isDark 
-                    ? "bg-white/50 text-black hover:bg-white/60"
-                    : "bg-black/50 text-white hover:bg-black/60"
+                    ? "bg-white/20 text-white hover:bg-white/30"
+                    : "bg-black/20 text-black hover:bg-black/30"
                   }`}
               >
                 Explore API
