@@ -83,7 +83,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/chat"
-              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-background border border-border text-foreground hover:border-foreground/30 transition-all duration-200"
+              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-foreground text-background hover:opacity-90 transition-all duration-200"
             >
               Try Beroqk
             </Link>
@@ -100,7 +100,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/chat"
-              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-background border border-border text-foreground hover:border-foreground/30 transition-all duration-200"
+              className="text-sm font-medium px-6 h-12 inline-flex items-center rounded-xl bg-foreground text-background hover:opacity-90 transition-all duration-200"
             >
               Try Beroqk
             </Link>
