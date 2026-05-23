@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useTheme } from "next-themes"
 
 const principles = [
   {
@@ -39,6 +40,14 @@ const newsItems = [
 
 export default function CompanyPage() {
   const sectionsRef = useRef<HTMLDivElement[]>([])
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === "dark"
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -94,7 +103,9 @@ export default function CompanyPage() {
           <h1 
             className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-8 text-balance bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(to right, #9ca3af, #ffffff)",
+              backgroundImage: isDark 
+                ? "linear-gradient(to right, #9ca3af, #ffffff)"
+                : "linear-gradient(to right, #6b7280, #000000)",
             }}
           >
             Build Efficient Intelligence
