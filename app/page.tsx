@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/hero-section"
+import { BentoSection } from "@/components/bento-section"
 import { DivisionsSection } from "@/components/divisions-section"
 import { MissionSection } from "@/components/mission-section"
 import { OrbSection } from "@/components/orb-section"
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
       <HeroSection />
+      <BentoSection />
       <DivisionsSection />
       <MissionSection />
       <OrbSection />
