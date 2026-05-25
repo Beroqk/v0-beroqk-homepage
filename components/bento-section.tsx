@@ -207,88 +207,40 @@ export function BentoSection() {
                   group-hover:-translate-y-1 group-hover:shadow-2xl
                 `}
               >
-                {/* Live Shopify Product Grid */}
-                <div className="absolute inset-4 inset-b-20">
-                  <div className="grid grid-cols-4 gap-3 h-full">
-                    {/* Product 1 - Hat */}
-                    <div className={`rounded-2xl overflow-hidden flex flex-col ${
-                      isDark ? "bg-white/[0.03]" : "bg-black/[0.02]"
-                    }`}>
-                      <div className="flex-1 flex items-center justify-center p-3">
-                        <div className={`w-full aspect-square rounded-xl flex items-center justify-center ${
-                          isDark ? "bg-white/[0.05]" : "bg-black/[0.04]"
-                        }`}>
-                          <svg viewBox="0 0 24 24" className={`w-10 h-10 ${isDark ? "text-white/30" : "text-black/30"}`} fill="none" stroke="currentColor" strokeWidth="1">
-                            <path d="M12 4C8 4 4 6 4 10v2c0 2 1 4 3 5v3h10v-3c2-1 3-3 3-5v-2c0-4-4-6-8-6z" />
-                            <path d="M8 10c0-2 2-3 4-3s4 1 4 3" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="px-2 pb-2">
-                        <p className={`text-[10px] font-medium truncate ${isDark ? "text-white/60" : "text-black/60"}`}>Classic Cap</p>
-                        <p className={`text-[9px] ${isDark ? "text-white/30" : "text-black/30"}`}>$32</p>
-                      </div>
-                    </div>
-
-                    {/* Product 2 - Tee */}
-                    <div className={`rounded-2xl overflow-hidden flex flex-col ${
-                      isDark ? "bg-white/[0.03]" : "bg-black/[0.02]"
-                    }`}>
-                      <div className="flex-1 flex items-center justify-center p-3">
-                        <div className={`w-full aspect-square rounded-xl flex items-center justify-center ${
-                          isDark ? "bg-white/[0.05]" : "bg-black/[0.04]"
-                        }`}>
-                          <svg viewBox="0 0 24 24" className={`w-10 h-10 ${isDark ? "text-white/30" : "text-black/30"}`} fill="none" stroke="currentColor" strokeWidth="1">
-                            <path d="M6 4l-3 4v2l3-1v11h12V9l3 1V6l-3-4h-4l-2 2-2-2H6z" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="px-2 pb-2">
-                        <p className={`text-[10px] font-medium truncate ${isDark ? "text-white/60" : "text-black/60"}`}>Logo Tee</p>
-                        <p className={`text-[9px] ${isDark ? "text-white/30" : "text-black/30"}`}>$45</p>
-                      </div>
-                    </div>
-
-                    {/* Product 3 - Hoodie */}
-                    <div className={`rounded-2xl overflow-hidden flex flex-col ${
-                      isDark ? "bg-white/[0.03]" : "bg-black/[0.02]"
-                    }`}>
-                      <div className="flex-1 flex items-center justify-center p-3">
-                        <div className={`w-full aspect-square rounded-xl flex items-center justify-center ${
-                          isDark ? "bg-white/[0.05]" : "bg-black/[0.04]"
-                        }`}>
-                          <svg viewBox="0 0 24 24" className={`w-10 h-10 ${isDark ? "text-white/30" : "text-black/30"}`} fill="none" stroke="currentColor" strokeWidth="1">
-                            <path d="M6 4l-3 5v3l3-1v9h12v-9l3 1V9l-3-5h-3c0 2-2 3-3 3s-3-1-3-3H6z" />
-                            <path d="M9 7c0 1.5 1.5 2.5 3 2.5s3-1 3-2.5" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="px-2 pb-2">
-                        <p className={`text-[10px] font-medium truncate ${isDark ? "text-white/60" : "text-black/60"}`}>Hoodie</p>
-                        <p className={`text-[9px] ${isDark ? "text-white/30" : "text-black/30"}`}>$85</p>
-                      </div>
-                    </div>
-
-                    {/* Product 4 - Sticker */}
-                    <div className={`rounded-2xl overflow-hidden flex flex-col ${
-                      isDark ? "bg-white/[0.03]" : "bg-black/[0.02]"
-                    }`}>
-                      <div className="flex-1 flex items-center justify-center p-3">
-                        <div className={`w-full aspect-square rounded-xl flex items-center justify-center ${
-                          isDark ? "bg-white/[0.05]" : "bg-black/[0.04]"
-                        }`}>
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                            isDark ? "bg-white/10" : "bg-black/10"
-                          }`}>
-                            <span className={`text-[6px] font-bold tracking-wider ${
-                              isDark ? "text-white/50" : "text-black/50"
-                            }`}>B</span>
+                {/* Shop Visual - Premium Product Display */}
+                <div className="absolute inset-6 flex items-center justify-center">
+                  <div className="relative">
+                    {/* Product Mockup - Minimalist */}
+                    <div className="flex items-center gap-6">
+                      {/* T-Shirt Mockup */}
+                      <div className={`w-28 h-32 rounded-xl flex items-center justify-center ${
+                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
+                      }`}>
+                        <div className={`w-16 h-20 rounded-lg ${isDark ? "bg-white/10" : "bg-black/10"}`}>
+                          <div className="flex items-center justify-center h-full">
+                            <span className={`text-[8px] font-bold tracking-wider ${
+                              isDark ? "text-white/40" : "text-black/40"
+                            }`}>BEROQK</span>
                           </div>
                         </div>
                       </div>
-                      <div className="px-2 pb-2">
-                        <p className={`text-[10px] font-medium truncate ${isDark ? "text-white/60" : "text-black/60"}`}>Sticker Pack</p>
-                        <p className={`text-[9px] ${isDark ? "text-white/30" : "text-black/30"}`}>$12</p>
+                      
+                      {/* Cap Mockup */}
+                      <div className={`w-24 h-24 rounded-full flex items-center justify-center ${
+                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
+                      }`}>
+                        <div className={`w-14 h-10 rounded-t-full ${isDark ? "bg-white/10" : "bg-black/10"}`} />
+                      </div>
+
+                      {/* Mug Mockup */}
+                      <div className={`w-20 h-24 rounded-xl flex items-center justify-center ${
+                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
+                      }`}>
+                        <div className={`w-12 h-14 rounded-lg relative ${isDark ? "bg-white/10" : "bg-black/10"}`}>
+                          <div className={`absolute -right-2 top-3 w-3 h-6 rounded-r-full border-2 ${
+                            isDark ? "border-white/10" : "border-black/10"
+                          }`} />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -303,7 +255,7 @@ export function BentoSection() {
                       Shop
                     </span>
                     <p className={`mt-2 text-lg font-light ${isDark ? "text-white/70" : "text-black/70"}`}>
-                      Wear the future of efficient intelligence.
+                      Premium gear for builders.
                     </p>
                   </div>
                   <div className={`flex items-center gap-1.5 text-sm transition-all duration-300 ${
@@ -311,7 +263,7 @@ export function BentoSection() {
                       ? "text-white/50 group-hover:text-white" 
                       : "text-black/50 group-hover:text-black"
                   }`}>
-                    <span>Shop Collection</span>
+                    <span>Explore</span>
                     <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>
