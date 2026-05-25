@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useState, useEffect } from "react"
@@ -201,48 +202,21 @@ export function BentoSection() {
                   relative overflow-hidden rounded-3xl border h-[300px]
                   transition-all duration-500 ease-out
                   ${isDark 
-                    ? "bg-neutral-950 border-white/[0.08] hover:border-white/[0.15]" 
+                    ? "bg-black border-white/[0.08] hover:border-white/[0.15]" 
                     : "bg-neutral-50 border-black/[0.06] hover:border-black/[0.12]"
                   }
                   group-hover:-translate-y-1 group-hover:shadow-2xl
                 `}
               >
-                {/* Shop Visual - Premium Product Display */}
-                <div className="absolute inset-6 flex items-center justify-center">
-                  <div className="relative">
-                    {/* Product Mockup - Minimalist */}
-                    <div className="flex items-center gap-6">
-                      {/* T-Shirt Mockup */}
-                      <div className={`w-28 h-32 rounded-xl flex items-center justify-center ${
-                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
-                      }`}>
-                        <div className={`w-16 h-20 rounded-lg ${isDark ? "bg-white/10" : "bg-black/10"}`}>
-                          <div className="flex items-center justify-center h-full">
-                            <span className={`text-[8px] font-bold tracking-wider ${
-                              isDark ? "text-white/40" : "text-black/40"
-                            }`}>BEROQK</span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Cap Mockup */}
-                      <div className={`w-24 h-24 rounded-full flex items-center justify-center ${
-                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
-                      }`}>
-                        <div className={`w-14 h-10 rounded-t-full ${isDark ? "bg-white/10" : "bg-black/10"}`} />
-                      </div>
-
-                      {/* Mug Mockup */}
-                      <div className={`w-20 h-24 rounded-xl flex items-center justify-center ${
-                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
-                      }`}>
-                        <div className={`w-12 h-14 rounded-lg relative ${isDark ? "bg-white/10" : "bg-black/10"}`}>
-                          <div className={`absolute -right-2 top-3 w-3 h-6 rounded-r-full border-2 ${
-                            isDark ? "border-white/10" : "border-black/10"
-                          }`} />
-                        </div>
-                      </div>
-                    </div>
+                {/* Shop Visual - Product Image */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-48 h-48">
+                    <Image
+                      src="/images/shop-hat.png"
+                      alt="Beroqk Cap"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
                 </div>
 
