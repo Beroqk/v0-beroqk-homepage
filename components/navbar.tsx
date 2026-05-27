@@ -61,29 +61,93 @@ export function Navbar() {
                   <ChevronDown size={14} className={`transition-transform duration-200 ${isProductsOpen ? "rotate-180" : ""}`} />
                 </button>
                 
-                {/* Dropdown Menu */}
+                {/* Mega Dropdown Menu */}
                 {isProductsOpen && (
-                  <div className={`absolute top-full left-0 mt-3 py-2 px-1 rounded-xl border shadow-lg min-w-[140px] ${
-                    isDark ? "bg-neutral-950 border-white/10" : "bg-white border-black/10"
+                  <div className={`absolute top-full -left-8 mt-6 p-6 rounded-2xl border shadow-2xl w-[580px] ${
+                    isDark ? "bg-neutral-950 border-white/10" : "bg-white border-black/[0.08]"
                   }`}>
-                    <Link
-                      href="/chat"
-                      className={`block px-4 py-2.5 text-[13px] font-medium rounded-lg transition-colors ${
-                        isDark ? "text-white/70 hover:text-white hover:bg-white/5" : "text-black/70 hover:text-black hover:bg-black/5"
-                      }`}
-                      onClick={() => setIsProductsOpen(false)}
-                    >
-                      Chat
-                    </Link>
-                    <Link
-                      href="/api-info"
-                      className={`block px-4 py-2.5 text-[13px] font-medium rounded-lg transition-colors ${
-                        isDark ? "text-white/70 hover:text-white hover:bg-white/5" : "text-black/70 hover:text-black hover:bg-black/5"
-                      }`}
-                      onClick={() => setIsProductsOpen(false)}
-                    >
-                      Build
-                    </Link>
+                    <div className="flex gap-6">
+                      {/* Left Side - Product Links */}
+                      <div className="flex flex-col gap-1 w-[180px]">
+                        <Link
+                          href="/chat"
+                          className={`group block px-4 py-3 rounded-xl transition-all duration-200 ${
+                            isDark ? "hover:bg-white/[0.04]" : "hover:bg-black/[0.03]"
+                          }`}
+                          onClick={() => setIsProductsOpen(false)}
+                        >
+                          <div className={`text-sm font-medium mb-1 ${isDark ? "text-white" : "text-black"}`}>
+                            Chat
+                          </div>
+                          <div className={`text-xs leading-relaxed ${isDark ? "text-white/50" : "text-black/50"}`}>
+                            Intelligent AI conversations with automatic routing.
+                          </div>
+                        </Link>
+                        <Link
+                          href="/api-info"
+                          className={`group block px-4 py-3 rounded-xl transition-all duration-200 ${
+                            isDark ? "hover:bg-white/[0.04]" : "hover:bg-black/[0.03]"
+                          }`}
+                          onClick={() => setIsProductsOpen(false)}
+                        >
+                          <div className={`text-sm font-medium mb-1 ${isDark ? "text-white" : "text-black"}`}>
+                            Build
+                          </div>
+                          <div className={`text-xs leading-relaxed ${isDark ? "text-white/50" : "text-black/50"}`}>
+                            Integrate powerful AI into your applications.
+                          </div>
+                        </Link>
+                      </div>
+
+                      {/* Right Side - Visual Preview Card */}
+                      <div className="flex-1">
+                        <div className={`relative h-full min-h-[180px] rounded-2xl border overflow-hidden ${
+                          isDark ? "bg-neutral-900 border-white/[0.06]" : "bg-neutral-50 border-black/[0.06]"
+                        }`}>
+                          {/* Chat Preview Mockup */}
+                          <div className="absolute inset-0 p-5 flex flex-col">
+                            {/* Mini Chat Interface */}
+                            <div className={`text-xs font-medium mb-3 ${isDark ? "text-white/40" : "text-black/40"}`}>
+                              Preview
+                            </div>
+                            
+                            {/* Chat Messages */}
+                            <div className="flex-1 flex flex-col gap-2.5">
+                              {/* Message bubble 1 */}
+                              <div className={`self-end max-w-[75%] px-3 py-2 rounded-xl rounded-br-md text-[11px] ${
+                                isDark ? "bg-white/10 text-white/80" : "bg-black/10 text-black/80"
+                              }`}>
+                                Why is the sky blue?
+                              </div>
+                              
+                              {/* Message bubble 2 */}
+                              <div className={`self-start max-w-[85%] px-3 py-2 rounded-xl rounded-bl-md text-[11px] ${
+                                isDark ? "bg-white/[0.05] text-white/70" : "bg-black/[0.05] text-black/70"
+                              }`}>
+                                Shorter blue wavelengths scatter more off air molecules than longer red ones.
+                              </div>
+
+                              {/* Message bubble 3 */}
+                              <div className={`self-end max-w-[75%] px-3 py-2 rounded-xl rounded-br-md text-[11px] ${
+                                isDark ? "bg-white/10 text-white/80" : "bg-black/10 text-black/80"
+                              }`}>
+                                How do black holes form?
+                              </div>
+                            </div>
+
+                            {/* Footer label */}
+                            <div className="flex items-center justify-between mt-3 pt-3 border-t border-dashed" style={{ borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)" }}>
+                              <span className={`text-[10px] uppercase tracking-wider ${isDark ? "text-white/30" : "text-black/30"}`}>
+                                Chat
+                              </span>
+                              <span className={`text-[10px] flex items-center gap-1 ${isDark ? "text-white/40" : "text-black/40"}`}>
+                                Explore <span className="text-[8px]">→</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
