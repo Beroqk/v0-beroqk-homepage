@@ -63,90 +63,124 @@ export function Navbar() {
                 
                 {/* Mega Dropdown Menu */}
                 {isProductsOpen && (
-                  <div className={`absolute top-full -left-8 mt-6 p-6 rounded-2xl border shadow-2xl w-[580px] ${
+                  <div className={`absolute top-full -left-8 mt-6 p-8 rounded-3xl border shadow-2xl w-[720px] ${
                     isDark ? "bg-neutral-950 border-white/10" : "bg-white border-black/[0.08]"
                   }`}>
-                    <div className="flex gap-6">
-                      {/* Left Side - Product Links */}
-                      <div className="flex flex-col gap-1 w-[180px]">
-                        <Link
-                          href="/chat"
-                          className={`group block px-4 py-3 rounded-xl transition-all duration-200 ${
-                            isDark ? "hover:bg-white/[0.04]" : "hover:bg-black/[0.03]"
-                          }`}
-                          onClick={() => setIsProductsOpen(false)}
-                        >
-                          <div className={`text-sm font-medium mb-1 ${isDark ? "text-white" : "text-black"}`}>
-                            Chat
-                          </div>
-                          <div className={`text-xs leading-relaxed ${isDark ? "text-white/50" : "text-black/50"}`}>
-                            Intelligent AI conversations with automatic routing.
-                          </div>
-                        </Link>
-                        <Link
-                          href="/api-info"
-                          className={`group block px-4 py-3 rounded-xl transition-all duration-200 ${
-                            isDark ? "hover:bg-white/[0.04]" : "hover:bg-black/[0.03]"
-                          }`}
-                          onClick={() => setIsProductsOpen(false)}
-                        >
-                          <div className={`text-sm font-medium mb-1 ${isDark ? "text-white" : "text-black"}`}>
-                            Build
-                          </div>
-                          <div className={`text-xs leading-relaxed ${isDark ? "text-white/50" : "text-black/50"}`}>
-                            Integrate powerful AI into your applications.
-                          </div>
-                        </Link>
-                      </div>
-
-                      {/* Right Side - Visual Preview Card */}
-                      <div className="flex-1">
-                        <div className={`relative h-full min-h-[180px] rounded-2xl border overflow-hidden ${
-                          isDark ? "bg-neutral-900 border-white/[0.06]" : "bg-neutral-50 border-black/[0.06]"
-                        }`}>
-                          {/* Chat Preview Mockup */}
+                    {/* Two Card Grid */}
+                    <div className="grid grid-cols-2 gap-5">
+                      
+                      {/* Chat Card */}
+                      <Link
+                        href="/chat"
+                        className="group block"
+                        onClick={() => setIsProductsOpen(false)}
+                      >
+                        <div className={`relative h-[280px] rounded-2xl border overflow-hidden transition-all duration-300 ${
+                          isDark 
+                            ? "bg-neutral-900 border-white/[0.06] hover:border-white/[0.12]" 
+                            : "bg-neutral-50 border-black/[0.06] hover:border-black/[0.1]"
+                        } group-hover:-translate-y-0.5 group-hover:shadow-lg`}>
+                          
+                          {/* Chat Preview Content */}
                           <div className="absolute inset-0 p-5 flex flex-col">
-                            {/* Mini Chat Interface */}
-                            <div className={`text-xs font-medium mb-3 ${isDark ? "text-white/40" : "text-black/40"}`}>
-                              Preview
-                            </div>
-                            
                             {/* Chat Messages */}
-                            <div className="flex-1 flex flex-col gap-2.5">
-                              {/* Message bubble 1 */}
-                              <div className={`self-end max-w-[75%] px-3 py-2 rounded-xl rounded-br-md text-[11px] ${
+                            <div className="flex-1 flex flex-col gap-3 pt-2">
+                              <div className={`self-end max-w-[80%] px-4 py-2.5 rounded-2xl rounded-br-md text-sm ${
                                 isDark ? "bg-white/10 text-white/80" : "bg-black/10 text-black/80"
                               }`}>
                                 Why is the sky blue?
                               </div>
                               
-                              {/* Message bubble 2 */}
-                              <div className={`self-start max-w-[85%] px-3 py-2 rounded-xl rounded-bl-md text-[11px] ${
+                              <div className={`self-start max-w-[90%] px-4 py-2.5 rounded-2xl rounded-bl-md text-sm ${
                                 isDark ? "bg-white/[0.05] text-white/70" : "bg-black/[0.05] text-black/70"
                               }`}>
                                 Shorter blue wavelengths scatter more off air molecules than longer red ones.
                               </div>
 
-                              {/* Message bubble 3 */}
-                              <div className={`self-end max-w-[75%] px-3 py-2 rounded-xl rounded-br-md text-[11px] ${
+                              <div className={`self-end max-w-[80%] px-4 py-2.5 rounded-2xl rounded-br-md text-sm ${
                                 isDark ? "bg-white/10 text-white/80" : "bg-black/10 text-black/80"
                               }`}>
                                 How do black holes form?
                               </div>
                             </div>
 
-                            {/* Footer label */}
-                            <div className="flex items-center justify-between mt-3 pt-3 border-t border-dashed" style={{ borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)" }}>
-                              <span className={`text-[10px] uppercase tracking-wider ${isDark ? "text-white/30" : "text-black/30"}`}>
-                                Chat
-                              </span>
-                              <span className={`text-[10px] flex items-center gap-1 ${isDark ? "text-white/40" : "text-black/40"}`}>
-                                Explore <span className="text-[8px]">→</span>
+                            {/* Card Footer */}
+                            <div className="flex items-end justify-between mt-4 pt-4 border-t" style={{ borderColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
+                              <div>
+                                <div className={`text-base font-medium ${isDark ? "text-white" : "text-black"}`}>
+                                  Chat
+                                </div>
+                                <div className={`text-sm mt-1 ${isDark ? "text-white/50" : "text-black/50"}`}>
+                                  Intelligent AI conversations
+                                </div>
+                              </div>
+                              <span className={`text-sm flex items-center gap-1.5 transition-all duration-200 ${
+                                isDark ? "text-white/40 group-hover:text-white" : "text-black/40 group-hover:text-black"
+                              }`}>
+                                Explore <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                               </span>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
+
+                      {/* Build Card */}
+                      <Link
+                        href="/api-info"
+                        className="group block"
+                        onClick={() => setIsProductsOpen(false)}
+                      >
+                        <div className={`relative h-[280px] rounded-2xl border overflow-hidden transition-all duration-300 ${
+                          isDark 
+                            ? "bg-neutral-900 border-white/[0.06] hover:border-white/[0.12]" 
+                            : "bg-neutral-50 border-black/[0.06] hover:border-black/[0.1]"
+                        } group-hover:-translate-y-0.5 group-hover:shadow-lg`}>
+                          
+                          {/* Code Preview Content */}
+                          <div className="absolute inset-0 p-5 flex flex-col">
+                            {/* Terminal Header */}
+                            <div className="flex items-center gap-2 mb-3">
+                              <div className="flex gap-1.5">
+                                <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                              </div>
+                              <span className={`text-xs ml-2 ${isDark ? "text-white/30" : "text-black/30"}`}>
+                                api/route.ts
+                              </span>
+                            </div>
+                            
+                            {/* Code Block */}
+                            <div className={`flex-1 rounded-xl p-4 font-mono text-xs leading-relaxed overflow-hidden ${
+                              isDark ? "bg-black/40" : "bg-black/[0.03]"
+                            }`}>
+                              <div><span className={isDark ? "text-purple-400" : "text-purple-600"}>import</span> <span className={isDark ? "text-white/70" : "text-black/70"}>{"{ beroqk }"}</span> <span className={isDark ? "text-purple-400" : "text-purple-600"}>from</span> <span className={isDark ? "text-green-400" : "text-green-600"}>&quot;@beroqk/ai&quot;</span></div>
+                              <div className="mt-3"><span className={isDark ? "text-purple-400" : "text-purple-600"}>const</span> <span className={isDark ? "text-blue-400" : "text-blue-600"}>response</span> <span className={isDark ? "text-white/50" : "text-black/50"}>=</span> <span className={isDark ? "text-purple-400" : "text-purple-600"}>await</span> <span className={isDark ? "text-yellow-400" : "text-yellow-600"}>beroqk</span><span className={isDark ? "text-white/50" : "text-black/50"}>.</span><span className={isDark ? "text-blue-400" : "text-blue-600"}>chat</span><span className={isDark ? "text-white/50" : "text-black/50"}>{"({"}</span></div>
+                              <div className="ml-4"><span className={isDark ? "text-white/70" : "text-black/70"}>model</span><span className={isDark ? "text-white/50" : "text-black/50"}>:</span> <span className={isDark ? "text-green-400" : "text-green-600"}>&quot;auto&quot;</span><span className={isDark ? "text-white/50" : "text-black/50"}>,</span></div>
+                              <div className="ml-4"><span className={isDark ? "text-white/70" : "text-black/70"}>messages</span><span className={isDark ? "text-white/50" : "text-black/50"}>:</span> <span className={isDark ? "text-white/50" : "text-black/50"}>[]</span></div>
+                              <div><span className={isDark ? "text-white/50" : "text-black/50"}>{"})"}</span></div>
+                            </div>
+
+                            {/* Card Footer */}
+                            <div className="flex items-end justify-between mt-4 pt-4 border-t" style={{ borderColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
+                              <div>
+                                <div className={`text-base font-medium ${isDark ? "text-white" : "text-black"}`}>
+                                  Build
+                                </div>
+                                <div className={`text-sm mt-1 ${isDark ? "text-white/50" : "text-black/50"}`}>
+                                  Integrate AI into your apps
+                                </div>
+                              </div>
+                              <span className={`text-sm flex items-center gap-1.5 transition-all duration-200 ${
+                                isDark ? "text-white/40 group-hover:text-white" : "text-black/40 group-hover:text-black"
+                              }`}>
+                                Explore <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+
                     </div>
                   </div>
                 )}
