@@ -34,10 +34,10 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
-      <nav className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="flex h-48 sm:h-52 md:h-48 lg:h-48 items-center justify-between">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <div className="flex h-16 sm:h-20 md:h-20 lg:h-24 items-center justify-between">
           {/* Logo and Navigation */}
-          <div className="flex items-center gap-4 sm:gap-8 md:gap-24 lg:gap-32">
+          <div className="flex items-center gap-4 sm:gap-6 md:gap-12 lg:gap-32">
             {/* Logo - switches based on theme */}
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
@@ -45,7 +45,7 @@ export function Navbar() {
                 alt="BEROQK"
                 width={600}
                 height={200}
-                className="h-48 sm:h-52 md:h-40 lg:h-48"
+                className="h-12 sm:h-14 md:h-16 lg:h-20"
                 style={{ width: "auto" }}
                 priority
               />
@@ -258,19 +258,19 @@ export function Navbar() {
           </div>
 
           {/* CTA Button and Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <Link
               href="/chat"
-              className="lg:hidden text-xs font-medium px-4 h-10 inline-flex items-center rounded-xl bg-foreground text-background hover:opacity-90 transition-all duration-200"
+              className="lg:hidden text-[11px] sm:text-xs font-medium px-3 sm:px-4 h-8 sm:h-10 inline-flex items-center rounded-lg sm:rounded-xl bg-foreground text-background hover:opacity-90 transition-all duration-200"
             >
               Try Beroqk
             </Link>
             <button
-              className="lg:hidden p-3 text-muted-foreground hover:text-foreground transition-colors"
+              className="lg:hidden p-2 sm:p-3 text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
