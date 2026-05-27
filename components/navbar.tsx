@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isProductsOpen, setIsProductsOpen] = useState(false)
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false)
   const [activePreview, setActivePreview] = useState<"chat" | "build">("chat")
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
@@ -45,7 +46,7 @@ export function Navbar() {
                 alt="BEROQK"
                 width={600}
                 height={200}
-                className="h-12 sm:h-14 md:h-16 lg:h-20"
+                className="h-10 sm:h-12 md:h-14 lg:h-16"
                 style={{ width: "auto" }}
                 priority
               />
@@ -286,64 +287,147 @@ export function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-border">
-            <div className="flex flex-col gap-5">
-              {/* Products Section */}
-              <div className="flex flex-col gap-2">
-                <span className="text-base font-medium uppercase tracking-wide text-muted-foreground">
-                  Products
-                </span>
-                <div className="pl-4 flex flex-col gap-3">
-                  <Link 
-                    href="/chat" 
-                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden border-t border-border overflow-hidden"
+            >
+              <div className="py-6 flex flex-col gap-4">
+                {/* Products Dropdown */}
+                <div className="flex flex-col">
+                  <button
+                    onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                    className="flex items-center justify-between text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors py-2"
                   >
-                    Chat
-                  </Link>
-                  <Link 
-                    href="/api-info" 
-                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Build
-                  </Link>
+                    <span>Products</span>
+                    <ChevronDown size={18} className={`transition-transform duration-200 ${isMobileProductsOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  
+                  <AnimatePresence>
+                    {isMobileProductsOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pt-4 pb-2 flex flex-col gap-3">
+                          {/* Chat Card */}
+                          <Link
+                            href="/chat"
+                            className={`group block rounded-2xl border p-4 transition-all duration-200 ${
+                              isDark 
+                                ? "bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12]" 
+                                : "bg-black/[0.02] border-black/[0.05] hover:border-black/[0.1]"
+                            }`}
+                            onClick={() => { setIsMenuOpen(false); setIsMobileProductsOpen(false); }}
+                          >
+                            <div className="flex items-start justify-between mb-3">
+                              <span className={`text-base font-medium ${isDark ? "text-white" : "text-black"}`}>
+                                Chat
+                              </span>
+                              <ArrowRight 
+                                size={16} 
+                                className={`transition-all duration-200 ${
+                                  isDark ? "text-white/30 group-hover:text-white/60" : "text-black/30 group-hover:text-black/60"
+                                } group-hover:translate-x-0.5`} 
+                              />
+                            </div>
+                            <p className={`text-sm leading-relaxed mb-4 ${isDark ? "text-white/50" : "text-black/50"}`}>
+                              Intelligent conversations with automatic AI routing.
+                            </p>
+                            {/* Mini Chat Preview */}
+                            <div className={`rounded-xl p-3 ${isDark ? "bg-white/[0.03]" : "bg-black/[0.03]"}`}>
+                              <div className="flex flex-col gap-2">
+                                <div className={`self-end max-w-[75%] px-3 py-2 rounded-xl rounded-br-sm text-xs ${
+                                  isDark ? "bg-white/10 text-white/70" : "bg-black/10 text-black/70"
+                                }`}>
+                                  Why is the sky blue?
+                                </div>
+                                <div className={`self-start max-w-[85%] px-3 py-2 rounded-xl rounded-bl-sm text-xs ${
+                                  isDark ? "bg-white/[0.05] text-white/60" : "bg-black/[0.05] text-black/60"
+                                }`}>
+                                  Shorter blue wavelengths scatter more...
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+
+                          {/* Build Card */}
+                          <Link
+                            href="/api-info"
+                            className={`group block rounded-2xl border p-4 transition-all duration-200 ${
+                              isDark 
+                                ? "bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12]" 
+                                : "bg-black/[0.02] border-black/[0.05] hover:border-black/[0.1]"
+                            }`}
+                            onClick={() => { setIsMenuOpen(false); setIsMobileProductsOpen(false); }}
+                          >
+                            <div className="flex items-start justify-between mb-3">
+                              <span className={`text-base font-medium ${isDark ? "text-white" : "text-black"}`}>
+                                Build
+                              </span>
+                              <ArrowRight 
+                                size={16} 
+                                className={`transition-all duration-200 ${
+                                  isDark ? "text-white/30 group-hover:text-white/60" : "text-black/30 group-hover:text-black/60"
+                                } group-hover:translate-x-0.5`} 
+                              />
+                            </div>
+                            <p className={`text-sm leading-relaxed mb-4 ${isDark ? "text-white/50" : "text-black/50"}`}>
+                              Integrate powerful AI into your applications.
+                            </p>
+                            {/* Mini Code Preview */}
+                            <div className={`rounded-xl p-3 font-mono text-[10px] ${isDark ? "bg-black/40" : "bg-black/[0.03]"}`}>
+                              <div><span className={isDark ? "text-purple-400" : "text-purple-600"}>import</span> <span className={isDark ? "text-white/60" : "text-black/60"}>{"{ beroqk }"}</span></div>
+                              <div className="mt-1"><span className={isDark ? "text-blue-400" : "text-blue-600"}>const</span> <span className={isDark ? "text-white/60" : "text-black/60"}>res = </span><span className={isDark ? "text-yellow-400" : "text-yellow-600"}>beroqk</span><span className={isDark ? "text-white/40" : "text-black/40"}>.chat()</span></div>
+                            </div>
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
+
+                <Link 
+                  href="/company" 
+                  className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Company
+                </Link>
+                <Link 
+                  href="/careers" 
+                  className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Careers
+                </Link>
+                <Link 
+                  href="/news" 
+                  className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  News
+                </Link>
+                <a 
+                  href="https://beroqk.store" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Shop
+                </a>
               </div>
-              <Link 
-                href="/company" 
-                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Company
-              </Link>
-              <Link 
-                href="/careers" 
-                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Careers
-              </Link>
-              <Link 
-                href="/news" 
-                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                News
-              </Link>
-              <a 
-                href="https://beroqk.store" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Shop
-              </a>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   )
