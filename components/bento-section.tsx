@@ -90,12 +90,12 @@ export function BentoSection() {
             <div 
               className={`
                 relative overflow-hidden rounded-3xl border h-[500px] lg:h-[620px]
-                transition-all duration-500 ease-out backdrop-blur-2xl
+                transition-all duration-500 ease-out
                 ${isDark 
-                  ? `bg-black/60 shadow-[0_4px_40px_rgba(0,0,0,0.4)] ${isHovered ? "border-white/[0.12] shadow-[0_8px_60px_rgba(0,0,0,0.5)]" : "border-white/[0.06]"}`
-                  : `bg-white/80 shadow-[0_4px_40px_rgba(0,0,0,0.08)] ${isHovered ? "border-black/[0.1] shadow-[0_8px_60px_rgba(0,0,0,0.12)]" : "border-black/[0.05]"}`
+                  ? "bg-neutral-950 border-white/[0.08] hover:border-white/[0.15]" 
+                  : "bg-neutral-50 border-black/[0.06] hover:border-black/[0.12]"
                 }
-                group-hover:-translate-y-1
+                group-hover:-translate-y-1 group-hover:shadow-2xl
               `}
             >
               {/* Glass panel chat mockup */}
@@ -111,8 +111,8 @@ export function BentoSection() {
                     w-full max-w-md flex items-center gap-4 px-6 py-5 rounded-2xl 
                     border transition-all duration-300
                     ${isDark 
-                      ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : "border-white/[0.06]"}`
-                      : `bg-black/[0.02] ${isHovered ? "border-black/[0.1] bg-black/[0.04]" : "border-black/[0.05]"}`
+                      ? "bg-white/[0.02] border-white/[0.06] group-hover:border-white/[0.12] group-hover:bg-white/[0.04]"
+                      : "bg-black/[0.02] border-black/[0.05] group-hover:border-black/[0.1] group-hover:bg-black/[0.04]"
                     }
                   `}
                 >
@@ -134,18 +134,6 @@ export function BentoSection() {
                   </span>
                 </div>
               </div>
-
-              {/* Ultra subtle glow */}
-              <div
-                className={`absolute -inset-16 -z-10 rounded-[40px] transition-opacity duration-700 ${
-                  isHovered ? "opacity-100" : "opacity-30"
-                }`}
-                style={{
-                  background: isDark 
-                    ? "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 55%)"
-                    : "radial-gradient(ellipse at center, rgba(0,0,0,0.03) 0%, transparent 55%)",
-                }}
-              />
 
               {/* Card Footer */}
               <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
