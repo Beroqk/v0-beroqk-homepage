@@ -98,18 +98,18 @@ function ChatDemo() {
           `}
         >
           {/* Center: Ask Beroqk prompt */}
-          <div className="px-5 sm:px-6 md:px-8 pt-8 sm:pt-10 pb-4 sm:pb-6 text-center">
-            <h3 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-wide ${isDark ? "text-white/80" : "text-black/80"}`}>
+          <div className="px-8 pt-10 pb-6 text-center">
+            <h3 className={`text-4xl md:text-5xl font-light tracking-wide ${isDark ? "text-white/80" : "text-black/80"}`}>
               Ask Beroqk
             </h3>
           </div>
 
           {/* Input field */}
-          <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-6">
+          <div className="px-6 pb-6">
             <Link
               href="/chat"
               className={`
-                flex items-center gap-3 sm:gap-4 px-4 sm:px-5 md:px-6 py-4 sm:py-5 rounded-xl sm:rounded-2xl 
+                flex items-center gap-4 px-6 py-5 rounded-2xl 
                 border transition-all duration-300 cursor-pointer group
                 ${isDark 
                   ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : "border-white/[0.06]"} hover:border-white/[0.15] hover:bg-white/[0.05]`
@@ -117,21 +117,21 @@ function ChatDemo() {
                 }
               `}
             >
-              <span className={`text-base sm:text-lg md:text-xl flex-grow font-light tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
+              <span className={`text-lg md:text-xl flex-grow font-light tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
                 {displayText}
                 <span className={`${showCursor ? "opacity-100" : "opacity-0"} ${isDark ? "text-white/50" : "text-black/50"} transition-opacity duration-100`}>|</span>
               </span>
               <ArrowRight 
-                size={18} 
-                className={`flex-shrink-0 ${isDark ? "text-white/30 group-hover:text-white/50" : "text-black/30 group-hover:text-black/50"} group-hover:translate-x-0.5 transition-all duration-300`}
+                size={20} 
+                className={`${isDark ? "text-white/30 group-hover:text-white/50" : "text-black/30 group-hover:text-black/50"} group-hover:translate-x-0.5 transition-all duration-300`}
               />
             </Link>
           </div>
 
           {/* Routing indicator */}
-          <div className="px-4 sm:px-6 pb-6 sm:pb-8 flex items-center justify-center gap-2 sm:gap-2.5">
-            <div className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
-            <span className={`text-xs sm:text-sm md:text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
+          <div className="px-6 pb-8 flex items-center justify-center gap-2.5">
+            <div className={`w-2 h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
+            <span className={`text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
               Automatically routes to the optimal AI.
             </span>
           </div>
@@ -189,8 +189,8 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 lg:pt-0 lg:pb-0">
-        <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 md:gap-16 lg:gap-24">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-32 pb-20 lg:pt-0 lg:pb-0">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Left Side — Chat Demo (50%) */}
           <div 
             className={`w-full lg:w-1/2 transition-all duration-1000 delay-200 ${
@@ -208,7 +208,7 @@ export function HeroSection() {
           >
             {/* Headline */}
             <h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-6 sm:mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-8"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
             >
               <span className={isDark ? "text-white" : "text-black"}>EFFICIENT</span>{" "}
@@ -216,15 +216,15 @@ export function HeroSection() {
             </h1>
 
             {/* Subtext */}
-            <p className={`text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-10 md:mb-12 ${isDark ? "text-white/50" : "text-black/50"}`}>
+            <p className={`text-xl md:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12 ${isDark ? "text-white/50" : "text-black/50"}`}>
               Route every task to the smartest, fastest, and most cost-effective AI automatically.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
               <Link
                 href="/chat"
-                className={`group inline-flex items-center justify-center gap-2 sm:gap-2.5 px-6 sm:px-8 md:px-10 h-12 sm:h-14 text-sm sm:text-base font-medium rounded-xl transition-all duration-300 w-full sm:w-auto
+                className={`group inline-flex items-center gap-2.5 px-10 h-14 py-4 text-base font-medium rounded-xl transition-all duration-300
                   ${isDark 
                     ? "bg-white text-black hover:bg-white/90 hover:shadow-[0_8px_30px_rgba(255,255,255,0.12)]"
                     : "bg-black text-white hover:bg-black/90 hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
@@ -238,7 +238,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/api-info"
-                className={`inline-flex items-center justify-center gap-2 h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base border rounded-xl transition-all duration-300 w-full sm:w-auto
+                className={`inline-flex items-center gap-2 h-14 px-8 py-4 text-base border rounded-xl transition-all duration-300
                   ${isDark 
                     ? "text-white/50 hover:text-white/80 border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.03]"
                     : "text-black/50 hover:text-black/80 border-black/[0.08] hover:border-black/[0.15] hover:bg-black/[0.03]"

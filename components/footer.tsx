@@ -51,21 +51,21 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background py-8 sm:py-10 md:py-12 px-4 sm:px-6">
+    <footer className="border-t border-border bg-background py-12 px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Logo */}
-          <Link href="/" className="text-base sm:text-lg font-normal tracking-tight text-foreground">
+          <Link href="/" className="text-lg font-normal tracking-tight text-foreground">
             BEROQK
           </Link>
 
           {/* Links */}
-          <nav className="flex flex-wrap gap-4 sm:gap-6 md:gap-8">
+          <nav className="flex flex-wrap gap-6 md:gap-8">
             {footerLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
               </Link>
@@ -73,7 +73,7 @@ export function Footer() {
           </nav>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-4 sm:gap-5">
+          <div className="flex items-center gap-5">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
@@ -83,19 +83,19 @@ export function Footer() {
                 className="text-muted-foreground hover:text-foreground hover:opacity-80 transition-all duration-200"
                 aria-label={link.name}
               >
-                <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                <link.icon className="w-5 h-5" />
               </a>
             ))}
           </div>
         </div>
 
         {/* Bottom row with theme toggle and copyright */}
-        <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-border flex items-center justify-between">
           {/* Theme Toggle - xAI style positioned on left */}
           <ThemeToggle />
           
           {/* Copyright */}
-          <p className="text-xs sm:text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Beroqk. All rights reserved.
           </p>
         </div>

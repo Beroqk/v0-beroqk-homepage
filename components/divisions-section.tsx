@@ -21,9 +21,9 @@ function RoutingCard() {
     <Link href="/api-info" className="block">
       <div
         className={`
-          relative overflow-hidden rounded-2xl sm:rounded-3xl border
+          relative overflow-hidden rounded-3xl border
           transition-all duration-500 ease-out cursor-pointer
-          h-[320px] sm:h-[360px] md:h-[420px] lg:h-[480px]
+          h-[420px] md:h-[480px]
           ${isDark 
             ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] -translate-y-1" : "border-white/[0.06]"}`
             : `bg-black/[0.02] ${isHovered ? "border-black/[0.1] -translate-y-1" : "border-black/[0.05]"}`
@@ -33,25 +33,25 @@ function RoutingCard() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Content */}
-        <div className="relative z-10 h-full p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
+        <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
-          <span className={`text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.12em] sm:tracking-[0.15em] ${isDark ? "text-white/50" : "text-black/50"}`}>
+          <span className={`text-sm md:text-base font-medium uppercase tracking-[0.15em] ${isDark ? "text-white/50" : "text-black/50"}`}>
             Routing Intelligence
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
-            <h3 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-3 sm:mb-4 md:mb-5 ${isDark ? "text-white" : "text-black"}`} style={{ letterSpacing: "-0.02em" }}>
+            <h3 className={`text-3xl md:text-4xl lg:text-5xl font-light mb-5 ${isDark ? "text-white" : "text-black"}`} style={{ letterSpacing: "-0.02em" }}>
               Optimal model, every time.
             </h3>
 
-            <p className={`text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
+            <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
               Automatically routes requests to the most efficient AI for the task.
             </p>
 
             {/* CTA */}
             <div className={`
-              inline-flex items-center gap-2 sm:gap-2.5 text-sm sm:text-base md:text-lg
+              inline-flex items-center gap-2.5 text-base md:text-lg
               transition-all duration-300
               ${isDark 
                 ? `text-white/50 ${isHovered ? "text-white/80" : ""}`
@@ -59,7 +59,7 @@ function RoutingCard() {
               }
             `}>
               <span>Learn more</span>
-              <ArrowRight size={16} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
+              <ArrowRight size={18} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
             </div>
           </div>
         </div>
@@ -84,9 +84,9 @@ function PrivacyCard() {
     <Link href="/b-sting" className="block">
       <div
         className={`
-          relative overflow-hidden rounded-2xl sm:rounded-3xl border
+          relative overflow-hidden rounded-3xl border
           transition-all duration-500 ease-out cursor-pointer
-          h-[320px] sm:h-[360px] md:h-[420px] lg:h-[480px]
+          h-[420px] md:h-[480px]
           ${isDark 
             ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] -translate-y-1" : "border-white/[0.06]"}`
             : `bg-black/[0.02] ${isHovered ? "border-black/[0.1] -translate-y-1" : "border-black/[0.05]"}`
@@ -96,25 +96,25 @@ function PrivacyCard() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Content */}
-        <div className="relative z-10 h-full p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col">
+        <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
-          <span className={`text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.12em] sm:tracking-[0.15em] ${isDark ? "text-white/50" : "text-black/50"}`}>
+          <span className={`text-sm md:text-base font-medium uppercase tracking-[0.15em] ${isDark ? "text-white/50" : "text-black/50"}`}>
             Privacy
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
-            <h3 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-3 sm:mb-4 md:mb-5 ${isDark ? "text-white" : "text-black"}`} style={{ letterSpacing: "-0.02em" }}>
+            <h3 className={`text-3xl md:text-4xl lg:text-5xl font-light mb-5 ${isDark ? "text-white" : "text-black"}`} style={{ letterSpacing: "-0.02em" }}>
               Protection before access.
             </h3>
 
-            <p className={`text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
+            <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
               Sensitive data is secured before it ever reaches an AI model.
             </p>
 
             {/* CTA */}
             <div className={`
-              inline-flex items-center gap-2 sm:gap-2.5 text-sm sm:text-base md:text-lg
+              inline-flex items-center gap-2.5 text-base md:text-lg
               transition-all duration-300
               ${isDark 
                 ? `text-white/50 ${isHovered ? "text-white/80" : ""}`
@@ -122,7 +122,7 @@ function PrivacyCard() {
               }
             `}>
               <span>Learn more</span>
-              <ArrowRight size={16} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
+              <ArrowRight size={18} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
             </div>
           </div>
         </div>
@@ -142,15 +142,15 @@ export function DivisionsSection() {
   const isDark = mounted && resolvedTheme === "dark"
 
   return (
-    <section className={`relative py-20 sm:py-24 md:py-32 lg:py-40 ${isDark ? "bg-black" : "bg-white"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+    <section className={`relative py-32 md:py-40 ${isDark ? "bg-black" : "bg-[#fafafa]"}`}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section header */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
-          <p className={`text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] sm:tracking-[0.25em] mb-4 sm:mb-6 ${isDark ? "text-white/45" : "text-black/45"}`}>
+        <div className="text-center mb-20 md:mb-24">
+          <p className={`text-sm md:text-base uppercase tracking-[0.25em] mb-6 ${isDark ? "text-white/45" : "text-black/45"}`}>
             Core Systems
           </p>
           <h2 
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light ${isDark ? "text-white/90" : "text-black/90"}`}
+            className={`text-4xl md:text-5xl lg:text-6xl font-light ${isDark ? "text-white/90" : "text-black/90"}`}
             style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
           >
             Built for Efficiency.
@@ -158,7 +158,7 @@ export function DivisionsSection() {
         </div>
 
         {/* Two-card layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           <RoutingCard />
           <PrivacyCard />
         </div>
