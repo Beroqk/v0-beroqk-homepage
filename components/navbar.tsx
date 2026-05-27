@@ -43,9 +43,9 @@ export function Navbar() {
               <Image
                 src={isDark ? "/images/beroqk-logo.png" : "/images/beroqk-logo-black.png"}
                 alt="BEROQK"
-                width={500}
-                height={160}
-                className="h-40 sm:h-44 md:h-32 lg:h-40"
+                width={600}
+                height={200}
+                className="h-48 sm:h-52 md:h-40 lg:h-48"
                 style={{ width: "auto" }}
                 priority
               />
