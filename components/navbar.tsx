@@ -36,7 +36,7 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        <div className="flex h-28 sm:h-24 md:h-24 lg:h-24 items-center justify-between">
+        <div className="flex h-20 sm:h-24 md:h-24 lg:h-24 items-center justify-between">
           {/* Logo and Navigation */}
           <div className="flex items-center gap-4 sm:gap-6 md:gap-12 lg:gap-32">
             {/* Logo - switches based on theme */}
@@ -44,9 +44,9 @@ export function Navbar() {
               <Image
                 src={isDark ? "/images/beroqk-logo.png" : "/images/beroqk-logo-black.png"}
                 alt="BEROQK"
-                width={800}
-                height={300}
-                className="h-36 sm:h-20 md:h-18 lg:h-16"
+                width={600}
+                height={200}
+                className="h-16 sm:h-16 md:h-16 lg:h-16"
                 style={{ width: "auto" }}
                 priority
               />
