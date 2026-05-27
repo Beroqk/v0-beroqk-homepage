@@ -6,9 +6,23 @@ import { ArrowRight } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useState, useEffect } from "react"
 
+// Rotating placeholders for the input
+const placeholders = [
+  "Plan my week",
+  "Compare Claude vs GPT pricing",
+  "Summarize this contract",
+  "Build a launch strategy",
+]
+
 export function BentoSection() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [placeholderIndex, setPlaceholderIndex] = useState(0)
+  const [displayText, setDisplayText] = useState("")
+  const [isTyping, setIsTyping] = useState(true)
+  const [showCursor, setShowCursor] = useState(true)
+  const [showPulse, setShowPulse] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -16,76 +30,122 @@ export function BentoSection() {
 
   const isDark = mounted && resolvedTheme === "dark"
 
+  // Rotate placeholders with typing effect
+  useEffect(() => {
+    const currentPlaceholder = placeholders[placeholderIndex]
+    
+    if (isTyping) {
+      if (displayText.length < currentPlaceholder.length) {
+        const timeout = setTimeout(() => {
+          setDisplayText(currentPlaceholder.slice(0, displayText.length + 1))
+        }, 50)
+        return () => clearTimeout(timeout)
+      } else {
+        const timeout = setTimeout(() => {
+          setIsTyping(false)
+        }, 2500)
+        return () => clearTimeout(timeout)
+      }
+    } else {
+      if (displayText.length > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1))
+        }, 25)
+        return () => clearTimeout(timeout)
+      } else {
+        setPlaceholderIndex((prev) => (prev + 1) % placeholders.length)
+        setIsTyping(true)
+      }
+    }
+  }, [displayText, isTyping, placeholderIndex])
+
+  // Blinking cursor
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowCursor((prev) => !prev)
+    }, 530)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Pulse animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowPulse((prev) => !prev)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className={`py-24 md:py-32 px-6 transition-colors duration-300 ${isDark ? "bg-black" : "bg-white"}`}>
       <div className="mx-auto max-w-7xl">
         {/* Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {/* Chat Card - Large Left */}
-          <Link href="/chat" className="group block">
+          <Link 
+            href="/chat" 
+            className="group block"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <div 
               className={`
                 relative overflow-hidden rounded-3xl border h-[500px] lg:h-[620px]
-                transition-all duration-500 ease-out
+                transition-all duration-500 ease-out backdrop-blur-2xl
                 ${isDark 
-                  ? "bg-neutral-950 border-white/[0.08] hover:border-white/[0.15]" 
-                  : "bg-neutral-50 border-black/[0.06] hover:border-black/[0.12]"
+                  ? `bg-black/60 shadow-[0_4px_40px_rgba(0,0,0,0.4)] ${isHovered ? "border-white/[0.12] shadow-[0_8px_60px_rgba(0,0,0,0.5)]" : "border-white/[0.06]"}`
+                  : `bg-white/80 shadow-[0_4px_40px_rgba(0,0,0,0.08)] ${isHovered ? "border-black/[0.1] shadow-[0_8px_60px_rgba(0,0,0,0.12)]" : "border-black/[0.05]"}`
                 }
-                group-hover:-translate-y-1 group-hover:shadow-2xl
+                group-hover:-translate-y-1
               `}
             >
-              {/* Chat UI Mockup */}
-              <div className="absolute inset-6 flex flex-col">
-                {/* Mock Chat Interface */}
-                <div className={`flex-1 rounded-2xl border overflow-hidden ${
-                  isDark ? "bg-black border-white/[0.06]" : "bg-white border-black/[0.06]"
-                }`}>
-                  {/* Chat Header */}
-                  <div className={`px-5 py-4 border-b ${isDark ? "border-white/[0.06]" : "border-black/[0.06]"}`}>
-                    <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-full ${isDark ? "bg-white/10" : "bg-black/10"}`} />
-                      <div>
-                        <div className={`text-sm font-medium ${isDark ? "text-white" : "text-black"}`}>Beroqk</div>
-                        <div className={`text-xs ${isDark ? "text-white/40" : "text-black/40"}`}>AI Assistant</div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Chat Messages */}
-                  <div className="p-5 space-y-4">
-                    {/* User Message */}
-                    <div className="flex justify-end">
-                      <div className={`max-w-[80%] px-4 py-3 rounded-2xl rounded-br-md text-sm ${
-                        isDark ? "bg-white/10 text-white" : "bg-black/10 text-black"
-                      }`}>
-                        Help me write a marketing email
-                      </div>
-                    </div>
-                    
-                    {/* AI Message */}
-                    <div className="flex justify-start">
-                      <div className={`max-w-[85%] px-4 py-3 rounded-2xl rounded-bl-md text-sm ${
-                        isDark ? "bg-white/[0.05] text-white/80" : "bg-black/[0.05] text-black/80"
-                      }`}>
-                        I&apos;d be happy to help you craft a compelling marketing email. What product or service would you like to promote?
-                      </div>
-                    </div>
+              {/* Glass panel chat mockup */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                {/* Ask Beroqk title */}
+                <h3 className={`text-4xl md:text-5xl font-light tracking-wide mb-8 ${isDark ? "text-white/80" : "text-black/80"}`}>
+                  Ask Beroqk
+                </h3>
 
-                    {/* Typing Indicator */}
-                    <div className="flex justify-start">
-                      <div className={`px-4 py-3 rounded-2xl rounded-bl-md ${
-                        isDark ? "bg-white/[0.05]" : "bg-black/[0.05]"
-                      }`}>
-                        <div className="flex gap-1.5">
-                          <div className={`w-2 h-2 rounded-full animate-pulse ${isDark ? "bg-white/40" : "bg-black/40"}`} />
-                          <div className={`w-2 h-2 rounded-full animate-pulse delay-75 ${isDark ? "bg-white/40" : "bg-black/40"}`} />
-                          <div className={`w-2 h-2 rounded-full animate-pulse delay-150 ${isDark ? "bg-white/40" : "bg-black/40"}`} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Input field mockup */}
+                <div
+                  className={`
+                    w-full max-w-md flex items-center gap-4 px-6 py-5 rounded-2xl 
+                    border transition-all duration-300
+                    ${isDark 
+                      ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : "border-white/[0.06]"}`
+                      : `bg-black/[0.02] ${isHovered ? "border-black/[0.1] bg-black/[0.04]" : "border-black/[0.05]"}`
+                    }
+                  `}
+                >
+                  <span className={`text-lg md:text-xl flex-grow font-light tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
+                    {displayText}
+                    <span className={`${showCursor ? "opacity-100" : "opacity-0"} ${isDark ? "text-white/50" : "text-black/50"} transition-opacity duration-100`}>|</span>
+                  </span>
+                  <ArrowRight 
+                    size={20} 
+                    className={`${isDark ? "text-white/30 group-hover:text-white/50" : "text-black/30 group-hover:text-black/50"} group-hover:translate-x-0.5 transition-all duration-300`}
+                  />
+                </div>
+
+                {/* Routing indicator */}
+                <div className="mt-6 flex items-center justify-center gap-2.5">
+                  <div className={`w-2 h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
+                  <span className={`text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
+                    Automatically routes to the optimal AI.
+                  </span>
                 </div>
               </div>
+
+              {/* Ultra subtle glow */}
+              <div
+                className={`absolute -inset-16 -z-10 rounded-[40px] transition-opacity duration-700 ${
+                  isHovered ? "opacity-100" : "opacity-30"
+                }`}
+                style={{
+                  background: isDark 
+                    ? "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 55%)"
+                    : "radial-gradient(ellipse at center, rgba(0,0,0,0.03) 0%, transparent 55%)",
+                }}
+              />
 
               {/* Card Footer */}
               <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
