@@ -17,35 +17,35 @@ function ShieldNetwork() {
       {/* Outer ring */}
       <div 
         className={`absolute w-full h-full rounded-full border transition-all duration-700 ${
-          isHovered ? "border-white/30 scale-100" : "border-white/10 scale-95"
-        } ${isActive ? "border-white/40" : ""}`}
+          isHovered ? "border-foreground/30 scale-100" : "border-foreground/15 scale-95"
+        } ${isActive ? "border-foreground/40" : ""}`}
       />
       
       {/* Middle ring */}
       <div 
         className={`absolute w-3/4 h-3/4 rounded-full border transition-all duration-500 delay-75 ${
-          isHovered ? "border-white/25 scale-100" : "border-white/8 scale-90"
-        } ${isActive ? "border-white/35" : ""}`}
+          isHovered ? "border-foreground/25 scale-100" : "border-foreground/10 scale-90"
+        } ${isActive ? "border-foreground/35" : ""}`}
       />
       
       {/* Inner ring */}
       <div 
         className={`absolute w-1/2 h-1/2 rounded-full border transition-all duration-300 delay-150 ${
-          isHovered ? "border-white/20 scale-100" : "border-white/5 scale-85"
-        } ${isActive ? "border-white/30" : ""}`}
+          isHovered ? "border-foreground/20 scale-100" : "border-foreground/[0.08] scale-85"
+        } ${isActive ? "border-foreground/30" : ""}`}
       />
       
       {/* Center dot */}
       <div 
         className={`w-3 h-3 rounded-full transition-all duration-300 ${
-          isHovered ? "bg-white/60 scale-125" : "bg-white/20 scale-100"
-        } ${isActive ? "bg-white/80 shadow-[0_0_20px_rgba(255,255,255,0.3)]" : ""}`}
+          isHovered ? "bg-foreground/60 scale-125" : "bg-foreground/25 scale-100"
+        } ${isActive ? "bg-foreground/90 shadow-[0_0_20px_rgba(120,120,120,0.4)]" : ""}`}
       />
       
       {/* Status text */}
       <div 
         className={`absolute -bottom-12 left-1/2 -translate-x-1/2 text-xs tracking-widest transition-all duration-500 ${
-          isActive ? "text-white/60 opacity-100" : "text-white/0 opacity-0"
+          isActive ? "text-foreground/70 opacity-100" : "text-foreground/0 opacity-0"
         }`}
       >
         SHIELD ACTIVE
