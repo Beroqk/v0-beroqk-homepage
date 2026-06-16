@@ -97,7 +97,7 @@ export default function CompanyPage() {
           ref={addToRefs}
           className="opacity-0 translate-y-4 transition-all duration-700 ease-out"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-6">
+          <p className="text-base md:text-lg font-medium uppercase tracking-wide text-muted-foreground mb-6">
             Our Mission
           </p>
           <h1 
@@ -126,7 +126,7 @@ export default function CompanyPage() {
           ref={addToRefs}
           className="opacity-0 translate-y-4 transition-all duration-700 ease-out"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-6">
+          <p className="text-base md:text-lg font-medium uppercase tracking-wide text-muted-foreground mb-6">
             At our core
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-16">
@@ -161,7 +161,7 @@ export default function CompanyPage() {
           ref={addToRefs}
           className="opacity-0 translate-y-4 transition-all duration-700 ease-out"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-6">
+          <p className="text-base md:text-lg font-medium uppercase tracking-wide text-muted-foreground mb-6">
             Collaboration
           </p>
           <h2 className="text-3xl md:text-4xl font-normal tracking-tight mb-6">
