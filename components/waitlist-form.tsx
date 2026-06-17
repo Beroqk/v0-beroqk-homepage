@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-const ROLES = ["Founder", "Builder", "Creative", "Executive"] as const
+const ROLES = ["Founder", "Builder", "Creative", "Researcher", "Other"] as const
 
 export function WaitlistForm() {
   const [name, setName] = useState("")
