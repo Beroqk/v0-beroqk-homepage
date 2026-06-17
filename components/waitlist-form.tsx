@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { Check } from "lucide-react"
+import { createClient } from "@/lib/supabase/client"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -21,11 +22,32 @@ export function WaitlistForm() {
   const [email, setEmail] = useState("")
   const [role, setRole] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState("")
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!name || !email || !role) return
-    // UI only for now — no backend wiring.
+
+    setSubmitting(true)
+    setError("")
+
+    const supabase = createClient()
+    const { error: insertError } = await supabase
+      .from("waitlist")
+      .insert({ name, email, role })
+
+    if (insertError) {
+      if (insertError.code === "23505") {
+        setError("You're already on the waitlist.")
+      } else {
+        setError("Something went wrong. Please try again.")
+      }
+      setSubmitting(false)
+      return
+    }
+
+    setSubmitting(false)
     setSubmitted(true)
   }
 
@@ -89,9 +111,15 @@ export function WaitlistForm() {
         </Select>
       </div>
 
-      <Button type="submit" className="mt-3 h-14 w-full rounded-full text-base md:text-lg font-semibold">
-        Join the Waitlist
+      <Button
+        type="submit"
+        disabled={submitting}
+        className="mt-3 h-14 w-full rounded-full text-base md:text-lg font-semibold"
+      >
+        {submitting ? "Joining..." : "Join the Waitlist"}
       </Button>
+
+      {error && <p className="text-sm text-center text-muted-foreground">{error}</p>}
     </form>
   )
 }
