@@ -85,7 +85,7 @@ export function WaitlistForm() {
         </Select>
       </div>
 
-      <Button type="submit" className="mt-2 h-11 w-full rounded-full text-sm font-medium">
+      <Button type="submit" className="mt-3 h-14 w-full rounded-full text-base md:text-lg font-semibold">
         Join the Waitlist
       </Button>
     </form>
