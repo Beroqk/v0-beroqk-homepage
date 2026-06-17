@@ -47,6 +47,22 @@ export function WaitlistForm() {
       return
     }
 
+    // Insert succeeded — send confirmation email (best-effort, never blocks success).
+    try {
+      const res = await fetch("/api/waitlist-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name }),
+      })
+      if (res.ok) {
+        console.log("[v0] Confirmation email request succeeded")
+      } else {
+        console.log("[v0] Confirmation email request failed:", res.status)
+      }
+    } catch (err) {
+      console.log("[v0] Confirmation email request error:", err)
+    }
+
     setSubmitting(false)
     setSubmitted(true)
   }
