@@ -16,30 +16,29 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(apiKey)
-    const greeting = name ? `Hi ${name},` : "Hi there,"
 
     const { data, error } = await resend.emails.send({
       from: "Beroqk <onboarding@resend.dev>",
       to: email,
       subject: "Welcome to the Beroqk waitlist",
       text: [
-        greeting,
-        "",
         "You're on the Beroqk waitlist.",
         "",
         "Beroqk Chat routes every task to the smartest, fastest, and most cost-effective AI automatically.",
         "",
-        "We'll send updates as early access opens.",
+        "We're currently preparing early access and will share updates as they become available.",
         "",
-        "Beroqk.com",
+        "— Beroqk",
+        "",
+        "beroqk.com",
       ].join("\n"),
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; color: #111;">
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">${greeting}</p>
           <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px; font-weight: 600;">You're on the Beroqk waitlist.</p>
           <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Beroqk Chat routes every task to the smartest, fastest, and most cost-effective AI automatically.</p>
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">We'll send updates as early access opens.</p>
-          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: #666;">Beroqk.com</p>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">We're currently preparing early access and will share updates as they become available.</p>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 4px;">— Beroqk</p>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: #666;">beroqk.com</p>
         </div>
       `,
     })
