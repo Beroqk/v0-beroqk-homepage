@@ -47,17 +47,6 @@ export function WaitlistForm() {
       return
     }
 
-    // Send welcome email (best-effort, does not block success state)
-    try {
-      await fetch("/api/waitlist-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      })
-    } catch (err) {
-      console.log("[v0] welcome email request failed:", err)
-    }
-
     setSubmitting(false)
     setSubmitted(true)
   }
