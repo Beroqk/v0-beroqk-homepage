@@ -14,32 +14,11 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: 'BEROQK - Efficient AI for the Future',
   description: 'Beroqk builds efficient AI that reduces compute, cost, and environmental impact.',
-  icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        sizes: 'any',
-      },
-      {
-        url: '/icon-light-32x32.png',
-        type: 'image/png',
-        sizes: '32x32',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        type: 'image/png',
-        sizes: '32x32',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
+icons: {
+  icon: '/favicon.ico',
+  shortcut: '/favicon.ico',
+  apple: '/favicon.ico',
+},
 }
 
 export const viewport: Viewport = {
