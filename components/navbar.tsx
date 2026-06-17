@@ -35,18 +35,17 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <nav className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="flex h-48 sm:h-52 md:h-48 lg:h-48 items-center justify-between">
+        <div className="flex h-20 sm:h-24 md:h-24 lg:h-28 items-center justify-between">
           {/* Logo and Navigation */}
           <div className="flex items-center gap-4 sm:gap-8 md:gap-24 lg:gap-32">
             {/* Logo - switches based on theme */}
-            <Link href="/" className="inline-flex items-center w-fit flex-shrink-0 p-0">
+            <Link href="/" className="inline-flex w-fit items-center shrink-0">
               <Image
                 src={isDark ? "/images/beroqk-logo.png" : "/images/beroqk-logo-black.png"}
                 alt="BEROQK"
-                width={600}
-                height={200}
-                className="h-48 sm:h-52 md:h-40 lg:h-48"
-                style={{ width: "auto" }}
+                width={4237}
+                height={609}
+                className="h-12 sm:h-14 md:h-14 lg:h-16 w-auto"
                 priority
               />
             </Link>
