@@ -244,7 +244,7 @@ export function BentoSection() {
             </Link>
 
             {/* Shop Card */}
-            <a href="https://beroqk.store" target="_blank" rel="noopener noreferrer" className="group block flex-1">
+            <a href="https://shop.beroqk.com" target="_blank" rel="noopener noreferrer" className="group block flex-1">
               <div 
                 className={`
                   relative overflow-hidden rounded-3xl border h-[300px]

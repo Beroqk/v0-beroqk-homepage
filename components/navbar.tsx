@@ -247,7 +247,7 @@ export function Navbar() {
                 News
               </Link>
               <a 
-                href="https://beroqk.store" 
+                href="https://shop.beroqk.com" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted-foreground hover:text-foreground transition-all duration-200"
@@ -333,7 +333,7 @@ export function Navbar() {
                 News
               </Link>
               <a 
-                href="https://beroqk.store" 
+                href="https://shop.beroqk.com" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-base font-medium uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
