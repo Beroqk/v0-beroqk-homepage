@@ -39,7 +39,7 @@ export function Navbar() {
           {/* Logo and Navigation */}
           <div className="flex items-center gap-4 sm:gap-8 md:gap-24 lg:gap-32">
             {/* Logo - switches based on theme */}
-            <Link href="/" className="flex items-center flex-shrink-0">
+            <Link href="/" className="inline-flex items-center w-fit flex-shrink-0 p-0">
               <Image
                 src={isDark ? "/images/beroqk-logo.png" : "/images/beroqk-logo-black.png"}
                 alt="BEROQK"

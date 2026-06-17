@@ -77,7 +77,7 @@ function ChatDemo() {
 
   return (
     <div
-      className="relative w-full max-w-lg mx-auto lg:mx-0"
+      className="relative w-[90vw] max-w-[360px] sm:w-full sm:max-w-lg mx-auto lg:mx-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -98,18 +98,18 @@ function ChatDemo() {
           `}
         >
           {/* Center: Ask Beroqk prompt */}
-          <div className="px-8 pt-10 pb-6 text-center">
-            <h3 className={`text-4xl md:text-5xl font-light tracking-wide ${isDark ? "text-white/80" : "text-black/80"}`}>
+          <div className="px-6 sm:px-8 pt-7 sm:pt-10 pb-5 sm:pb-6 text-center">
+            <h3 className={`text-2xl sm:text-4xl md:text-5xl font-light tracking-wide ${isDark ? "text-white/80" : "text-black/80"}`}>
               Ask Beroqk
             </h3>
           </div>
 
           {/* Input field */}
-          <div className="px-6 pb-6">
+          <div className="px-4 sm:px-6 pb-5 sm:pb-6">
             <Link
               href="/chat"
               className={`
-                flex items-center gap-4 px-6 py-5 rounded-2xl 
+                flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5 rounded-2xl 
                 border transition-all duration-300 cursor-pointer group
                 ${isDark 
                   ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] bg-white/[0.04]" : "border-white/[0.06]"} hover:border-white/[0.15] hover:bg-white/[0.05]`
@@ -117,7 +117,7 @@ function ChatDemo() {
                 }
               `}
             >
-              <span className={`text-lg md:text-xl flex-grow font-light tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
+              <span className={`text-base sm:text-lg md:text-xl flex-grow font-light tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
                 {displayText}
                 <span className={`${showCursor ? "opacity-100" : "opacity-0"} ${isDark ? "text-white/50" : "text-black/50"} transition-opacity duration-100`}>|</span>
               </span>
@@ -129,9 +129,9 @@ function ChatDemo() {
           </div>
 
           {/* Routing indicator */}
-          <div className="px-6 pb-8 flex items-center justify-center gap-2.5">
+          <div className="px-6 pb-6 sm:pb-8 flex items-center justify-center gap-2.5">
             <div className={`w-2 h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
-            <span className={`text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
+            <span className={`text-sm sm:text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
               Automatically routes to the optimal AI.
             </span>
           </div>
@@ -140,7 +140,7 @@ function ChatDemo() {
 
       {/* Ultra subtle glow */}
       <div
-        className={`absolute -inset-16 -z-10 rounded-[40px] transition-opacity duration-700 ${
+        className={`absolute inset-0 sm:-inset-16 -z-10 rounded-[40px] transition-opacity duration-700 ${
           isHovered ? "opacity-100" : "opacity-30"
         }`}
         style={{
@@ -164,7 +164,7 @@ export function HeroSection() {
   const isDark = mounted && resolvedTheme === "dark"
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-0 lg:min-h-screen flex items-center overflow-visible">
       {/* Background */}
       <div className={`absolute inset-0 ${isDark ? "bg-black" : "bg-white"}`}>
         {/* Subtle radial gradient */}
@@ -189,7 +189,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-32 pb-20 lg:pt-0 lg:pb-0">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-56 pb-20 lg:pt-0 lg:pb-0">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Left Side — Chat Demo (50%) */}
           <div 
