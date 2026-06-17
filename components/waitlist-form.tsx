@@ -77,7 +77,11 @@ export function WaitlistForm() {
           </SelectTrigger>
           <SelectContent>
             {ROLES.map((r) => (
-              <SelectItem key={r} value={r}>
+              <SelectItem
+                key={r}
+                value={r}
+                className="rounded-md transition-colors focus:bg-foreground/5 focus:backdrop-blur-md focus:text-foreground data-[highlighted]:bg-foreground/5 data-[highlighted]:backdrop-blur-md data-[highlighted]:text-foreground data-[state=checked]:bg-foreground/10"
+              >
                 {r}
               </SelectItem>
             ))}
