@@ -4,7 +4,7 @@ import { WaitlistForm } from "@/components/waitlist-form"
 
 export default function ChatPage() {
   return (
-    <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 py-32">
+    <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 pt-48 pb-32 lg:pt-56">
       <div className="w-full max-w-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
           {/* Text - left */}
