@@ -189,7 +189,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-40 pb-20 lg:pt-0 lg:pb-0">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-12 pt-56 pb-20 lg:pt-0 lg:pb-0">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Left Side — Chat Demo (50%) */}
           <div 
