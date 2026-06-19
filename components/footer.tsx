@@ -41,6 +41,7 @@ const footerLinks = [
   { name: "Company", href: "/company" },
   { name: "News", href: "/news" },
   { name: "Privacy", href: "/privacy" },
+  { name: "Cookies", href: "/cookies" },
 ]
 
 const socialLinks = [
