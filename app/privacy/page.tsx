@@ -45,9 +45,10 @@ const sections = [
   {
     heading: "AI Services",
     body: [
-      "BEROQK develops and operates artificial intelligence systems.",
-      "Information submitted through BEROQK products may be processed to provide requested functionality, improve user experiences, maintain system performance, and develop future features.",
-      "Users should avoid submitting highly sensitive personal information unless specifically required for a feature.",
+      "BEROQK develops and operates artificial intelligence systems and related technologies.",
+      "Information submitted through BEROQK products and services may be processed to provide requested functionality, maintain system performance, improve Services, and develop future products and features.",
+      "Depending on the product, information may be processed by BEROQK systems or trusted third-party service providers that support the operation of our Services.",
+      "Users should avoid submitting highly sensitive personal information unless specifically required for a feature. BEROQK does not guarantee that AI-generated outputs will always be accurate, complete, or suitable for any particular purpose.",
     ],
   },
   {
@@ -116,11 +117,11 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-6 pt-40 lg:pt-48 pb-32">
+      <div className="max-w-3xl mx-auto px-6 pt-56 lg:pt-64 pb-32">
         {/* Header */}
         <header className="mb-16">
           <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-6">
-            Last Updated: June 2026
+            Effective Date: June 19, 2026
           </p>
           <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-balance">
             Privacy Policy
