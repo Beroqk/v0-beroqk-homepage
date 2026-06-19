@@ -40,6 +40,8 @@ const footerLinks = [
   { name: "API", href: "/api-info" },
   { name: "Company", href: "/company" },
   { name: "News", href: "/news" },
+  { name: "Privacy", href: "/privacy" },
+  { name: "Cookies", href: "/cookies" },
 ]
 
 const socialLinks = [
