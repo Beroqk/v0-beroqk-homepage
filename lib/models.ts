@@ -1,3 +1,5 @@
+import type { ProviderName } from "@/lib/providers/types";
+
 export type ModelTier =
   | "cheap_fast_model"
   | "coding_model"
@@ -6,7 +8,7 @@ export type ModelTier =
 
 export interface ModelConfig {
   tier: ModelTier;
-  provider: string;
+  provider: ProviderName;
   modelId: string;
   displayName: string;
   description: string;
