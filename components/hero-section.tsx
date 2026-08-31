@@ -217,7 +217,7 @@ export function HeroSection() {
 
             {/* Subtext */}
             <p className={`text-xl md:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12 ${isDark ? "text-white/50" : "text-black/50"}`}>
-              Cut the cost of AI without cutting capability. Beroqk uses only the intelligence each task requires — preserving quality while lowering spend.
+              Cut AI costs without cutting capability. Beroqk uses only the intelligence each task needs.
             </p>
 
             {/* CTAs */}

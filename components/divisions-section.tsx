@@ -46,7 +46,7 @@ function RoutingCard() {
             </h3>
 
             <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
-              Routing is one feature inside the Efficiency Engine — matching every request to the least expensive model that still delivers full quality. The result: cost reduced, tokens avoided, efficiency gained.
+              Routing is one part of Beroqk&apos;s Efficiency Engine choosing the lowest-cost model that preserves quality.
             </p>
 
             {/* CTA */}
