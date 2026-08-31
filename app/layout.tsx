@@ -12,8 +12,8 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: 'BEROQK - Efficient AI for the Future',
-  description: 'Beroqk builds efficient AI that reduces compute, cost, and environmental impact.',
+  title: 'BEROQK - Cut the Cost of AI Without Cutting Capability',
+  description: 'Beroqk is cost-efficiency infrastructure for AI. Use only the intelligence each task requires — reducing spend and wasted compute while preserving quality.',
 icons: {
   icon: '/favicon.ico',
   shortcut: '/favicon.ico',

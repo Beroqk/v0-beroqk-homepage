@@ -95,7 +95,7 @@ export function OrbSection() {
           <div className="flex flex-col gap-10 order-2 lg:order-1">
             {/* Label */}
             <span className={`text-sm md:text-base font-medium uppercase tracking-[0.25em] ${isDark ? "text-white/45" : "text-black/45"}`}>
-              Explore
+              Inside the Efficiency Engine
             </span>
 
             {/* Headline */}
@@ -103,12 +103,12 @@ export function OrbSection() {
               className={`text-4xl md:text-5xl lg:text-6xl font-light ${isDark ? "text-white/95" : "text-black/95"}`}
               style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
             >
-              Routing Intelligence
+              Smart Routing
             </h2>
 
             {/* Description */}
             <p className={`text-xl md:text-2xl leading-relaxed max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
-              Every request is routed through the most efficient model for the job.
+              One feature of the Efficiency Engine: sending every request to the least costly model that still meets the bar — so you avoid tokens and spend you never needed.
             </p>
 
             {/* Status Card */}

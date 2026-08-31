@@ -132,7 +132,7 @@ function ChatDemo() {
           <div className="px-6 pb-6 sm:pb-8 flex items-center justify-center gap-2.5">
             <div className={`w-2 h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
             <span className={`text-sm sm:text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
-              Automatically routes to the optimal AI.
+              Uses only the intelligence each task requires.
             </span>
           </div>
         </div>
@@ -217,7 +217,7 @@ export function HeroSection() {
 
             {/* Subtext */}
             <p className={`text-xl md:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0 mb-12 ${isDark ? "text-white/50" : "text-black/50"}`}>
-              Route every task to the smartest, fastest, and most cost-effective AI automatically.
+              Cut the cost of AI without cutting capability. Beroqk uses only the intelligence each task requires — preserving quality while lowering spend.
             </p>
 
             {/* CTAs */}

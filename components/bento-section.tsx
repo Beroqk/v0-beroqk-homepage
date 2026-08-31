@@ -130,7 +130,7 @@ export function BentoSection() {
                 <div className="mt-6 flex items-center justify-center gap-2.5">
                   <div className={`w-2 h-2 rounded-full transition-opacity duration-1000 ${showPulse ? "opacity-100" : "opacity-40"} ${isDark ? "bg-white/30" : "bg-black/30"}`} />
                   <span className={`text-base tracking-wide ${isDark ? "text-white/40" : "text-black/40"}`}>
-                    Automatically routes to the optimal AI.
+                    Uses only the intelligence each task requires.
                   </span>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export function BentoSection() {
                     Chat
                   </span>
                   <p className={`mt-2 text-lg font-light ${isDark ? "text-white/70" : "text-black/70"}`}>
-                    Intelligent conversations, instantly.
+                    Full capability, less spend.
                   </p>
                 </div>
                 <div className={`flex items-center gap-1.5 text-sm transition-all duration-300 ${
@@ -228,7 +228,7 @@ export function BentoSection() {
                       Build
                     </span>
                     <p className={`mt-2 text-lg font-light ${isDark ? "text-white/70" : "text-black/70"}`}>
-                      Integrate AI into your apps.
+                      Lower AI spend in your apps.
                     </p>
                   </div>
                   <div className={`flex items-center gap-1.5 text-sm transition-all duration-300 ${

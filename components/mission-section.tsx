@@ -20,7 +20,7 @@ export function MissionSection() {
           className={`text-2xl md:text-3xl lg:text-4xl font-light text-balance ${isDark ? "text-white/85" : "text-black/85"}`}
           style={{ lineHeight: 1.4 }}
         >
-          Beroqk builds efficient AI that reduces compute, cost, and environmental impact.
+          Beroqk is cost-efficiency infrastructure for AI — cutting spend and wasted compute while preserving the quality every task demands.
         </p>
       </div>
     </section>

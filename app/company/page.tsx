@@ -110,7 +110,7 @@ export default function CompanyPage() {
             AI today uses the power of a rocket ship to do the work of a train or a bus or even a bicycle. It consumes excessive energy and fresh water for simple human tasks, and that is not innovation. That is waste.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            AI should be precise, scalable, and sustainable. Beroqk builds systems that reduce compute, cost, and environmental impact while improving how intelligence is applied.
+            AI should cost only what a task requires. Beroqk is cost-efficiency infrastructure — an Efficiency Engine that uses only the intelligence each task needs, cutting spend and wasted compute while preserving quality.
           </p>
         </section>
 
@@ -164,7 +164,7 @@ export default function CompanyPage() {
             Built for the future
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-6">
-            Beroqk is building the foundation for a new generation of AI systems designed for efficiency, privacy, and long-term scalability.
+            Beroqk is building the foundation for a new generation of AI systems designed to lower cost, preserve capability, and scale sustainably.
           </p>
           <Link 
             href="/careers" 

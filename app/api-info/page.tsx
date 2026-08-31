@@ -9,7 +9,7 @@ export default function ApiPage() {
           Beroqk API
         </h1>
         <p className="text-muted-foreground text-lg mb-8 max-w-md">
-          Integrate efficient AI into your apps. Built for developers and scale.
+          Put the Efficiency Engine behind your apps and lower AI spend on every request. Built for developers and scale.
         </p>
         <p className="text-muted-foreground/60 text-sm mb-8">
           Coming soon...

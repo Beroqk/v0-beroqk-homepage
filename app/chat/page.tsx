@@ -13,10 +13,10 @@ export default function ChatPage() {
               Beroqk Chat
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-balance mb-5">
-              Route Intelligence Efficiently
+              Cut AI Costs, Keep Capability
             </h1>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed text-pretty max-w-md mx-auto lg:mx-0">
-              Beroqk Chat automatically routes every task to the smartest, fastest, and most cost-effective AI.
+              Beroqk Chat uses only the intelligence each task requires — preserving quality while lowering spend.
             </p>
           </div>
 

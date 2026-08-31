@@ -36,17 +36,17 @@ function RoutingCard() {
         <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
           {/* Top label */}
           <span className={`text-sm md:text-base font-medium uppercase tracking-[0.15em] ${isDark ? "text-white/50" : "text-black/50"}`}>
-            Routing Intelligence
+            Smart Routing
           </span>
 
           {/* Bottom content */}
           <div className="mt-auto">
             <h3 className={`text-3xl md:text-4xl lg:text-5xl font-light mb-5 ${isDark ? "text-white" : "text-black"}`} style={{ letterSpacing: "-0.02em" }}>
-              Optimal model, every time.
+              Only the intelligence each task needs.
             </h3>
 
             <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
-              Automatically routes requests to the most efficient AI for the task.
+              Routing is one feature inside the Efficiency Engine — matching every request to the least expensive model that still delivers full quality. The result: cost reduced, tokens avoided, efficiency gained.
             </p>
 
             {/* CTA */}
@@ -84,13 +84,13 @@ export function DivisionsSection() {
         {/* Section header */}
         <div className="text-center mb-20 md:mb-24">
           <p className={`text-sm md:text-base uppercase tracking-[0.25em] mb-6 ${isDark ? "text-white/45" : "text-black/45"}`}>
-            Core Systems
+            The Efficiency Engine
           </p>
           <h2 
             className={`text-4xl md:text-5xl lg:text-6xl font-light ${isDark ? "text-white/90" : "text-black/90"}`}
             style={{ letterSpacing: '-0.03em', lineHeight: 1 }}
           >
-            Built for Efficiency.
+            Built to Lower Spend.
           </h2>
         </div>
 

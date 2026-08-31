@@ -25,7 +25,7 @@ export function SignupSection() {
           Get started with Beroqk
         </h2>
         <p className={`text-xl md:text-2xl mb-12 ${isDark ? "text-white/55" : "text-black/55"}`}>
-          Create your account and start using efficient AI.
+          Create your account and start cutting AI costs without cutting capability.
         </p>
         <Button 
           asChild 

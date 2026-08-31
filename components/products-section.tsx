@@ -9,19 +9,19 @@ import { useState, useEffect } from "react"
 const products = [
   {
     title: "Chat",
-    description: "Beroqk Chat is your intelligent assistant, designed for speed, privacy, and efficiency.",
+    description: "Full-capability AI that spends only what each task requires — quality preserved, cost reduced.",
     cta: "Use Now",
     href: "/chat",
   },
   {
     title: "API",
-    description: "Integrate efficient AI into your apps with the Beroqk API. Built for developers and scale.",
+    description: "Put the Efficiency Engine behind your apps and lower AI spend on every request. Built for developers and scale.",
     cta: "Build Now",
     href: "/api-info",
   },
   {
     title: "Company",
-    description: "Learn about Beroqk's mission to redefine AI through efficiency and privacy.",
+    description: "Learn how Beroqk is building cost-efficiency infrastructure for AI.",
     cta: "Learn More",
     href: "/company",
   },
