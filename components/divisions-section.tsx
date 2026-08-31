@@ -68,69 +68,6 @@ function RoutingCard() {
   )
 }
 
-// B-STING Privacy Card - Text Only
-function PrivacyCard() {
-  const [isHovered, setIsHovered] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isDark = mounted && resolvedTheme === "dark"
-
-  return (
-    <Link href="/b-sting" className="block">
-      <div
-        className={`
-          relative overflow-hidden rounded-3xl border
-          transition-all duration-500 ease-out cursor-pointer
-          h-[420px] md:h-[480px]
-          ${isDark 
-            ? `bg-white/[0.02] ${isHovered ? "border-white/[0.12] -translate-y-1" : "border-white/[0.06]"}`
-            : `bg-black/[0.02] ${isHovered ? "border-black/[0.1] -translate-y-1" : "border-black/[0.05]"}`
-          }
-        `}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* Content */}
-        <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
-          {/* Top label */}
-          <span className={`text-sm md:text-base font-medium uppercase tracking-[0.15em] ${isDark ? "text-white/50" : "text-black/50"}`}>
-            Privacy
-          </span>
-
-          {/* Bottom content */}
-          <div className="mt-auto">
-            <h3 className={`text-3xl md:text-4xl lg:text-5xl font-light mb-5 ${isDark ? "text-white" : "text-black"}`} style={{ letterSpacing: "-0.02em" }}>
-              Protection before access.
-            </h3>
-
-            <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
-              Sensitive data is secured before it ever reaches an AI model.
-            </p>
-
-            {/* CTA */}
-            <div className={`
-              inline-flex items-center gap-2.5 text-base md:text-lg
-              transition-all duration-300
-              ${isDark 
-                ? `text-white/50 ${isHovered ? "text-white/80" : ""}`
-                : `text-black/50 ${isHovered ? "text-black/80" : ""}`
-              }
-            `}>
-              <span>Learn more</span>
-              <ArrowRight size={18} className={`transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
 export function DivisionsSection() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
@@ -157,10 +94,9 @@ export function DivisionsSection() {
           </h2>
         </div>
 
-        {/* Two-card layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        {/* Single card layout */}
+        <div className="max-w-2xl mx-auto">
           <RoutingCard />
-          <PrivacyCard />
         </div>
       </div>
     </section>

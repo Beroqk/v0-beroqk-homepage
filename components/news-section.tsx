@@ -21,11 +21,6 @@ const news = [
     description: "Integrate efficient AI into your applications with our developer-first API.",
     href: "/api-info",
   },
-  {
-    title: "B-STING: Privacy Before Access - Coming Soon",
-    description: "An active privacy layer that protects before access. Your data stays protected.",
-    href: "/b-sting",
-  },
 ]
 
 export function NewsSection() {

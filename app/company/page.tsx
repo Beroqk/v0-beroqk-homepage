@@ -32,10 +32,6 @@ const newsItems = [
     title: "Beroqk API — Coming Soon",
     href: "/api-info",
   },
-  {
-    title: "B-STING: Privacy Before Access - Coming Soon",
-    href: "/b-sting",
-  },
 ]
 
 export default function CompanyPage() {
