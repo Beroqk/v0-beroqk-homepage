@@ -108,7 +108,7 @@ export function OrbSection() {
 
             {/* Description */}
             <p className={`text-xl md:text-2xl leading-relaxed max-w-md ${isDark ? "text-white/55" : "text-black/55"}`}>
-              One feature of the Efficiency Engine: sending every request to the least costly model that still meets the bar — so you avoid tokens and spend you never needed.
+              One feature of the Efficiency Engine: Routes each request to the lowest-cost model that still meets the required quality reducing unnecessary spend and token usage.
             </p>
 
             {/* Status Card */}
