@@ -126,7 +126,7 @@ export default function CompanyPage() {
             At our core
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-16">
-            We are a focused team driven by curiosity, precision, and the pursuit of better systems.
+            We are driven by curiosity, precision, and the pursuit of better systems.
           </p>
 
           {/* Principles */}
